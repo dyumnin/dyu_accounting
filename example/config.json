@@ -8,5 +8,8 @@
 	"cash_accounts":[
 		"Assets:INR:Bank:Current",
 		"Income:Customer:C"
-		]
+		],
+		"gst":{
+			"qrmp":true
+		}
 }

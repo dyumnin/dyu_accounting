@@ -16,11 +16,11 @@ class GST:
         self.company = cfg['company']
         self.open_date = datetime.date(self.fy, 4, 1)
         self.close_date = datetime.date(self.fy + 1, 3, 31)
-        self.calc_gst()
+        self.calc_gst(cfg['gst']['qrmp'])
 
-    def calc_gst(self, scheme="quarterly"):
+    def calc_gst(self, qrmp=True):
         self.gst = []
-        if scheme == "quarterly":
+        if qrmp:
             for i in range(4):
                 self.gst.append({})
         else:
@@ -31,7 +31,7 @@ class GST:
             if isinstance(entry, data.Transaction):
                 if entry.date < self.open_date or entry.date > self.close_date:
                     continue
-                if scheme == 'quarterly':
+                if qrmp:
                     entry_idx = (entry.date.month-1)//3
                 else:
                     entry_idx = (entry.date.month-1)
@@ -40,14 +40,14 @@ class GST:
                         # print(f" {entry_year} {entry_quarter} posting account = {repr(posting.account)}")
                         if re.search("Assets.*GST", posting.account):
                             self.gst[
-                                    entry_idx][posting.account] =\
+                                entry_idx][posting.account] =\
                                 amount.add(
                                 self.gst[entry_idx].get(
                                     posting.account, zero_inr),
                                 posting.units)
                         if re.search("Liabilities.*GST", posting.account):
                             self.gst[
-                                    entry_idx][posting.account] = \
+                                entry_idx][posting.account] = \
                                 amount.add(
                                 self.gst[entry_idx].get(
                                     posting.account, zero_inr),
