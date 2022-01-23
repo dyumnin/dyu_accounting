@@ -1,5 +1,5 @@
 # Accounting setup to automate generation of various financial statements for Compliance with Indian Govt.
-This setup is built over the beancount plain text accounting system. For details check [https://beancount.github.io/docs/index.html]
+This setup is built over the beancount plain text accounting system. For details check https://beancount.github.io/docs/index.html
 
 This is an opionionated opensource setup for maintaining the book of accounts and generating financial statements and reports as required by GOI.
 
@@ -10,13 +10,13 @@ Currently the following financial statements are supported.
 3. Account Statement
 4. Depreciation calculation as per MCA WDV and IT SLM Method.
  
-There is an example account in the example folder, the generated report can be seen here [example/reports_fy_2019.pdf]
+There is an example account in the example folder, the generated report can be seen here [FY 2019 Report](example/reports_fy_2019.pdf)
 
-Note: These scripts work for me and my Company, Based on the rules applicable to your organisation, you may have to tweak the results.
+Note: 
 
-Always get the output audited by your auditor.
+1. These scripts work for me and my Company, Based on the rules applicable to your organisation, you may have to tweak the results.
+2. I am an engineer not a CA. **Always get the output audited by your auditor.** 
 
-Once you have installed this package and generated a compliant Accounting file (see example directory) you can generate the required reports by running 
 
 # Installation
 
@@ -27,6 +27,8 @@ pip install .
 ```
 
 # Generation reports
+
+Once you have installed this package and generated a compliant Accounting file (see example directory) you can generate the required reports by running 
 
 ```
 mkdir reports/2019
@@ -45,7 +47,7 @@ The example folder contains a sample book of accounts dealing with
 5. Depreciation
 
 
-## Details 
+## Setting up your chart of accounts for use with this package.
 The program picks details of your charts of accounts from two sources
 
 1. `config.json` This file should be in the folder from where the script is invoked, It sets the various report generation options.
