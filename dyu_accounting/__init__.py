@@ -17,6 +17,7 @@ import dyu_accounting.balance_sheet as bsheet
 from dyu_accounting.gst import GST
 import dyu_accounting.depreciation as depr
 import dyu_accounting.journal as journal
+from dyu_accounting.Utilities import render_template
 import logging
 logging.basicConfig(filename="dyuAccount.log",
                     filemode='w', level=logging.DEBUG)
@@ -61,27 +62,18 @@ def accounting():
         reports['pnl'] = pnl_stmt.report_pnl(opts.outdir)
         j = journal.Journal(entries, options, cfg)
         reports['journal'] = j.report_journal(opts.outdir)
-        bs = bsheet.BalanceSheet(entries, options, company=company)
+        bs = bsheet.BalanceSheet(entries, options, cfg)
         bs.mkBalanceSheet(opts.fy - 1)
         bs.mkBalanceSheet(opts.fy)
         logger.debug(f'Account is {bs.balancesheet}')
-        reports['balance_sheet'] = bs.report_balance_sheet(
-            opts.outdir, opts.fy)
+        reports['balance_sheet'] = bs.report_balance_sheet()
         gst = GST(entries, options, cfg)
         reports['gst'] = gst.report_gst()
 
-        templateEnv = jinja2.Environment(
-            loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
-            trim_blocks=True,
-            lstrip_blocks=True)
-        template = templateEnv.get_template("index.tpl")
-        outputText = template.render(
-            company=company,
-            reports=reports,
-            ay=cfg['fy'])
         filename = "index.html"
-        with open(
-                os.path.join(opts.outdir, filename),
-                "w"
-        ) as fy_file:
-            fy_file.write(outputText)
+        render_template(data={
+            'template_name': 'index.tpl',
+            'cfg': cfg,
+            'reports': reports,
+            'outfile': filename
+        })

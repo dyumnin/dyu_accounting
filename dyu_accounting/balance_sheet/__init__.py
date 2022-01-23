@@ -7,7 +7,7 @@ import sys
 import datetime
 import re
 from beancount import loader
-from beancount.core import amount,convert
+from beancount.core import amount, convert
 from beancount.core.amount import Amount
 from beancount.core.position import Position
 from beancount.core.inventory import Inventory
@@ -17,7 +17,7 @@ from beancount.core import data
 from beancount.ops.summarize import balance_by_account, create_entries_from_balances
 from beancount.parser import printer
 from dyu_accounting.Utilities import get_fy, get_quarter, get_year_end
-from dyu_accounting.Utilities import hoh
+from dyu_accounting.Utilities import render_template
 #from dyu_accounting import templates
 import jinja2
 import copy
@@ -95,19 +95,20 @@ class BSTable:
                     )
 
     def add(self, head, result_account, v):
-        print(f'Adding class {head} account {result_account} amount {v} dict {self.account[head]}')
+        print(
+            f'Adding class {head} account {result_account} amount {v} dict {self.account[head]}')
         self.account[head][result_account] = amount.add(
-                self.account[head][result_account], v)
+            self.account[head][result_account], v)
 
 
 class BalanceSheet:
-    def __init__(self, entries, options_map, company,
-                 fy=datetime.datetime.now().year):
+    def __init__(self, entries, options_map, cfg):
         self.entries = entries
-        self.company = company
-        self.fy = fy
-        self.open_date = datetime.date(fy, 4, 1)
-        self.prev_open_date = datetime.date(fy - 1, 4, 1)
+        self.cfg = cfg
+        self.company = cfg['company']
+        self.fy = cfg['fy']
+        self.open_date = datetime.date(self.fy, 4, 1)
+        self.prev_open_date = datetime.date(self.fy - 1, 4, 1)
         self.options_map = options_map
         self.map_accounts_to_categories()
         self.balancesheet = {}
@@ -149,7 +150,8 @@ class BalanceSheet:
             self.entries, date=date)[0]
         logger.debug(f'on {date} bba={bba}')
         self.balancesheet[yrs] = BSTable()
-        logger.debug(f'blank balancesheet on {date} BSTable={self.balancesheet}')
+        logger.debug(
+            f'blank balancesheet on {date} BSTable={self.balancesheet}')
         for e in self.category:
             # self.category[e] {self.category[e]}')
             logging.debug(f'account_name {e},')
@@ -159,7 +161,8 @@ class BalanceSheet:
             self.balancesheet[yrs].add(
                 k1, k2, bba[e].reduce(convert.get_cost).get_currency_units('INR'))
         self.balancesheet[yrs].update_total()
-        logger.debug(f'balancesheet {date} after update total BSTable={self.balancesheet}')
+        logger.debug(
+            f'balancesheet {date} after update total BSTable={self.balancesheet}')
 
     def transfer_opening_balance(self, fy):
         logger = logging.getLogger("BalanceSheet:Transfer Opening Balance:")
@@ -185,32 +188,16 @@ class BalanceSheet:
         logger.debug(f'transfer Entries {transfer_entries}')
         logger.debug(f'Entries after transfer {self.entries}')
 
-    def report_balance_sheet(self, outdir, fy):
-
-        templateEnv = jinja2.Environment(
-            loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
-            trim_blocks=True,
-            lstrip_blocks=True)
-        fname = "balancesheet.tpl"
-        # # print(fname)
-        # print(self.balancesheet[fy].account)
-        template = templateEnv.get_template(fname)
-        outputText = template.render(
-            company=self.company,
-            account=self.balancesheet[fy].account,
-            prev_account=self.balancesheet[fy-1].account,
-            ay=fy+1)
-        os.makedirs(outdir, exist_ok=True)
-        filename = f"balance_sheet_{fy}.html"
-        with open(
-                os.path.join(outdir, filename),
-                "w"
-        ) as fy_file:
-            fy_file.write(outputText)
-        return [filename]
-
-        # print(outputText)
-        # return entries, errors
+    def report_balance_sheet(self):
+        fname = f"balance_sheet_FY_{self.cfg['fy']}_{self.cfg['fy']+1}.html"
+        render_template(data={
+            'template_name': 'balancesheet.tpl',
+            'cfg': self.cfg,
+            'account': self.balancesheet[self.cfg['fy']].account,
+            'prev_account': self.balancesheet[self.cfg['fy']-1].account,
+            'outfile': fname
+        })
+        return [fname]
 
     '''
     Steps
@@ -221,30 +208,19 @@ class BalanceSheet:
     '''
 
 
-def hoh(base, *keys):
-    x = base
-    for k in keys:
-        if k not in x:
-            x[k] = {}
-        x = x[k]
-    return base
-
-
-def transfer(entry, fromAccount, toAccount, date, price):
-    meta = data.new_metadata(
-        'beancount/core/depreciation.beancount', 12345)
-    flag = '*'
-    txn = data.transaction(
-        meta, date, flag, None,
-        f"depreciation {date} for {entry.narration}",
-        data.empty_set, data.empty_set, [])
-    data.create_simple_posting(
-        txn, fromAccount, -1 * price.number, price.currency)
-    data.create_simple_posting(
-        txn, toAccount,  price.number, price.currency)
-    return txn
-
-
+# def transfer(entry, fromAccount, toAccount, date, price):
+#     meta = data.new_metadata(
+#         'beancount/core/depreciation.beancount', 12345)
+#     flag = '*'
+#     txn = data.transaction(
+#         meta, date, flag, None,
+#         f"depreciation {date} for {entry.narration}",
+#         data.empty_set, data.empty_set, [])
+#     data.create_simple_posting(
+#         txn, fromAccount, -1 * price.number, price.currency)
+#     data.create_simple_posting(
+#         txn, toAccount,  price.number, price.currency)
+#     return txn
 if __name__ == "__main__":
 
     import csv

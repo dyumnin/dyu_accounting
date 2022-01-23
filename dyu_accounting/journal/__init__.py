@@ -2,6 +2,7 @@ import datetime
 from beancount.core import data
 import jinja2
 import os
+from dyu_accounting.Utilities import render_template
 
 
 class Journal:
@@ -44,26 +45,15 @@ class Journal:
                                  'amount': posting.units})
 
     def report_journal(self, outdir):
-        # print(self.accounts)
-        templateEnv = jinja2.Environment(
-            loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
-            trim_blocks=True,
-            lstrip_blocks=True)
-        fname = "journal.tpl"
-        # # print(fname)
-        template = templateEnv.get_template(fname)
-        os.makedirs(outdir, exist_ok=True)
         reports = []
         for account in self.accounts:
-            outputText = template.render(company=self.company,
-                                         account=self.accounts[account],
-                                         account_name=account,
-                                         ay=self.fy+1)
             filename = f"journal_{account}.html"
+            render_template(data={
+                'template_name': "journal.tpl",
+                'cfg': self.cfg,
+                'account': self.accounts[account],
+                'account_name': account,
+                'outfile': filename
+            })
             reports.append(filename)
-            with open(
-                    os.path.join(outdir, filename),
-                    "w"
-            ) as fy_file:
-                fy_file.write(outputText)
         return reports

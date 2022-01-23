@@ -4,6 +4,7 @@ from decimal import Decimal
 import re
 import os
 from beancount.core import data
+from dyu_accounting.Utilities import render_template
 
 
 class PnL:
@@ -62,20 +63,11 @@ class PnL:
         self.pnl_data['profit'] = self.pnl_data['expenses_total'] + \
             self.pnl_data['revenue']
         # print(self.pnl_data)
-        templateEnv = jinja2.Environment(
-            loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
-            trim_blocks=True,
-            lstrip_blocks=True)
-        fname = "PnL.tpl"
-        # # print(fname)
-        template = templateEnv.get_template(fname)
-        # os.makedirs(outdir, exist_ok=True)
-        outputText = template.render(company=self.company,
-                                     data=self.pnl_data,
-                                     ay=self.fy+1)
-        with open(
-                os.path.join(outdir, "PnL.html"),
-                "w"
-        ) as fy_file:
-            fy_file.write(outputText)
-        return ["PnL.html"]
+        fname="PnL.html"
+        render_template(data={
+            'template_name': 'PnL.tpl',
+            'cfg': self.cfg,
+            'pnl': self.pnl_data,
+            'outfile': fname
+        })
+        return [fname]

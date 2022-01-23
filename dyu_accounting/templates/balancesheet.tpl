@@ -1,11 +1,11 @@
 {%extends "base.tpl"%}
-{%block title%} Balance Sheet for AY {{ay}} {%endblock%}
+{%block title%} Balance Sheet for fy {{cfg.fy}} {%endblock%}
 {%block content%}
 <!--https://cleartax.in/s/balance-sheet/ -->
-<h2>Balance Sheet as on 31 March {{ay}}</h2>
+<h2>Balance Sheet as on 31 March {{cfg.fy+1}}</h2>
 
 <table class="table table-bordered">
-<tr><th> Particulars                                  </th> <th> Note No. </th> <th> {{ay-1}}-{{ay}}</th> <th> {{ay-2}}-{{ay-1}} </th> </tr>
+<tr><th> Particulars                                  </th> <th> Note No. </th> <th> {{cfg.fy}}-{{cfg.fy+1}}</th> <th> {{cfg.fy-1}}-{{cfg.fy}} </th> </tr>
 <tr><th> I. EQUITY AND LIABILITIES                    </th> <th>          </th> <th>                                                   </th> <th>                                                    </th> </tr>
 <tr><th>1) Shareholder's Funds                        </th> <th>          </th> <th>                                                   </th> <th>                                                    </th> </tr>
 <tr><td>(a) Share Capital                             </td> <td>1         </td> <td>{{account.liabilities.share_capital}}              </td> <td>{{prev_account.liabilities.share_capital}}                      </td> </tr>

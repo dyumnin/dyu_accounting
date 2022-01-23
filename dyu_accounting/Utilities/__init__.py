@@ -1,6 +1,8 @@
+import jinja2
 from beancount.core import data
 import re
 import datetime
+import os
 
 
 def get_account_value(entries, account_name, start_date=None, end_date=None):
@@ -57,3 +59,16 @@ def hoh(base, *keys):
             x[k] = {}
         x = x[k]
     return base
+
+
+def render_template(data):
+    templateEnv = jinja2.Environment(
+        loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
+        trim_blocks=True,
+        lstrip_blocks=True)
+    fname = data['template_name']
+    template = templateEnv.get_template(fname)
+    outputText = template.render(data)
+    filename = data['outfile']
+    with open(os.path.join(data['cfg']['outdir'], filename), "w") as fy_file:
+        fy_file.write(outputText)

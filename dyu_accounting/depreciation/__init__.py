@@ -13,7 +13,7 @@ from beancount.core import amount
 from beancount.core import data
 from beancount.parser import printer
 from beancount.ops.summarize import balance_by_account, create_entries_from_balances
-from dyu_accounting.Utilities import get_account_value, get_fy,  get_year_end
+from dyu_accounting.Utilities import get_account_value, get_fy,  get_year_end, render_template
 
 DEPRECIATION_TABLE = {
     'Furniture': {
@@ -391,21 +391,16 @@ class Depreciation:
                     'narration': entry.narration,
                     'amount': entry.postings[0].units.number
                 })
-        templateEnv = jinja2.Environment(
-            loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
-            trim_blocks=True,
-            lstrip_blocks=True)
-        fname = "depreciation.tpl"
-        # # print(fname)
-        template = templateEnv.get_template(fname)
-        os.makedirs(outdir, exist_ok=True)
-        outputText = template.render(company=self.cfg['company'],
-                                     data=self.depr,
-                                     min_fy=self.min_fy,
-                                     max_fy=self.max_fy)
+
         filename = "depreciation.html"
-        with open(os.path.join(outdir, filename), "w") as fy_file:
-            fy_file.write(outputText)
+        render_template(data={
+            'template_name': "depreciation.tpl",
+            'cfg': self.cfg,
+            'depr': self.depr,
+            'min_fy': self.min_fy,
+            'max_fy': self.max_fy,
+            'outfile': filename
+        })
         return [filename]
 
     # def calc_wdv_it(self, entry, posting):

@@ -4,7 +4,7 @@ from decimal import Decimal
 import re
 import os
 from beancount.core import data, amount
-
+from dyu_accounting.Utilities import render_template
 zero_inr = amount.Amount(Decimal(0), 'INR')
 
 
@@ -54,18 +54,11 @@ class GST:
                                 posting.units)
 
     def report_gst(self):
-        templateEnv = jinja2.Environment(
-            loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
-            trim_blocks=True,
-            lstrip_blocks=True)
-        fname = "GST.tpl"
-        template = templateEnv.get_template(fname)
-        outputText = template.render(company=self.company,
-                                     data=self.gst,
-                                     fy=self.fy)
-        with open(
-                os.path.join(self.cfg['outdir'], "GST.html"),
-                "w"
-        ) as fy_file:
-            fy_file.write(outputText)
-        return ["GST.html"]
+        fname = "GST.html"
+        render_template(data={
+            'template_name': "GST.tpl",
+            'cfg': self.cfg,
+            'gst': self.gst,
+            'outfile': fname
+        })
+        return [fname]

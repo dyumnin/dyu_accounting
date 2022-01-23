@@ -11,7 +11,7 @@
 {%for year in range(min_fy,max_fy+1)%}
 <th>{{year}}</th>
 {%endfor%} </tr>
-{%for txn in data.mca%}
+{%for txn in depr.mca%}
 <tr><td>{{txn.narration}}   </td> <td> {{txn.category}} </td>
 <td> {{txn.rate|round(3)}}  </td>
 <td> {{txn.cost}}  </td>
@@ -35,7 +35,7 @@
 <td> - </td>
 <td> - </td>
 {%for year in range(min_fy,max_fy+1)%}
-<th>{%if year in data.total.mca%}{{data.total.mca[year]|round(3)}}{%endif%}</th>
+<th>{%if year in depr.total.mca%}{{depr.total.mca[year]|round(3)}}{%endif%}</th>
 {%endfor%}
   
 </tr>
@@ -52,7 +52,7 @@
 <th >Block Value</th>
 <th >Depreciation</th>
 {%endfor%} </tr>
-{%for key,txn in data.it.items() %}
+{%for key,txn in depr.it.items() %}
 <tr>
 <td>{{key}}</td>
 <td>{{txn['block']}}</td>
@@ -72,7 +72,7 @@
 <td></td>
 {%for year in range(min_fy,max_fy+1)%}
 <td></td>
-<th>{%if year in data.total.it%}{{data.total.it[year]|round(3)}}{%endif%}</th>
+<th>{%if year in depr.total.it%}{{depr.total.it[year]|round(3)}}{%endif%}</th>
 {%endfor%}
 </tr> 
 

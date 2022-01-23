@@ -11,8 +11,8 @@
 <div class="container-fluid bg-primary">
 <div class="row">
 <div class="col-12">
-<p class="h1">{{company.name}}</p>
-<p class="lead">{{company.address}}</p>
+<p class="h1">{{cfg.company.name}}</p>
+<p class="lead">{{cfg.company.address}}</p>
 </div>
 </div>
 </div>
