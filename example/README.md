@@ -1,5 +1,21 @@
-ABC Corp buys Nuts from Vendor_x and Bolts from Vendor Y to create NutBolt after 15 days and sells it to Customer_C for a 20% profit after 1 month.
-Over a period of 2 years 10 employees are hired at a salary of Rs 10,000 each.
-Onboarding package of each employee consists of a laptop, a phone, a Table and a chair. This comes from Company Z
-Monthly expenses are
-Electricity , internet, food and travel
+This folder has an Example setup for ABC Corporation.
+
+ABC Corp has
+
+1. Hired engineers at different point of time in the last few years.
+2. For each engineer ABC Corp procures the following assets from VendorZ: Laptop, Table, Chair.
+3. Salary is paid on monthly basis and the following deductions are made, Profession Tax, TDS
+
+ABC Corp Procures one unit of Goods from Vendors X & Y each and spends 15+ days to build its product.
+
+The product is sold to Customer C for a profit of Rs 500.
+
+Approx 20% GST amount is charged on all applicable transactions.
+
+The files are as follows
+
+| File | Description |
+|---- | -----|
+| account.beancount | Contains chart of accounts |
+| data.beancount | Contains details of all transactions made by the company |
+|reports_fy_2019.pdf | A sample financial Statement for FY 2019 |
