@@ -1,0 +1,96 @@
+;{{{ Setup
+option "title" "ABC Pvt Ltd."
+option "operating_currency" "USD"
+option "operating_currency" "INR"
+2018-07-01 custom "fava-option" "fiscal-year-end" "03-31"
+option "documents" "invoices"
+plugin "fava.plugins.link_documents"
+plugin "fava.plugins.tag_discovered_documents"
+* Commodities
+2018-07-01 commodity NUTS
+2018-07-01 commodity BOLTS
+2018-07-01 commodity NUTBOLT
+
+2018-07-01 open Assets:INR:Cash              INR
+	balance_sheet: "assets.cash"
+2018-07-01 open Assets:INR:Bank:Current              INR
+	balance_sheet: "assets.cash"
+2018-07-01 open Assets:INR:AccountReceivable              INR
+	balance_sheet: "assets.trade_receivables"
+2018-07-01 open Assets:INR:ExchangeGain              INR
+	balance_sheet: "assets.cash"
+2018-07-01 open Assets:INR:Equipment:Furniture              INR
+	balance_sheet: "assets.tangible"
+	depreciation_category: "Furniture"
+2018-07-01 open Assets:INR:Equipment:Office              INR
+	balance_sheet: "assets.tangible"
+	depreciation_category: "OfficeEquipment"
+2018-07-01 open Assets:INR:Equipment:Server              INR
+	balance_sheet: "assets.tangible"
+	depreciation_category: "Server"
+2018-07-01 open Assets:INR:Equipment:Laptop              INR
+	balance_sheet: "assets.tangible"
+	depreciation_category: "Laptop"
+2018-07-01 open Assets:INR:Equipment:Phone              INR
+	balance_sheet: "assets.tangible"
+	depreciation_category: "Phone"
+2018-07-01 open Assets:INR:Equipment:Electrical              INR
+	balance_sheet: "assets.tangible"
+	depreciation_category: "Electrical"
+2018-07-01 open Assets:INR:Equipment:Consumable              INR
+2018-07-01 open Assets:NUTS:Equipment:Consumable              NUTS
+	balance_sheet: "assets.wip_capital"
+2018-07-01 open Assets:NUTBOLT:Equipment:Consumable              NUTBOLT
+	balance_sheet: "assets.wip_capital"
+2018-07-01 open Assets:BOLTS:Equipment:Consumable              BOLTS
+	balance_sheet: "assets.wip_capital"
+2018-07-01 open Assets:INR:GST:ITC:CGST              INR
+2018-07-01 open Assets:INR:GST:ITC:SGST              INR
+2018-07-01 open Assets:INR:GST:ITC:IGST              INR
+2018-07-01 open Equity:INR:ShareCapital              INR
+	balance_sheet: "liabilities.share_capital"
+
+2018-07-01 open Equity:INR:Surplus              INR
+         balance_sheet: "liabilities.surplus"
+
+2018-07-01 open Liabilities:INR:Loan              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+2018-07-01 open Liabilities:INR:Misc              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+2018-07-01 open Liabilities:INR:AccountPayable              INR
+	balance_sheet: "liabilities.trade_payable"
+2018-07-01 open Liabilities:INR:GST:CGST              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+2018-07-01 open Liabilities:INR:GST:SGST              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+2018-07-01 open Liabilities:INR:GST:IGST              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+2018-07-01 open Liabilities:INR:ProfessionalTax              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+2018-07-01 open Liabilities:INR:TDS              INR
+	balance_sheet: "liabilities.shortterm_borrowing"
+
+2018-07-01 open Expenses:INR:Salary     INR
+2018-07-01 open Expenses:INR:Misc     INR
+2018-07-01 open Expenses:INR:ProfessionalServices     INR
+2018-07-01 open Expenses:INR:Compliance     INR
+2018-07-01 open Expenses:INR:GOI     INR
+2018-07-01 open Expenses:INR:GOK     INR
+2018-07-01 open Expenses:INR:Depreciation     INR
+2018-07-01 open Expenses:INR:Scrap     INR
+2018-07-01 open Expenses:INR:BankCharges     INR
+2018-07-01 open Liabilities:INR:AccountPayable:Vendor:X     INR
+	balance_sheet: "liabilities.trade_payable"
+2018-07-01 open Liabilities:INR:AccountPayable:Vendor:Y     INR
+	balance_sheet: "liabilities.trade_payable"
+2018-07-01 open Liabilities:INR:AccountPayable:Vendor:Z     INR
+	balance_sheet: "liabilities.trade_payable"
+
+2018-07-01 open Expenses:Vendor:X     INR
+2018-07-01 open Expenses:Vendor:Y     INR
+2018-07-01 open Expenses:Vendor:Z     INR
+2018-07-01 open Income:Customer:C     INR
+2018-07-01 open Equity:Opening-Balances INR
+2018-07-01 pad Equity:INR:ShareCapital Equity:Opening-Balances
+2018-07-02 balance Equity:INR:ShareCapital 100000 INR
+;}}}

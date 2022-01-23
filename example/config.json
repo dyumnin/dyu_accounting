@@ -1,0 +1,12 @@
+{
+	"company":{
+		"name":"ABC Private Limited",
+		"address":"1, XYZ Lane, Rampura  560001"
+	},
+	"ar":"Assets:INR:AccountReceivable",
+	"exchange_gain":"Assets:INR:ExchangeGain",
+	"cash_accounts":[
+		"Assets:INR:Bank:Current",
+		"Income:Customer:C"
+		]
+}

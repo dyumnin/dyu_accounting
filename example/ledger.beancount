@@ -1,0 +1,7 @@
+; vim:foldmethod=marker
+option "booking_method" "FIFO"
+
+include "accounts.beancount"
+include "data.beancount"
+;include "firstyear.beancount"
+;include "depreciations.bc"

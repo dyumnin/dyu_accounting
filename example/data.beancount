@@ -1,0 +1,6198 @@
+2019-04-01 open Expenses:INR:Salary:Amar
+
+2019-04-01 * "VendorZ" "Amar Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2019-04-06 * "Payment for Amar Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2019-04-30 * "Amar" "Salary for 2019-04-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-05-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-05-30 * "Amar" "Salary for 2019-05-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-06-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-06-30 * "Amar" "Salary for 2019-06-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-07-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-07-30 * "Amar" "Salary for 2019-07-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-08-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-08-30 * "Amar" "Salary for 2019-08-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-09-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-09-30 * "Amar" "Salary for 2019-09-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-10-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-10-30 * "Amar" "Salary for 2019-10-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-11-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-11-30 * "Amar" "Salary for 2019-11-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2019-12-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2019-12-30 * "Amar" "Salary for 2019-12-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-01-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-01-30 * "Amar" "Salary for 2020-01-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-02-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-03-01 * "Amar" "Salary for 2020-03-01"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-03-04 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-03-30 * "Amar" "Salary for 2020-03-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-04-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-04-30 * "Amar" "Salary for 2020-04-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-05-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-05-30 * "Amar" "Salary for 2020-05-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-06-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-06-30 * "Amar" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-07-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-07-30 * "Amar" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-08-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-08-30 * "Amar" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-09-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-09-30 * "Amar" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-10-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-10-30 * "Amar" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-11-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-11-30 * "Amar" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2020-12-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2020-12-30 * "Amar" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-01-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-01-30 * "Amar" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-02-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-03-02 * "Amar" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-03-05 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-03-30 * "Amar" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-04-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-04-30 * "Amar" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-05-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-05-30 * "Amar" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-06-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-06-30 * "Amar" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-07-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-07-30 * "Amar" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-08-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-08-30 * "Amar" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-09-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-09-30 * "Amar" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-10-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-10-30 * "Amar" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-11-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-11-30 * "Amar" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2021-12-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2021-12-30 * "Amar" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-01-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-01-30 * "Amar" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-02-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-03-02 * "Amar" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-03-05 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-03-30 * "Amar" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-04-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-04-30 * "Amar" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-05-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-05-30 * "Amar" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-06-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-06-30 * "Amar" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-07-03 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+
+2022-07-30 * "Amar" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -10000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1000.0 INR
+    Expenses:INR:Salary:Amar
+            
+
+2022-08-02 * "Amar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1000.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1000.0  INR
+            
+2019-05-01 open Expenses:INR:Salary:Akbar
+
+2019-05-01 * "VendorZ" "Akbar Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2019-05-06 * "Payment for Akbar Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2019-05-30 * "Akbar" "Salary for 2019-05-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-06-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-06-30 * "Akbar" "Salary for 2019-06-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-07-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-07-30 * "Akbar" "Salary for 2019-07-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-08-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-08-30 * "Akbar" "Salary for 2019-08-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-09-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-09-30 * "Akbar" "Salary for 2019-09-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-10-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-10-30 * "Akbar" "Salary for 2019-10-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-11-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-11-30 * "Akbar" "Salary for 2019-11-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2019-12-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2019-12-30 * "Akbar" "Salary for 2019-12-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-01-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-01-30 * "Akbar" "Salary for 2020-01-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-02-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-03-01 * "Akbar" "Salary for 2020-03-01"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-03-04 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-03-30 * "Akbar" "Salary for 2020-03-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-04-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-04-30 * "Akbar" "Salary for 2020-04-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-05-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-05-30 * "Akbar" "Salary for 2020-05-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-06-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-06-30 * "Akbar" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-07-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-07-30 * "Akbar" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-08-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-08-30 * "Akbar" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-09-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-09-30 * "Akbar" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-10-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-10-30 * "Akbar" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-11-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-11-30 * "Akbar" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2020-12-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2020-12-30 * "Akbar" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-01-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-01-30 * "Akbar" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-02-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-03-02 * "Akbar" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-03-05 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-03-30 * "Akbar" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-04-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-04-30 * "Akbar" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-05-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-05-30 * "Akbar" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-06-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-06-30 * "Akbar" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-07-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-07-30 * "Akbar" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-08-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-08-30 * "Akbar" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-09-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-09-30 * "Akbar" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-10-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-10-30 * "Akbar" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-11-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-11-30 * "Akbar" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2021-12-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2021-12-30 * "Akbar" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-01-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-01-30 * "Akbar" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-02-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-03-02 * "Akbar" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-03-05 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-03-30 * "Akbar" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-04-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-04-30 * "Akbar" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-05-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-05-30 * "Akbar" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-06-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-06-30 * "Akbar" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-07-03 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-07-30 * "Akbar" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-08-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+
+2022-08-30 * "Akbar" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -25000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2500.0 INR
+    Expenses:INR:Salary:Akbar
+            
+
+2022-09-02 * "Akbar" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2500.0  INR
+            
+2019-09-01 open Expenses:INR:Salary:Anthony
+
+2019-09-01 * "VendorZ" "Anthony Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2019-09-06 * "Payment for Anthony Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2019-09-30 * "Anthony" "Salary for 2019-09-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2019-10-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2019-10-30 * "Anthony" "Salary for 2019-10-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2019-11-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2019-11-30 * "Anthony" "Salary for 2019-11-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2019-12-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2019-12-30 * "Anthony" "Salary for 2019-12-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-01-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-01-30 * "Anthony" "Salary for 2020-01-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-02-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-03-01 * "Anthony" "Salary for 2020-03-01"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-03-04 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-03-30 * "Anthony" "Salary for 2020-03-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-04-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-04-30 * "Anthony" "Salary for 2020-04-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-05-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-05-30 * "Anthony" "Salary for 2020-05-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-06-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-06-30 * "Anthony" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-07-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-07-30 * "Anthony" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-08-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-08-30 * "Anthony" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-09-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-09-30 * "Anthony" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-10-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-10-30 * "Anthony" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-11-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-11-30 * "Anthony" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2020-12-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2020-12-30 * "Anthony" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-01-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-01-30 * "Anthony" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-02-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-03-02 * "Anthony" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-03-05 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-03-30 * "Anthony" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-04-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-04-30 * "Anthony" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-05-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-05-30 * "Anthony" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-06-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-06-30 * "Anthony" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-07-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-07-30 * "Anthony" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-08-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-08-30 * "Anthony" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-09-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-09-30 * "Anthony" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-10-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-10-30 * "Anthony" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-11-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-11-30 * "Anthony" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2021-12-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2021-12-30 * "Anthony" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-01-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-01-30 * "Anthony" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-02-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-03-02 * "Anthony" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-03-05 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-03-30 * "Anthony" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-04-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-04-30 * "Anthony" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-05-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-05-30 * "Anthony" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-06-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-06-30 * "Anthony" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-07-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-07-30 * "Anthony" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-08-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-08-30 * "Anthony" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-09-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-09-30 * "Anthony" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-10-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-10-30 * "Anthony" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-11-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-11-30 * "Anthony" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2022-12-03 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+
+2022-12-30 * "Anthony" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -15000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1500.0 INR
+    Expenses:INR:Salary:Anthony
+            
+
+2023-01-02 * "Anthony" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1500.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1500.0  INR
+            
+2019-12-01 open Expenses:INR:Salary:John
+
+2019-12-01 * "VendorZ" "John Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2019-12-06 * "Payment for John Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2019-12-30 * "John" "Salary for 2019-12-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-01-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-01-30 * "John" "Salary for 2020-01-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-02-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-03-01 * "John" "Salary for 2020-03-01"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-03-04 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-03-30 * "John" "Salary for 2020-03-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-04-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-04-30 * "John" "Salary for 2020-04-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-05-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-05-30 * "John" "Salary for 2020-05-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-06-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-06-30 * "John" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-07-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-07-30 * "John" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-08-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-08-30 * "John" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-09-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-09-30 * "John" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-10-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-10-30 * "John" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-11-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-11-30 * "John" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2020-12-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2020-12-30 * "John" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-01-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-01-30 * "John" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-02-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-03-02 * "John" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-03-05 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-03-30 * "John" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-04-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-04-30 * "John" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-05-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-05-30 * "John" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-06-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-06-30 * "John" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-07-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-07-30 * "John" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-08-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-08-30 * "John" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-09-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-09-30 * "John" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-10-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-10-30 * "John" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-11-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-11-30 * "John" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2021-12-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2021-12-30 * "John" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-01-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-01-30 * "John" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-02-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-03-02 * "John" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-03-05 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-03-30 * "John" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-04-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-04-30 * "John" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-05-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-05-30 * "John" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-06-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-06-30 * "John" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-07-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-07-30 * "John" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-08-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-08-30 * "John" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-09-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-09-30 * "John" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-10-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-10-30 * "John" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-11-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-11-30 * "John" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2022-12-03 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2022-12-30 * "John" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2023-01-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2023-01-30 * "John" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2023-02-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2023-03-02 * "John" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2023-03-05 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+
+2023-03-30 * "John" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -17000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1700.0 INR
+    Expenses:INR:Salary:John
+            
+
+2023-04-02 * "John" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1700.0  INR
+            
+2020-01-01 open Expenses:INR:Salary:Jaani
+
+2020-01-01 * "VendorZ" "Jaani Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2020-01-06 * "Payment for Jaani Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2020-01-30 * "Jaani" "Salary for 2020-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-02-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-03-01 * "Jaani" "Salary for 2020-03-01"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-03-04 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-03-30 * "Jaani" "Salary for 2020-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-04-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-04-30 * "Jaani" "Salary for 2020-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-05-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-05-30 * "Jaani" "Salary for 2020-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-06-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-06-30 * "Jaani" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-07-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-07-30 * "Jaani" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-08-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-08-30 * "Jaani" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-09-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-09-30 * "Jaani" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-10-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-10-30 * "Jaani" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-11-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-11-30 * "Jaani" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2020-12-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-12-30 * "Jaani" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-01-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-01-30 * "Jaani" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-02-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-03-02 * "Jaani" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-03-05 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-03-30 * "Jaani" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-04-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-04-30 * "Jaani" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-05-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-05-30 * "Jaani" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-06-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-06-30 * "Jaani" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-07-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-07-30 * "Jaani" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-08-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-08-30 * "Jaani" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-09-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-09-30 * "Jaani" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-10-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-10-30 * "Jaani" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-11-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-11-30 * "Jaani" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2021-12-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-12-30 * "Jaani" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-01-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-01-30 * "Jaani" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-02-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-03-02 * "Jaani" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-03-05 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-03-30 * "Jaani" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-04-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-04-30 * "Jaani" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-05-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-05-30 * "Jaani" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-06-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-06-30 * "Jaani" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-07-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-07-30 * "Jaani" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-08-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-08-30 * "Jaani" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-09-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-09-30 * "Jaani" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-10-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-10-30 * "Jaani" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-11-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-11-30 * "Jaani" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2022-12-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-12-30 * "Jaani" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2023-01-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-01-30 * "Jaani" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2023-02-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-03-02 * "Jaani" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2023-03-05 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-03-30 * "Jaani" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2023-04-02 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-04-30 * "Jaani" "Salary for 2023-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Jaani
+            
+
+2023-05-03 * "Jaani" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+2020-03-01 open Expenses:INR:Salary:Janardhan
+
+2020-03-01 * "VendorZ" "Janardhan Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2020-03-06 * "Payment for Janardhan Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2020-03-30 * "Janardhan" "Salary for 2020-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-04-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-04-30 * "Janardhan" "Salary for 2020-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-05-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-05-30 * "Janardhan" "Salary for 2020-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-06-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-06-30 * "Janardhan" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-07-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-07-30 * "Janardhan" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-08-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-08-30 * "Janardhan" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-09-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-09-30 * "Janardhan" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-10-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-10-30 * "Janardhan" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-11-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-11-30 * "Janardhan" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2020-12-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2020-12-30 * "Janardhan" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-01-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-01-30 * "Janardhan" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-02-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-03-02 * "Janardhan" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-03-05 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-03-30 * "Janardhan" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-04-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-04-30 * "Janardhan" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-05-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-05-30 * "Janardhan" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-06-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-06-30 * "Janardhan" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-07-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-07-30 * "Janardhan" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-08-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-08-30 * "Janardhan" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-09-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-09-30 * "Janardhan" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-10-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-10-30 * "Janardhan" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-11-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-11-30 * "Janardhan" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2021-12-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2021-12-30 * "Janardhan" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-01-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-01-30 * "Janardhan" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-02-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-03-02 * "Janardhan" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-03-05 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-03-30 * "Janardhan" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-04-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-04-30 * "Janardhan" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-05-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-05-30 * "Janardhan" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-06-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-06-30 * "Janardhan" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-07-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-07-30 * "Janardhan" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-08-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-08-30 * "Janardhan" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-09-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-09-30 * "Janardhan" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-10-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-10-30 * "Janardhan" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-11-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-11-30 * "Janardhan" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2022-12-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2022-12-30 * "Janardhan" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-01-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-01-30 * "Janardhan" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-02-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-03-02 * "Janardhan" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-03-05 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-03-30 * "Janardhan" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-04-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-04-30 * "Janardhan" "Salary for 2023-04-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-05-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-05-30 * "Janardhan" "Salary for 2023-05-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-06-02 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+
+2023-06-30 * "Janardhan" "Salary for 2023-06-30"
+    Assets:INR:Bank:Current -27000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2700.0 INR
+    Expenses:INR:Salary:Janardhan
+            
+
+2023-07-03 * "Janardhan" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2700.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2700.0  INR
+            
+2020-06-01 open Expenses:INR:Salary:Ram
+
+2020-06-01 * "VendorZ" "Ram Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2020-06-06 * "Payment for Ram Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2020-06-30 * "Ram" "Salary for 2020-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2020-07-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-07-30 * "Ram" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2020-08-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-08-30 * "Ram" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2020-09-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-09-30 * "Ram" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2020-10-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-10-30 * "Ram" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2020-11-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-11-30 * "Ram" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2020-12-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-12-30 * "Ram" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-01-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-01-30 * "Ram" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-02-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-03-02 * "Ram" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-03-05 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-03-30 * "Ram" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-04-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-04-30 * "Ram" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-05-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-05-30 * "Ram" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-06-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-06-30 * "Ram" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-07-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-07-30 * "Ram" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-08-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-08-30 * "Ram" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-09-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-09-30 * "Ram" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-10-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-10-30 * "Ram" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-11-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-11-30 * "Ram" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2021-12-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-12-30 * "Ram" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-01-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-01-30 * "Ram" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-02-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-03-02 * "Ram" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-03-05 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-03-30 * "Ram" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-04-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-04-30 * "Ram" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-05-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-05-30 * "Ram" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-06-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-06-30 * "Ram" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-07-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-07-30 * "Ram" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-08-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-08-30 * "Ram" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-09-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-09-30 * "Ram" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-10-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-10-30 * "Ram" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-11-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-11-30 * "Ram" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2022-12-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-12-30 * "Ram" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-01-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-01-30 * "Ram" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-02-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-03-02 * "Ram" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-03-05 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-03-30 * "Ram" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-04-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-04-30 * "Ram" "Salary for 2023-04-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-05-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-05-30 * "Ram" "Salary for 2023-05-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-06-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-06-30 * "Ram" "Salary for 2023-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-07-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-07-30 * "Ram" "Salary for 2023-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-08-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-08-30 * "Ram" "Salary for 2023-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-09-02 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-09-30 * "Ram" "Salary for 2023-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ram
+            
+
+2023-10-03 * "Ram" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+2020-07-01 open Expenses:INR:Salary:Rahim
+
+2020-07-01 * "VendorZ" "Rahim Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2020-07-06 * "Payment for Rahim Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2020-07-30 * "Rahim" "Salary for 2020-07-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2020-08-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2020-08-30 * "Rahim" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2020-09-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2020-09-30 * "Rahim" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2020-10-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2020-10-30 * "Rahim" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2020-11-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2020-11-30 * "Rahim" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2020-12-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2020-12-30 * "Rahim" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-01-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-01-30 * "Rahim" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-02-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-03-02 * "Rahim" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-03-05 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-03-30 * "Rahim" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-04-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-04-30 * "Rahim" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-05-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-05-30 * "Rahim" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-06-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-06-30 * "Rahim" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-07-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-07-30 * "Rahim" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-08-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-08-30 * "Rahim" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-09-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-09-30 * "Rahim" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-10-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-10-30 * "Rahim" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-11-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-11-30 * "Rahim" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2021-12-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2021-12-30 * "Rahim" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-01-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-01-30 * "Rahim" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-02-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-03-02 * "Rahim" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-03-05 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-03-30 * "Rahim" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-04-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-04-30 * "Rahim" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-05-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-05-30 * "Rahim" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-06-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-06-30 * "Rahim" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-07-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-07-30 * "Rahim" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-08-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-08-30 * "Rahim" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-09-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-09-30 * "Rahim" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-10-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-10-30 * "Rahim" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-11-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-11-30 * "Rahim" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2022-12-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2022-12-30 * "Rahim" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-01-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-01-30 * "Rahim" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-02-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-03-02 * "Rahim" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-03-05 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-03-30 * "Rahim" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-04-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-04-30 * "Rahim" "Salary for 2023-04-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-05-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-05-30 * "Rahim" "Salary for 2023-05-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-06-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-06-30 * "Rahim" "Salary for 2023-06-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-07-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-07-30 * "Rahim" "Salary for 2023-07-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-08-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-08-30 * "Rahim" "Salary for 2023-08-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-09-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-09-30 * "Rahim" "Salary for 2023-09-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-10-03 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+
+2023-10-30 * "Rahim" "Salary for 2023-10-30"
+    Assets:INR:Bank:Current -19000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 1900.0 INR
+    Expenses:INR:Salary:Rahim
+            
+
+2023-11-02 * "Rahim" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -1900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  1900.0  INR
+            
+2020-08-01 open Expenses:INR:Salary:Ramona
+
+2020-08-01 * "VendorZ" "Ramona Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2020-08-06 * "Payment for Ramona Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2020-08-30 * "Ramona" "Salary for 2020-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2020-09-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-09-30 * "Ramona" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2020-10-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-10-30 * "Ramona" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2020-11-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-11-30 * "Ramona" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2020-12-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2020-12-30 * "Ramona" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-01-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-01-30 * "Ramona" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-02-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-03-02 * "Ramona" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-03-05 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-03-30 * "Ramona" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-04-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-04-30 * "Ramona" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-05-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-05-30 * "Ramona" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-06-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-06-30 * "Ramona" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-07-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-07-30 * "Ramona" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-08-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-08-30 * "Ramona" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-09-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-09-30 * "Ramona" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-10-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-10-30 * "Ramona" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-11-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-11-30 * "Ramona" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2021-12-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2021-12-30 * "Ramona" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-01-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-01-30 * "Ramona" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-02-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-03-02 * "Ramona" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-03-05 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-03-30 * "Ramona" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-04-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-04-30 * "Ramona" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-05-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-05-30 * "Ramona" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-06-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-06-30 * "Ramona" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-07-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-07-30 * "Ramona" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-08-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-08-30 * "Ramona" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-09-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-09-30 * "Ramona" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-10-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-10-30 * "Ramona" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-11-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-11-30 * "Ramona" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2022-12-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2022-12-30 * "Ramona" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-01-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-01-30 * "Ramona" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-02-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-03-02 * "Ramona" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-03-05 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-03-30 * "Ramona" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-04-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-04-30 * "Ramona" "Salary for 2023-04-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-05-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-05-30 * "Ramona" "Salary for 2023-05-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-06-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-06-30 * "Ramona" "Salary for 2023-06-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-07-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-07-30 * "Ramona" "Salary for 2023-07-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-08-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-08-30 * "Ramona" "Salary for 2023-08-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-09-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-09-30 * "Ramona" "Salary for 2023-09-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-10-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-10-30 * "Ramona" "Salary for 2023-10-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-11-02 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+
+2023-11-30 * "Ramona" "Salary for 2023-11-30"
+    Assets:INR:Bank:Current -29000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 2900.0 INR
+    Expenses:INR:Salary:Ramona
+            
+
+2023-12-03 * "Ramona" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -2900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  2900.0  INR
+            
+2020-09-01 open Expenses:INR:Salary:Kabir
+
+2020-09-01 * "VendorZ" "Kabir Joining Package"
+    Assets:INR:Equipment:Laptop 40000 INR ; Laptop
+    Assets:INR:Equipment:Furniture 10000 INR ; Table
+    Assets:INR:Equipment:Furniture 7000 INR ; Chair
+    Assets:INR:GST:ITC:CGST      5000        INR
+    Assets:INR:GST:ITC:SGST      5000        INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+2020-09-06 * "Payment for Kabir Joining Package"
+    Assets:INR:Bank:Current -57000 INR
+    Liabilities:INR:AccountPayable:Vendor:Z
+        
+
+2020-09-30 * "Kabir" "Salary for 2020-09-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2020-10-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2020-10-30 * "Kabir" "Salary for 2020-10-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2020-11-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2020-11-30 * "Kabir" "Salary for 2020-11-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2020-12-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2020-12-30 * "Kabir" "Salary for 2020-12-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-01-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-01-30 * "Kabir" "Salary for 2021-01-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-02-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-03-02 * "Kabir" "Salary for 2021-03-02"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-03-05 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-03-30 * "Kabir" "Salary for 2021-03-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-04-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-04-30 * "Kabir" "Salary for 2021-04-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-05-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-05-30 * "Kabir" "Salary for 2021-05-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-06-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-06-30 * "Kabir" "Salary for 2021-06-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-07-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-07-30 * "Kabir" "Salary for 2021-07-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-08-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-08-30 * "Kabir" "Salary for 2021-08-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-09-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-09-30 * "Kabir" "Salary for 2021-09-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-10-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-10-30 * "Kabir" "Salary for 2021-10-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-11-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-11-30 * "Kabir" "Salary for 2021-11-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2021-12-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2021-12-30 * "Kabir" "Salary for 2021-12-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-01-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-01-30 * "Kabir" "Salary for 2022-01-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-02-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-03-02 * "Kabir" "Salary for 2022-03-02"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-03-05 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-03-30 * "Kabir" "Salary for 2022-03-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-04-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-04-30 * "Kabir" "Salary for 2022-04-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-05-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-05-30 * "Kabir" "Salary for 2022-05-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-06-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-06-30 * "Kabir" "Salary for 2022-06-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-07-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-07-30 * "Kabir" "Salary for 2022-07-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-08-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-08-30 * "Kabir" "Salary for 2022-08-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-09-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-09-30 * "Kabir" "Salary for 2022-09-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-10-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-10-30 * "Kabir" "Salary for 2022-10-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-11-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-11-30 * "Kabir" "Salary for 2022-11-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2022-12-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2022-12-30 * "Kabir" "Salary for 2022-12-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-01-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-01-30 * "Kabir" "Salary for 2023-01-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-02-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-03-02 * "Kabir" "Salary for 2023-03-02"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-03-05 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-03-30 * "Kabir" "Salary for 2023-03-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-04-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-04-30 * "Kabir" "Salary for 2023-04-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-05-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-05-30 * "Kabir" "Salary for 2023-05-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-06-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-06-30 * "Kabir" "Salary for 2023-06-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-07-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-07-30 * "Kabir" "Salary for 2023-07-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-08-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-08-30 * "Kabir" "Salary for 2023-08-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-09-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-09-30 * "Kabir" "Salary for 2023-09-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-10-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-10-30 * "Kabir" "Salary for 2023-10-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-11-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-11-30 * "Kabir" "Salary for 2023-11-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2023-12-03 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2023-12-30 * "Kabir" "Salary for 2023-12-30"
+    Assets:INR:Bank:Current -49000 INR
+    Liabilities:INR:ProfessionalTax 200 INR
+    Liabilities:INR:TDS 4900.0 INR
+    Expenses:INR:Salary:Kabir
+            
+
+2024-01-02 * "Kabir" "compliance"
+    Liabilities:INR:ProfessionalTax -200 INR
+    Liabilities:INR:TDS -4900.0 INR
+    Expenses:INR:GOK  200 INR
+    Expenses:INR:GOI  4900.0  INR
+            
+
+2019-04-01 * "VendorX" "Nuts 2019-04-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-04-03 * "VendorY" "Bolts 2019-04-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-04-03 * "Manufacture" "1 Unit built 2019-04-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-04-21 * "Sale" "Sale 1 Unit 2019-04-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-05-11 * "Check" "Sales Income 2019-04-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-05-12 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-05-01 * "VendorX" "Nuts 2019-05-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-05-03 * "VendorY" "Bolts 2019-05-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-05-03 * "Manufacture" "1 Unit built 2019-05-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-05-21 * "Sale" "Sale 1 Unit 2019-05-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-06-10 * "Check" "Sales Income 2019-05-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-06-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-06-01 * "VendorX" "Nuts 2019-06-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-06-03 * "VendorY" "Bolts 2019-06-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-06-03 * "Manufacture" "1 Unit built 2019-06-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-06-21 * "Sale" "Sale 1 Unit 2019-06-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-07-11 * "Check" "Sales Income 2019-06-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-07-12 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-07-01 * "VendorX" "Nuts 2019-07-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-07-03 * "VendorY" "Bolts 2019-07-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-07-03 * "Manufacture" "1 Unit built 2019-07-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-07-21 * "Sale" "Sale 1 Unit 2019-07-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-08-10 * "Check" "Sales Income 2019-07-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-08-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-08-01 * "VendorX" "Nuts 2019-08-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-08-03 * "VendorY" "Bolts 2019-08-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-08-03 * "Manufacture" "1 Unit built 2019-08-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-08-21 * "Sale" "Sale 1 Unit 2019-08-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-09-10 * "Check" "Sales Income 2019-08-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-09-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-09-01 * "VendorX" "Nuts 2019-09-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-09-03 * "VendorY" "Bolts 2019-09-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-09-03 * "Manufacture" "1 Unit built 2019-09-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-09-21 * "Sale" "Sale 1 Unit 2019-09-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-10-11 * "Check" "Sales Income 2019-09-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-10-12 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-10-01 * "VendorX" "Nuts 2019-10-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-10-03 * "VendorY" "Bolts 2019-10-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-10-03 * "Manufacture" "1 Unit built 2019-10-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-10-21 * "Sale" "Sale 1 Unit 2019-10-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-11-10 * "Check" "Sales Income 2019-10-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-11-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-11-01 * "VendorX" "Nuts 2019-11-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-11-03 * "VendorY" "Bolts 2019-11-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-11-03 * "Manufacture" "1 Unit built 2019-11-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-11-21 * "Sale" "Sale 1 Unit 2019-11-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2019-12-11 * "Check" "Sales Income 2019-11-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2019-12-12 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2019-12-01 * "VendorX" "Nuts 2019-12-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-12-03 * "VendorY" "Bolts 2019-12-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2019-12-03 * "Manufacture" "1 Unit built 2019-12-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2019-12-21 * "Sale" "Sale 1 Unit 2019-12-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2020-01-10 * "Check" "Sales Income 2019-12-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2020-01-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2020-01-01 * "VendorX" "Nuts 2020-01-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2020-01-03 * "VendorY" "Bolts 2020-01-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2020-01-03 * "Manufacture" "1 Unit built 2020-01-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2020-01-21 * "Sale" "Sale 1 Unit 2020-01-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2020-02-10 * "Check" "Sales Income 2020-01-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2020-02-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2020-02-01 * "VendorX" "Nuts 2020-02-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2020-02-03 * "VendorY" "Bolts 2020-02-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2020-02-03 * "Manufacture" "1 Unit built 2020-02-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2020-02-21 * "Sale" "Sale 1 Unit 2020-02-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2020-03-12 * "Check" "Sales Income 2020-02-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2020-03-13 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
+
+2020-03-01 * "VendorX" "Nuts 2020-03-01"
+    Assets:NUTS:Equipment:Consumable 1 NUTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:X
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2020-03-03 * "VendorY" "Bolts 2020-03-01"
+    Assets:BOLTS:Equipment:Consumable 1 BOLTS { 1000 INR}
+    Liabilities:INR:AccountPayable:Vendor:Y
+    Liabilities:INR:GST:CGST      102        INR
+    Liabilities:INR:GST:SGST      102        INR
+    
+
+2020-03-03 * "Manufacture" "1 Unit built 2020-03-03"
+    Assets:BOLTS:Equipment:Consumable -1 BOLTS {}
+    Assets:NUTS:Equipment:Consumable -1 NUTS {}
+    Assets:NUTBOLT:Equipment:Consumable 1 NUTBOLT { 2000 INR}
+    
+
+2020-03-21 * "Sale" "Sale 1 Unit 2020-03-21"
+    Assets:NUTBOLT:Equipment:Consumable -1 NUTBOLT {}
+    Assets:INR:AccountReceivable 2500 INR
+    Liabilities:INR:GST:CGST      212        INR
+    Liabilities:INR:GST:SGST      212        INR
+    Income:Customer:C
+    
+
+2020-04-10 * "Check" "Sales Income 2020-03-21"
+    Assets:INR:AccountReceivable -2500 INR
+    Assets:INR:Bank:Current
+2020-04-11 * "Payment" "Vendor bill cleared"
+    Assets:INR:Bank:Current
+    Liabilities:INR:AccountPayable:Vendor:X 1000 INR
+    Liabilities:INR:AccountPayable:Vendor:Y 1000 INR
+
+
+    
