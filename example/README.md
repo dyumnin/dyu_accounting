@@ -16,6 +16,8 @@ The files are as follows
 
 | File | Description |
 |---- | -----|
+|ledger.beancount | Toplevel accounting file |
 | account.beancount | Contains chart of accounts |
 | data.beancount | Contains details of all transactions made by the company |
 |reports_fy_2019.pdf | A sample financial Statement for FY 2019 |
+
