@@ -9,6 +9,8 @@ Currently the following financial statements are supported.
 2. Profit and Loss Statements
 3. Account Statement
 4. Depreciation calculation as per MCA WDV and IT SLM Method.
+ 
+There is an example account in the example folder, the generated report can be seen here [example/reports_fy_2019.pdf]
 
 Note: These scripts work for me and my Company, Based on the rules applicable to your organisation, you may have to tweak the results.
 
