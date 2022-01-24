@@ -35,12 +35,10 @@ class PnL:
                         entry.date >= self.open_date
                         and entry.date <= self.close_date
                 ):
-                    print(entry.date)
                     for posting in entry.postings:
                         if income_re.match(posting.account):
                             self._add('revenue', posting)
                         if salary_re.match(posting.account):
-                            print(f"salary={posting}")
                             self._add('salary', posting)
                         elif expense_re.match(posting.account):
                             self._add('misc_expenses', posting)
@@ -55,14 +53,12 @@ class PnL:
             sum = posting.units.number * \
                 posting.price.number
         self.pnl_data[key] += sum
-        print(f"adding {sum} to {key} result{self.pnl_data[key]}")
 
     def report_pnl(self, outdir):
         self.pnl_data['expenses_total'] = self.pnl_data['depreciation'] + \
             self.pnl_data['misc_expenses'] + self.pnl_data['salary']
         self.pnl_data['profit'] = self.pnl_data['expenses_total'] + \
             self.pnl_data['revenue']
-        # print(self.pnl_data)
         fname="PnL.html"
         render_template(data={
             'template_name': 'PnL.tpl',

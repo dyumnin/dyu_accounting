@@ -37,7 +37,6 @@ class GST:
                     entry_idx = (entry.date.month-1)
                 if entry.postings:
                     for posting in entry.postings:
-                        # print(f" {entry_year} {entry_quarter} posting account = {repr(posting.account)}")
                         if re.search("Assets.*GST", posting.account):
                             self.gst[
                                 entry_idx][posting.account] =\

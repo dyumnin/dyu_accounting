@@ -15,7 +15,6 @@ class ExchangeGain:
                 if entry.meta.get('invoice_date'):
                     dt = entry.meta.get('invoice_date')
                     invoice_rate = Decimal(c.get_rate('USD', 'INR', dt))
-                    # print(f"invoice_rate {invoice_rate}")
 
                     for posting in entry.postings:
                         if posting.units.currency != "INR":
@@ -36,6 +35,5 @@ class ExchangeGain:
                             data.create_simple_posting(
                                 txn, self.cfg['exchange_gain'], -1 * gain, "INR")
                             gain_entries.append(txn)
-                            # print( f"Exchange Gain={gain} expected{expected_amount} actual{actual_amount}")
         self.gain_entries = gain_entries
         return gain_entries

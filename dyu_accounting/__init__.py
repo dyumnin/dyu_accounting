@@ -46,8 +46,6 @@ def accounting():
     cfg['outdir'] = opts.outdir
     entries, errors, options = loader.load_file(
         opts.infile, log_errors=sys.stderr)
-    print(f"ENTRIES{entries}")
-    company = cfg["company"]
 
     os.makedirs(opts.outdir, exist_ok=True)
     if opts.fy:

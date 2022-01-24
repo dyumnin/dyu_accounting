@@ -1,7 +1,6 @@
 #! env python3
 import os
 from decimal import Decimal
-import pprint
 import logging
 import sys
 import datetime
@@ -15,7 +14,6 @@ from beancount.core.number import D
 from beancount.core import flags
 from beancount.core import data
 from beancount.ops.summarize import balance_by_account, create_entries_from_balances
-from beancount.parser import printer
 from dyu_accounting.Utilities import get_fy, get_quarter, get_year_end
 from dyu_accounting.Utilities import render_template
 #from dyu_accounting import templates
@@ -78,7 +76,6 @@ class BSTable:
                 'total': zero_inr,
             }
         }
-        # print(self.account)
 
     def __repr__(self):
         return f'{self.account}'
@@ -95,8 +92,6 @@ class BSTable:
                     )
 
     def add(self, head, result_account, v):
-        print(
-            f'Adding class {head} account {result_account} amount {v} dict {self.account[head]}')
         self.account[head][result_account] = amount.add(
             self.account[head][result_account], v)
 
@@ -120,7 +115,6 @@ class BalanceSheet:
                 if(entry.meta.get('balance_sheet')):
                     self.category[entry.account] = entry.meta.get(
                         'balance_sheet')
-        # print(f"----------{self.category}----------- ")
 
     def mkBalanceSheet(self, year):
         '''
@@ -208,28 +202,11 @@ class BalanceSheet:
     '''
 
 
-# def transfer(entry, fromAccount, toAccount, date, price):
-#     meta = data.new_metadata(
-#         'beancount/core/depreciation.beancount', 12345)
-#     flag = '*'
-#     txn = data.transaction(
-#         meta, date, flag, None,
-#         f"depreciation {date} for {entry.narration}",
-#         data.empty_set, data.empty_set, [])
-#     data.create_simple_posting(
-#         txn, fromAccount, -1 * price.number, price.currency)
-#     data.create_simple_posting(
-#         txn, toAccount,  price.number, price.currency)
-#     return txn
 if __name__ == "__main__":
 
     import csv
     entries, errors, options = loader.load_file(
         sys.argv[1], log_errors=sys.stderr)
-    # pp = pprint.PrettyPrinter(indent=4)
-    # pp.pprint(entries)
-    # print(repr(entries))
-    # report_gst(entries, options)
     bs = BalanceSheet(entries, options, {
         'name': COMPANY_NAME,
         'address': COMPANY_ADDRESS}

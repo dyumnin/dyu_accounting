@@ -34,7 +34,6 @@ class Journal:
                         entry.date >= self.open_date
                         and entry.date <= self.close_date
                 ):
-                    # print(entry)
                     for posting in entry.postings:
                         if posting.account in self.accounts:
                             pa = posting.account
