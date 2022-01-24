@@ -24,7 +24,6 @@ try:
 except ImportError:
     # Try backported to PY<37 `importlib_resources`.
     import importlib_resources as pkg_resources
-logging.warning("FOO")
 # __plugins__ = ['report_gst']
 # Python Script for GST Reporting. Reports data for GSTR 1 and GSTR 3
 # Input GST(GST Paid during a purchase.) is an Asset
