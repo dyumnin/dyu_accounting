@@ -21,6 +21,11 @@ Note:
 # Installation
 
 ```
+pip3 install dyu_accounting
+```
+
+For the latest, untested version you can install from this git repo.
+```
 git clone <repo name>
 cd <repo name>
 pip install .
