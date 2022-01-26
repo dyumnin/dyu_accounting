@@ -4,8 +4,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2019-04-06 * "Payment for Amar Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -577,8 +577,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2019-05-06 * "Payment for Akbar Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -1150,8 +1150,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2019-09-06 * "Payment for Anthony Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -1723,8 +1723,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2019-12-06 * "Payment for John Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -2296,8 +2296,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2020-01-06 * "Payment for Jaani Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -2869,8 +2869,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2020-03-06 * "Payment for Janardhan Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -3442,8 +3442,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2020-06-06 * "Payment for Ram Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -4015,8 +4015,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2020-07-06 * "Payment for Rahim Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -4588,8 +4588,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2020-08-06 * "Payment for Ramona Joining Package"
     Assets:INR:Bank:Current -57000 INR
@@ -5161,8 +5161,8 @@
     Assets:INR:Equipment:Laptop 40000 INR ; Laptop
     Assets:INR:Equipment:Furniture 10000 INR ; Table
     Assets:INR:Equipment:Furniture 7000 INR ; Chair
-    Assets:INR:GST:ITC:CGST      5000        INR
-    Assets:INR:GST:ITC:SGST      5000        INR
+    Assets:INR:GST:CGST      5000        INR
+    Assets:INR:GST:SGST      5000        INR
     Liabilities:INR:AccountPayable:Vendor:Z
 2020-09-06 * "Payment for Kabir Joining Package"
     Assets:INR:Bank:Current -57000 INR

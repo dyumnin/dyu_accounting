@@ -44,9 +44,9 @@ plugin "fava.plugins.tag_discovered_documents"
 	balance_sheet: "assets.wip_capital"
 2018-07-01 open Assets:BOLTS:Equipment:Consumable              BOLTS
 	balance_sheet: "assets.wip_capital"
-2018-07-01 open Assets:INR:GST:ITC:CGST              INR
-2018-07-01 open Assets:INR:GST:ITC:SGST              INR
-2018-07-01 open Assets:INR:GST:ITC:IGST              INR
+2018-07-01 open Assets:INR:GST:CGST              INR
+2018-07-01 open Assets:INR:GST:SGST              INR
+2018-07-01 open Assets:INR:GST:IGST              INR
 2018-07-01 open Equity:INR:ShareCapital              INR
 	balance_sheet: "liabilities.share_capital"
 

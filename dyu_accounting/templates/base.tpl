@@ -8,19 +8,27 @@
     {% endblock %}
 </head>
 <body>
-<div class="container-fluid bg-primary">
-<div class="row">
-<div class="col-12">
-<p class="h1">{{cfg.company.name}}</p>
-<p class="lead">{{cfg.company.address}}</p>
-</div>
-</div>
-</div>
-<div id="content">{% block content %}{% endblock %}</div>
-<div id="footer" class="bg-alert text-muted">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="pb-2 mt-4 mb-2 border-bottom">
+				<span class="h1">{{cfg.company.name}} <small>{{cfg.company.address}}</small></span>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+{% block content %}{% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
         {% block footer %}
 Unaudited Financial Statement
         {% endblock %}
-    </div>
+</div>
+</div>
+</div>
 </body>
 </html>
+---

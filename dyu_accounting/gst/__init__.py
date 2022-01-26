@@ -20,13 +20,15 @@ class GST:
 
     def calc_gst(self, qrmp=True):
         self.gst = []
+        self.accounts = []
         if qrmp:
             for i in range(4):
-                self.gst.append({})
+                self.gst.append({"Assets": {}, "Liabilities": {}})
         else:
             for i in range(12):
-                self.gst.append({})
+                self.gst.append({"Assets": {}, "Liabilities": {}})
 
+        pat = re.compile("(Liabilities|Assets).*GST")
         for entry in self.entries:
             if isinstance(entry, data.Transaction):
                 if entry.date < self.open_date or entry.date > self.close_date:
@@ -37,19 +39,14 @@ class GST:
                     entry_idx = (entry.date.month-1)
                 if entry.postings:
                     for posting in entry.postings:
-                        if re.search("Assets.*GST", posting.account):
+                        if pat.match(posting.account):
+                            cat, acc = posting.account.split(":", 1)
+                            self.accounts.append(acc)
                             self.gst[
-                                entry_idx][posting.account] =\
+                                entry_idx][cat][acc] =\
                                 amount.add(
-                                self.gst[entry_idx].get(
-                                    posting.account, zero_inr),
-                                posting.units)
-                        if re.search("Liabilities.*GST", posting.account):
-                            self.gst[
-                                entry_idx][posting.account] = \
-                                amount.add(
-                                self.gst[entry_idx].get(
-                                    posting.account, zero_inr),
+                                self.gst[entry_idx][cat].get(
+                                    acc, zero_inr),
                                 posting.units)
 
     def report_gst(self):
@@ -58,6 +55,7 @@ class GST:
             'template_name': "GST.tpl",
             'cfg': self.cfg,
             'gst': self.gst,
+            'accounts': list(set(self.accounts)),
             'outfile': fname
         })
         return [fname]

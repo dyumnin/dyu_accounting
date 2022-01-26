@@ -2,7 +2,6 @@
 {%extends "base.tpl"%}
 {%block title%} Depreciation Table{%endblock%}
 {%block content%}
-
 <h2>Depreciation Table as per MCA Rules</h2>
 
 
@@ -75,6 +74,5 @@
 <th>{%if year in depr.total.it%}{{depr.total.it[year]|round(3)}}{%endif%}</th>
 {%endfor%}
 </tr> 
-
 </table>
 {%endblock%}
