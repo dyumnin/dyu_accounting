@@ -62,13 +62,21 @@ def hoh(base, *keys):
 
 
 def render_template(data):
+    if data['cfg']['format'] == 'tex':
+        tpl_path = os.path.join('templates', 'tex')
+    elif data['cfg']['format'] == 'md':
+        tpl_path = os.path.join('templates', 'md')
+    else:
+        tpl_path = os.join('templates', 'html')
     templateEnv = jinja2.Environment(
-        loader=jinja2.PackageLoader('dyu_accounting', 'templates'),
+        loader=jinja2.PackageLoader('dyu_accounting', tpl_path),
         trim_blocks=True,
         lstrip_blocks=True)
     fname = data['template_name']
     template = templateEnv.get_template(fname)
     outputText = template.render(data)
+    if data['cfg']['format'] == 'tex':
+        data['cfg']['texwriter'].write(outputText)
     filename = data['outfile']
     with open(os.path.join(data['cfg']['outdir'], filename), "w") as fy_file:
         fy_file.write(outputText)

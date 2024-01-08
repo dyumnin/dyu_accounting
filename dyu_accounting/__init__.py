@@ -50,11 +50,15 @@ def accounting():
     os.makedirs(opts.outdir, exist_ok=True)
     if opts.fy:
         reports = {}
+        mkWriter(cfg)
         d = depr.Depreciation(entries, options, cfg)
         reports['depreciation'] = d.report_depreciation(opts.outdir)
-        exc_gain = exchange_gain.ExchangeGain(cfg)
-        entries.extend(exc_gain.calc_gains(entries))
-        entries = beancount.core.data.sorted(entries)
+        try:
+            exc_gain = exchange_gain.ExchangeGain(cfg)
+            entries.extend(exc_gain.calc_gains(entries))
+            entries = beancount.core.data.sorted(entries)
+        except Exception as e:
+            logger.info(e)
         pnl_stmt = pnl.PnL(entries, options, cfg)
         pnl_stmt.set_depreciation(d.depr['total']['mca'][opts.fy])
         reports['pnl'] = pnl_stmt.report_pnl(opts.outdir)
@@ -75,3 +79,19 @@ def accounting():
             'reports': reports,
             'outfile': filename
         })
+
+
+def mkWriter(cfg):
+    writer = open(os.path.join(cfg['outdir'], "report.tex"), "w")
+    cfg['texwriter'] = writer
+    templateEnv = jinja2.Environment(
+        loader=jinja2.PackageLoader(
+            'dyu_accounting', os.path.join('templates', 'tex')),
+        trim_blocks=True,
+        lstrip_blocks=True)
+    template = templateEnv.get_template("latex_header.tpl")
+    outputText = template.render({
+        'cfg': cfg
+    })
+    writer.write(outputText)
+    return writer
