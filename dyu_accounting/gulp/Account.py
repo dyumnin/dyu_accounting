@@ -7,7 +7,7 @@ class Importer(csvreader.Importer, banking.Importer):
 
     def custom_init(self):
         self.currency = 'INR'
-        self.filename_pattern_def = 'Accounts .*'
+        self.filename_pattern_def = 'Accounts.*'
         self.column_labels_line = 'Timestamp,Date,Transaction Title,Amount,Paid from Account,Credit to Account,Receipt'
         self.header_identifier = 'Timestamp,Date,Transaction Title,Amount,Paid from Account,Credit to Account,Receipt'
         self.date_format = '%d/%m/%Y'

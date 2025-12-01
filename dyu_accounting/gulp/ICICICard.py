@@ -8,9 +8,10 @@ class Importer(csvreader.Importer, banking.Importer):
     print(IMPORTER_NAME)
 
     def custom_init(self):
+        print("custom init")
         self.currency = "INR"
         # self.filename_pattern_def = '.*43755.*'
-        self.filename_pattern_def = '.*'
+        self.filename_pattern_def = 'CreditCard'
         self.column_labels_line = 'Date,Sr.No.,Transaction Details,Reward Point Header,Intl.Amount,Amount(in Rs),BillingAmountSign'
         self.header_identifier = '"Accountno:"'
         self.date_format = '%d-%b-%y'
@@ -27,8 +28,10 @@ class Importer(csvreader.Importer, banking.Importer):
     def prepare_table(self, rdr):
         locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
         amt = 'Amount(in Rs)'
-        for i,r in rdr.enumerate():
-            print(r[i])
+        #for i,r in rdr.enumerate():
+            #print(i)
+            #print(r)
+        print(rdr.__dict__)
         if rdr["Date"] is not None:
             rdr = rdr.addfield('amount',
                                #lambda x:print(x))

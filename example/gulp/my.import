@@ -1,0 +1,10 @@
+from dyu_accounting.gulp import IDFC
+from dyu_accounting.gulp import Account
+from dyu_accounting.gulp import ICICIBank
+from dyu_accounting.gulp import ICICICard
+CONFIG=[
+ICICICard.Importer({'main_account':'Liabilities:INR:CreditCard'}),
+IDFC.Importer({'main_account':'Assets:INR:Bank'}),
+Account.Importer({'main_account':'Assets:INR:Bank'}),
+ICICIBank.Importer({'main_account':'Liabilities:INR:CEOBank'}),
+]

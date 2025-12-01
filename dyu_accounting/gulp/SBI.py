@@ -1,24 +1,25 @@
-from beancount_reds_importers.libreader import xlsxreader
+
+from beancount_reds_importers.libreader import csvreader
 from beancount_reds_importers.libtransactionbuilder import banking
 
 
-class Importer(xlsxreader.Importer, banking.Importer):
-    IMPORTER_NAME = "IDFC Importer"
+class Importer(csvreader.Importer, banking.Importer):
+    IMPORTER_NAME = "SBI YONO TSV File"
 
     def custom_init(self):
-        self.filename_pattern_def = 'IDFC.*'
-        self.column_labels_line = 'Transaction Date,Value Date,Particulars,Cheque No.,Debit,Credit,Balance'
+        self.filename_pattern_def = 'SBI'
+        self.column_labels_line = 'Txn Date	Value Date	Description	Ref No./Cheque No.	Branch Code	        Debit	Credit	Balance'
         self.currency="INR"
 
-        self.header_identifier = 'STATEMENT OF ACCOUNT'
+        self.header_identifier = 'Account Name'
         self.date_format = '%d-%b-%Y'
         self.header_map = {
             'Value Date': 'date',
-            'Particulars': 'memo',
+            'Description': 'memo',
             'Debit': 'withdrawal',
             'Credit': 'deposit',
             'Balance': 'balance',
-            'Cheque No.':'payee'
+            'Ref No./Cheque No.':'payee'
         }
         self.skip_transaction_types = ['Journal']
 
