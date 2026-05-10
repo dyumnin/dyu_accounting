@@ -23,11 +23,10 @@ def get_account_value(entries, account_name, start_date=None, end_date=None):
     if start_date is not None:
         e = [x for x in e if x.date >= start_date]
     if end_date is not None:
-        e = [x for x in e if x.date <= start_date]
+        e = [x for x in e if x.date <= end_date]
     transactions = [x for x in e if isinstance(x, data.Transaction)]
-    postings = [x for x in transactions if x.postings]
-    values = [
-        x.units.number for x in postings if re.match(account_name, x.account)]
+    postings = [p for txn in transactions for p in txn.postings]
+    values = [p.units.number for p in postings if re.match(account_name, p.account)]
     return sum(values)
 
 
@@ -47,9 +46,10 @@ def get_year_end(date):
 
 
 def get_quarter(date):
-    entry_quarter = date.month//3
-    entry_quarter = 'q4' if entry_quarter == 0 else 'q' + str(entry_quarter)
-    return entry_quarter
+    m = date.month
+    if m < 4:
+        return 'q4'
+    return 'q' + str((m - 4) // 3 + 1)
 
 
 def hoh(base, *keys):

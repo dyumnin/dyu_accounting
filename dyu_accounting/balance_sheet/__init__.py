@@ -206,8 +206,12 @@ if __name__ == "__main__":
     import csv
     entries, errors, options = loader.load_file(
         sys.argv[1], log_errors=sys.stderr)
+    fy = datetime.date.today().year - 1
     bs = BalanceSheet(entries, options, {
-        'name': COMPANY_NAME,
-        'address': COMPANY_ADDRESS}
-    )
+        'company': {'name': COMPANY_NAME, 'address': COMPANY_ADDRESS},
+        'fy': fy,
+        'outdir': '.'
+    })
+    bs.mkBalanceSheet(fy - 1)
+    bs.mkBalanceSheet(fy)
     bs.report_balance_sheet()

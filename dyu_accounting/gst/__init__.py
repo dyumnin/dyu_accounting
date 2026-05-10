@@ -34,9 +34,10 @@ class GST:
                 if entry.date < self.open_date or entry.date > self.close_date:
                     continue
                 if qrmp:
-                    entry_idx = (entry.date.month-1)//3
+                    m = entry.date.month
+                    entry_idx = (m - 4) // 3 if m >= 4 else 3
                 else:
-                    entry_idx = (entry.date.month-1)
+                    entry_idx = (entry.date.month - 4) % 12
                 if entry.postings:
                     for posting in entry.postings:
                         if pat.match(posting.account):
