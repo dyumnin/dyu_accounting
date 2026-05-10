@@ -5,10 +5,8 @@ from beancount_reds_importers.libtransactionbuilder import banking
 
 class Importer(csvreader.Importer, banking.Importer):
     IMPORTER_NAME = "ICICI Bank Credit Card"
-    print(IMPORTER_NAME)
 
     def custom_init(self):
-        print("custom init")
         self.currency = "INR"
         # self.filename_pattern_def = '.*43755.*'
         self.filename_pattern_def = 'CreditCard'
@@ -29,12 +27,9 @@ class Importer(csvreader.Importer, banking.Importer):
         locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
         amt = 'Amount(in Rs)'
         #for i,r in rdr.enumerate():
-            #print(i)
-            #print(r)
-        print(rdr.__dict__)
         if rdr["Date"] is not None:
             rdr = rdr.addfield('amount',
-                               #lambda x:print(x))
+                               #lambda x:print("X",x))
                                lambda x:"-" + str(x[amt]) if locale.atof(x[amt]) > 0 else str(0-locale.atof(x[amt])))
         return rdr
 

@@ -20,5 +20,4 @@ class Importer(csvreader.Importer, banking.Importer):
 
     def prepare_table(self, rdr):
         rdr = rdr.addfield('payee', '')
-        print(rdr)
         return rdr
