@@ -69,6 +69,8 @@ def render_template(data):
         tpl_path = os.path.join('templates', 'md')
     elif fmt == 'adoc':
         tpl_path = os.path.join('templates', 'adoc')
+    elif fmt == 'html':
+        tpl_path = os.path.join('templates', 'html')
     else:
         tpl_path = 'templates'
     templateEnv = jinja2.Environment(
