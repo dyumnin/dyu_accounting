@@ -24,7 +24,7 @@ def test_shareCapital():
     '''
     entries, error, opts = load_string(account)
     print(error)
-    depr.Depreciation(entries, opts)
+    depr.Depreciation(entries, opts, cfg={'fy': 2018})
     company = {'name': 'Company Name', 'address': 'Company Address'}
     bals = bsheet.BalanceSheet(
         entries, opts, company=company, fy=2019)

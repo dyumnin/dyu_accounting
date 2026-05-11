@@ -74,8 +74,8 @@ class Importer(csvreader.Importer, banking.Importer):
         return amounts
 
     def _clean_table(self, x):
-        debit = self._parse_amount(x['Debit'])
-        credit = self._parse_amount(x['Credit'])
+        debit = self._parse_amount(x.Debit)
+        credit = self._parse_amount(x.Credit)
         return str(credit - debit)
 
     @staticmethod
