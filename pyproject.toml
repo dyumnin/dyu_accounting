@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "dyu_accounting"
+version = "0.1.1"
+description = "A Package for generating financial reports from beancount files as per Indian Accounting Standards"
+readme = "README.md"
+license = { text = "GPL-2.0-only" }
+authors = [
+    { name = "Vijayvithal Jahagirdar", email = "support@dyumnin.com" },
+]
+requires-python = ">=3"
+dependencies = [
+    "beancount",
+    "jinja2",
+    "forex_python",
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/dyumnin/dyu_accounting"
+Download = "https://github.com/dyumnin/dyu_accounting/archive/refs/tags/v0.1.1.tar.gz"
+
+[project.scripts]
+account = "dyu_accounting:accounting"
+
+[tool.setuptools.packages.find]
+include = ["*"]
+
+[tool.setuptools.package-data]
+dyu_accounting = ["templates/*.tpl"]
