@@ -1,0 +1,225 @@
+diff --git a/dyu_accounting/Utilities/__init__.py b/dyu_accounting/Utilities/__init__.py
+index bbf997f..aa86754 100644
+--- a/dyu_accounting/Utilities/__init__.py
++++ b/dyu_accounting/Utilities/__init__.py
+@@ -62,12 +62,15 @@ def hoh(base, *keys):
+ 
+ 
+ def render_template(data):
+-    if data['cfg']['format'] == 'tex':
++    fmt = data['cfg'].get('format', 'html')
++    if fmt == 'tex':
+         tpl_path = os.path.join('templates', 'tex')
+-    elif data['cfg']['format'] == 'md':
++    elif fmt == 'md':
+         tpl_path = os.path.join('templates', 'md')
++    elif fmt == 'adoc':
++        tpl_path = os.path.join('templates', 'adoc')
+     else:
+-        tpl_path = os.join('templates', 'html')
++        tpl_path = 'templates'
+     templateEnv = jinja2.Environment(
+         loader=jinja2.PackageLoader('dyu_accounting', tpl_path),
+         trim_blocks=True,
+@@ -75,8 +78,10 @@ def render_template(data):
+     fname = data['template_name']
+     template = templateEnv.get_template(fname)
+     outputText = template.render(data)
+-    if data['cfg']['format'] == 'tex':
++    if fmt == 'tex':
+         data['cfg']['texwriter'].write(outputText)
+     filename = data['outfile']
++    if fmt == 'adoc':
++        filename = os.path.splitext(filename)[0] + '.adoc'
+     with open(os.path.join(data['cfg']['outdir'], filename), "w") as fy_file:
+         fy_file.write(outputText)
+diff --git a/dyu_accounting/templates/adoc/GST.tpl b/dyu_accounting/templates/adoc/GST.tpl
+new file mode 100644
+index 0000000..dba1d4a
+--- /dev/null
++++ b/dyu_accounting/templates/adoc/GST.tpl
+@@ -0,0 +1,12 @@
++= GST Table for FY {{cfg.fy}}
++
++[options="header",cols="1,3,2,2"]
++|===
++| Month/Quarter | Category | Assets | Liabilities
++
++{% for x in range(gst|length) %}
++{% for account in accounts %}
++| {{x+1}} | {{account}} | {{ gst[x]['Assets'][account] if account in gst[x]['Assets'] else '' }} | {{ gst[x]['Liabilities'][account] if account in gst[x]['Liabilities'] else '' }}
++{% endfor %}
++{% endfor %}
++|===
+diff --git a/dyu_accounting/templates/adoc/PnL.tpl b/dyu_accounting/templates/adoc/PnL.tpl
+new file mode 100644
+index 0000000..6b2f69c
+--- /dev/null
++++ b/dyu_accounting/templates/adoc/PnL.tpl
+@@ -0,0 +1,20 @@
++= Profit and Loss Statement for AY {{cfg.fy+1}}
++
++== P & L Statement as on 31 March {{cfg.fy+1}}
++
++[options="header",cols="4,2"]
++|===
++| Particulars | Amount
++
++h| Income |
++| Revenue from Operations | {{pnl.revenue|round(3)}}
++h| Total Revenue | {{pnl.revenue|round(3)}}
++h| Expenses |
++| Salary (Net) | {{pnl.salary|round(3)}}
++| Depreciation | {{pnl.depreciation|round(3)}}
++| Other Expenses | {{pnl.misc_expenses}}
++h| Total Expenses | {{pnl.expenses_total|round(3)}}
++h| Profit/Loss | {{pnl.profit|round(3)}}{% if pnl.profit > 0 %} (Loss){% endif %}
++|===
++
++NOTE: Salary deductions (TDS, PF) are counted as liabilities and transferred as Expenses:INR:GOI,GOK.
+diff --git a/dyu_accounting/templates/adoc/__init__.py b/dyu_accounting/templates/adoc/__init__.py
+new file mode 100644
+index 0000000..e69de29
+diff --git a/dyu_accounting/templates/adoc/balancesheet.tpl b/dyu_accounting/templates/adoc/balancesheet.tpl
+new file mode 100644
+index 0000000..7ec8201
+--- /dev/null
++++ b/dyu_accounting/templates/adoc/balancesheet.tpl
+@@ -0,0 +1,51 @@
++= Balance Sheet for FY {{cfg.fy}}
++:company: {{cfg.company.name}}
++
++== Balance Sheet as on 31 March {{cfg.fy+1}}
++
++// https://cleartax.in/s/balance-sheet/
++[options="header",cols="4,1,2,2"]
++|===
++| Particulars | Note No. | {{cfg.fy}}-{{cfg.fy+1}} | {{cfg.fy-1}}-{{cfg.fy}}
++
++h| I. EQUITY AND LIABILITIES | | |
++h| 1) Shareholder's Funds | | |
++| (a) Share Capital | 1 | {{account.liabilities.share_capital}} | {{prev_account.liabilities.share_capital}}
++| (b) Reserves and Surplus | | {{account.liabilities.surplus}} | {{prev_account.liabilities.surplus}}
++| (c) Money received against share warrants | | |
++h| (2) Share application money pending allotment | | |
++h| (3) Non-Current Liabilities | | |
++| (a) Long-term borrowings | | {{account.liabilities.longterm_borrowing}} | {{prev_account.liabilities.longterm_borrowing}}
++| (b) Deferred tax liabilities (Net) | | {{account.liabilities.deferred_tax}} | {{prev_account.liabilities.deferred_tax}}
++| (c) Other Long term liabilities | | {{account.liabilities.longterm_liability}} | {{prev_account.liabilities.longterm_liability}}
++| (d) Long term provisions | | {{account.liabilities.longterm_provisions}} | {{prev_account.liabilities.longterm_provisions}}
++h| (4) Current Liabilities | | |
++| (a) Short-term borrowings | 2 | {{account.liabilities.shortterm_borrowing}} | {{prev_account.liabilities.shortterm_borrowing}}
++| (b) Trade payables | | {{account.liabilities.trade_payable}} | {{prev_account.liabilities.trade_payable}}
++| (c) Other current liabilities | | {{account.liabilities.other_current_liabilities}} | {{prev_account.liabilities.other_current_liabilities}}
++| (d) Short-term provisions | | {{account.liabilities.shortterm_provisions}} | {{prev_account.liabilities.shortterm_provisions}}
++h| Total | | {{account.liabilities.total}} | {{prev_account.liabilities.total}}
++h| II. Assets | | |
++h| (1) Non-current assets | | {{account.assets.non_current}} | {{prev_account.assets.non_current}}
++| (a) Fixed assets | | {{account.assets.fixed}} | {{prev_account.assets.fixed}}
++| (i) Tangible assets | | {{account.assets.tangible}} | {{prev_account.assets.tangible}}
++| (ii) Intangible assets | | {{account.assets.intangible}} | {{prev_account.assets.intangible}}
++| (iii) Capital work-in-progress | | {{account.assets.wip_capital}} | {{prev_account.assets.wip_capital}}
++| (iv) Intangible assets under development | | {{account.assets.intangile_wip}} | {{prev_account.assets.intangile_wip}}
++| (b) Non-current investments | | {{account.assets.investments_non_current}} | {{prev_account.assets.investments_non_current}}
++| (c) Deferred tax assets (net) | | {{account.assets.deferred_tax}} | {{prev_account.assets.deferred_tax}}
++| (d) Long term loans and advances | | {{account.assets.longterm_loan}} | {{prev_account.assets.longterm_loan}}
++| (e) Other non-current assets | | {{account.assets.other_non_current}} | {{prev_account.assets.other_non_current}}
++h| (2) Current assets | | |
++| (a) Current investments | | {{account.assets.investments}} | {{prev_account.assets.investments}}
++| (b) Inventories | | {{account.assets.inventory}} | {{prev_account.assets.inventory}}
++| (c) Trade receivables | | {{account.assets.trade_receivables}} | {{prev_account.assets.trade_receivables}}
++| (d) Cash and cash equivalents | | {{account.assets.cash}} | {{prev_account.assets.cash}}
++| (e) Short-term loans and advances | | {{account.assets.shortterm_loans}} | {{prev_account.assets.shortterm_loans}}
++| (f) Other current assets | | {{account.assets.misc_current}} | {{prev_account.assets.misc_current}}
++h| Total | | {{account.assets.total}} | {{prev_account.assets.total}}
++|===
++
++NOTE: Short-term provisions include TDS Liability and Auditor Fees.
++
++<<<
+diff --git a/dyu_accounting/templates/adoc/depreciation.tpl b/dyu_accounting/templates/adoc/depreciation.tpl
+new file mode 100644
+index 0000000..05aeda4
+--- /dev/null
++++ b/dyu_accounting/templates/adoc/depreciation.tpl
+@@ -0,0 +1,25 @@
++= Depreciation Report
++
++== Depreciation Table as per MCA Rules
++
++[options="header"]
++|===
++| Narration | Category | Depreciation Rate | Purchase Price | Purchase Date | Method | Scrap Value{% for year in range(min_fy,max_fy+1) %} | {{year}}{% endfor %}
++
++{% for txn in depr.mca -%}
++| {{txn.narration}} | {{txn.category}} | {{txn.rate|round(3)}} | {{txn.cost}} | {{txn.purchased_on}} | {{txn.method}} | {{txn.scrap|round(2)}}{% for year in range(min_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]|round(3)}}{% endif %}{% endfor %}
++{% endfor -%}
++s| Total s| - s| - s| - s| - s| - s| -{% for year in range(min_fy,max_fy+1) %} s| {% if year in depr.total.mca %}{{depr.total.mca[year]|round(3)}}{% endif %}{% endfor %}
++|===
++
++== Depreciation Table as per IT Rules
++
++[options="header"]
++|===
++| Block | Type | Rate{% for year in range(min_fy,max_fy+1) %} | Block Value {{year}} | Depreciation {{year}}{% endfor %}
++
++{% for key,txn in depr.it.items() -%}
++| {{key}} | {{txn['block']}} | {{txn.rate}}{% for year in range(min_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]['amount']}}{% endif %} | {% if year in txn.table %}{{txn.table[year]['depr']}}{% endif %}{% endfor %}
++{% endfor -%}
++s| Total s| s| {% for year in range(min_fy,max_fy+1) %} s| s| {% if year in depr.total.it %}{{depr.total.it[year]|round(3)}}{% endif %}{% endfor %}
++|===
+diff --git a/dyu_accounting/templates/adoc/index.tpl b/dyu_accounting/templates/adoc/index.tpl
+new file mode 100644
+index 0000000..efd58ab
+--- /dev/null
++++ b/dyu_accounting/templates/adoc/index.tpl
+@@ -0,0 +1,33 @@
++= Financial Statements for AY {{cfg.fy+1}}
++:toc:
++:toc-title: Reports
++
++== Cashbooks
++
++{% for j in reports.journal %}
++* link:{{j}}[{{j}}]
++{% endfor %}
++
++== Depreciation of Assets
++
++{% for j in reports.depreciation %}
++* link:{{j}}[{{j}}]
++{% endfor %}
++
++== Balance Sheet
++
++{% for j in reports.balance_sheet %}
++* link:{{j}}[{{j}}]
++{% endfor %}
++
++== Profit/Loss Statement
++
++{% for j in reports.pnl %}
++* link:{{j}}[{{j}}]
++{% endfor %}
++
++== GST Statement
++
++{% for j in reports.gst %}
++* link:{{j}}[{{j}}]
++{% endfor %}
+diff --git a/dyu_accounting/templates/adoc/journal.tpl b/dyu_accounting/templates/adoc/journal.tpl
+new file mode 100644
+index 0000000..c6d5cb2
+--- /dev/null
++++ b/dyu_accounting/templates/adoc/journal.tpl
+@@ -0,0 +1,10 @@
++= Cashbook for {{account_name}} as on 31 March {{cfg.fy+1}}
++
++[options="header",cols="1,2,4,1"]
++|===
++| Date | Payee | Narration | Amount
++
++{% for txn in account -%}
++| {{txn.date}} | {{txn.payee}} | {{txn.narration}} | {{txn.amount.number|round(2)}}
++{% endfor %}
++|===

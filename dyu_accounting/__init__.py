@@ -29,6 +29,33 @@ __credits__ = 'Dyumnin Semiconductors OPC Pvt Ltd'
 
 
 def accounting():
+    """
+    Main entry point for accounting CLI.
+
+    Supports both:
+    1. Legacy mode: account --in ledger.beancount --fy 2026 --out reports/
+    2. Guided mode: account --guided
+
+    This maintains backward compatibility while adding the new guided workflow.
+    """
+    # Import guided_mode here to avoid circular imports
+    try:
+        from dyu_accounting.guided_mode import async_guided_workflow
+        guided_available = True
+    except ImportError:
+        guided_available = False
+
+    # Check if --guided flag is present
+    if '--guided' in sys.argv:
+        if not guided_available:
+            print("Error: guided mode modules not available")
+            sys.exit(1)
+        # Remove --guided from argv so argparse doesn't see it
+        sys.argv.remove('--guided')
+        async_guided_workflow()
+        return
+
+    # Legacy mode (backward compatible)
     logger = logging.getLogger('Accounting: ')
     with open("config.json", "r") as jfile:
         cfg = json.load(jfile)

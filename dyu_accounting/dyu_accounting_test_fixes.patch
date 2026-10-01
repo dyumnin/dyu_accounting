@@ -1,0 +1,28 @@
+diff --git a/dyu_accounting/gulp/SBI.py b/dyu_accounting/gulp/SBI.py
+index e44addb..7120073 100644
+--- a/dyu_accounting/gulp/SBI.py
++++ b/dyu_accounting/gulp/SBI.py
+@@ -74,8 +74,8 @@ class Importer(csvreader.Importer, banking.Importer):
+         return amounts
+ 
+     def _clean_table(self, x):
+-        debit = self._parse_amount(x['Debit'])
+-        credit = self._parse_amount(x['Credit'])
++        debit = self._parse_amount(x.Debit)
++        credit = self._parse_amount(x.Credit)
+         return str(credit - debit)
+ 
+     @staticmethod
+diff --git a/test/test_shareCapital.py b/test/test_shareCapital.py
+index 0f3b038..286f760 100644
+--- a/test/test_shareCapital.py
++++ b/test/test_shareCapital.py
+@@ -24,7 +24,7 @@ def test_shareCapital():
+     '''
+     entries, error, opts = load_string(account)
+     print(error)
+-    depr.Depreciation(entries, opts)
++    depr.Depreciation(entries, opts, cfg={'fy': 2018})
+     company = {'name': 'Company Name', 'address': 'Company Address'}
+     bals = bsheet.BalanceSheet(
+         entries, opts, company=company, fy=2019)

@@ -1,0 +1,2 @@
+[console_scripts]
+account = dyu_accounting:accounting

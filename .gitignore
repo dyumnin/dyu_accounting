@@ -1,3 +1,8 @@
 *.sw*
 *.pyc
 *~
+FY*/imports/
+FY*/intermediate/
+FY*/.guided-config.json
+dyuAccount.log
+config.json

@@ -1,0 +1,12 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index aebd51b..3aacf34 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [build-system]
+ requires = ["setuptools>=61", "wheel"]
+-build-backend = "setuptools.backends.legacy:build"
++build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "dyu_accounting"

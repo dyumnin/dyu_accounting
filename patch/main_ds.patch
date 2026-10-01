@@ -1,0 +1,79 @@
+diff --git a/dyu_accounting/main.py b/dyu_accounting/main.py
+index 7890abc..def1234 100644
+--- a/dyu_accounting/main.py
++++ b/dyu_accounting/main.py
+@@ -1,17 +1,51 @@
+-#!/usr/bin/env python3
+-"""Generate reports from a Beancount file."""
++#!/usr/bin/env python3
++"""Main entry point: import statements, reconcile, then generate reports."""
+ 
++import argparse
+ import sys
+-from beancount import loader
+-from beancount.reports import balance_sheet, income_statement
++import os
++from beancount import loader
++from beancount.reports import balance_sheet, income_statement, journal
+ 
+-def main():
+-    if len(sys.argv) != 2:
+-        print("Usage: main.py <beancount_file>")
+-        sys.exit(1)
++def run_import_pipeline(statements_folder, output_beancount):
++    """Call the merge_and_reconcile module to produce a Beancount file."""
++    # Ensure the feature/markdown module is available
++    try:
++        from dyu_accounting import merge_and_reconcile
++    except ImportError:
++        sys.stderr.write("Error: merge_and_reconcile module not found. Did you merge feature/markdown?\n")
++        sys.exit(1)
++
++    merge_and_reconcile.input_folder = statements_folder
++    merge_and_reconcile.output_beancount = output_beancount
++    # The module is designed to be run as script – call its main logic
++    # For simplicity, we assume it exports a function run()
++    if hasattr(merge_and_reconcile, 'run'):
++        merge_and_reconcile.run(statements_folder, output_beancount)
++    else:
++        # Fallback: emulate script execution
++        sys.argv = ['merge_and_reconcile.py', statements_folder]
++        exec(open(merge_and_reconcile.__file__).read())
++
++def generate_reports(beancount_file, report_type='all'):
++    """Generate balance sheet, P&L, or journal from a Beancount file."""
++    entries, errors, options_map = loader.load_file(beancount_file)
++    if errors:
++        for error in errors:
++            print(f"Error: {error}", file=sys.stderr)
++        sys.exit(1)
+     
+-    entries, errors, _ = loader.load_file(sys.argv[1])
+-    print("Balance Sheet:")
+-    print(balance_sheet(entries))
+-    print("\nProfit & Loss:")
+-    print(income_statement(entries))
++    if report_type in ('all', 'balance'):
++        print("\n=== Balance Sheet ===")
++        print(balance_sheet(entries, options_map))
++    if report_type in ('all', 'pnl'):
++        print("\n=== Profit & Loss ===")
++        print(income_statement(entries, options_map))
++    if report_type in ('all', 'journal'):
++        print("\n=== Journal ===")
++        print(journal(entries, options_map))
++
++if __name__ == '__main__':
++    parser = argparse.ArgumentParser(description='Indian accounting package')
++    parser.add_argument('--import', dest='import_folder', help='Folder containing bank statements and Google Form CSV')
++    parser.add_argument('--beancount', default='books.beancount', help='Output/input Beancount file')
++    parser.add_argument('--report', choices=['balance', 'pnl', 'journal', 'all'], default='all', help='Report to generate')
++    args = parser.parse_args()
++
++    if args.import_folder:
++        run_import_pipeline(args.import_folder, args.beancount)
++    if os.path.exists(args.beancount):
++        generate_reports(args.beancount, args.report)
++    else:
++        print(f"No Beancount file found at {args.beancount}. Run with --import first.", file=sys.stderr)
++        sys.exit(1)

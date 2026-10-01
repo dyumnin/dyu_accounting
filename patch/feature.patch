@@ -1,0 +1,331 @@
+diff --git a/dyu_accounting/Utilities/__init__.py b/dyu_accounting/Utilities/__init__.py
+index f2b2964..7a449c4 100644
+--- a/dyu_accounting/Utilities/__init__.py
++++ b/dyu_accounting/Utilities/__init__.py
+@@ -28,7 +28,7 @@ def get_account_value(entries, account_name, start_date=None, end_date=None):
+     if start_date is not None:
+         e = [x for x in e if x.date >= start_date]
+     if end_date is not None:
+-        e = [x for x in e if x.date <= start_date]
++        e = [x for x in e if x.date <= end_date]
+     transactions = [x for x in e if isinstance(x, data.Transaction)]
+     postings = [x for x in transactions if x.postings]
+     values = [
+@@ -62,13 +62,21 @@ def hoh(base, *keys):
+ 
+ 
+ def render_template(data):
+-    if data['cfg']['format'] == 'tex':
++    fmt = data['cfg'].get('format', 'html')
++    if fmt == 'tex':
+         tpl_path = os.path.join('templates', 'tex')
+-    elif data['cfg']['format'] == 'md':
++    elif fmt == 'md':
+         tpl_path = os.path.join('templates', 'md')
+     else:
+-        tpl_path = os.join('templates', 'html')
++        tpl_path = os.path.join('templates', 'html')
+     templateEnv = jinja2.Environment(
+         loader=jinja2.PackageLoader('dyu_accounting', tpl_path),
+         trim_blocks=True,
+         lstrip_blocks=True)
+     fname = data['template_name']
+     template = templateEnv.get_template(fname)
+     outputText = template.render(data)
+-    if data['cfg']['format'] == 'tex':
++    if fmt == 'tex' and 'texwriter' in data['cfg']:
+         data['cfg']['texwriter'].write(outputText)
+     filename = data['outfile']
+     with open(os.path.join(data['cfg']['outdir'], filename), "w") as fy_file:
+         fy_file.write(outputText)
++
+diff --git a/dyu_accounting/__init__.py b/dyu_accounting/__init__.py
+index f2b2964..8c7d3e2 100644
+--- a/dyu_accounting/__init__.py
++++ b/dyu_accounting/__init__.py
+@@ -50,7 +50,8 @@ def accounting():
+     os.makedirs(opts.outdir, exist_ok=True)
+     if opts.fy:
+         reports = {}
+-        mkWriter(cfg)
++        if cfg.get('format') == 'tex':
++            mkWriter(cfg)
+         d = depr.Depreciation(entries, options, cfg)
+         reports['depreciation'] = d.report_depreciation(opts.outdir)
+         try:
+@@ -75,6 +76,9 @@ def accounting():
+         logger.debug(f'Account is {bs.balancesheet}')
+         reports['balance_sheet'] = bs.report_balance_sheet()
+         gst = GST(entries, options, cfg)
+         reports['gst'] = gst.report_gst()
++
++        if cfg.get('format') == 'tex' and 'texwriter' in cfg:
++            cfg['texwriter'].close()
+ 
+         filename = "index.html"
+         render_template(data={
+@@ -84,14 +88,15 @@ def accounting():
+             'outfile': filename
+         })
+ 
+-
+ def mkWriter(cfg):
+-    writer = open(os.path.join(cfg['outdir'], "report.tex"), "w")
++    tex_path = os.path.join(cfg['outdir'], "report.tex")
++    writer = open(tex_path, "w")
+     cfg['texwriter'] = writer
+     templateEnv = jinja2.Environment(
+         loader=jinja2.PackageLoader(
+             'dyu_accounting', os.path.join('templates', 'tex')),
+         trim_blocks=True,
+         lstrip_blocks=True)
+     template = templateEnv.get_template("latex_header.tpl")
+     outputText = template.render({
+         'cfg': cfg
+     })
+     writer.write(outputText)
+     return writer
++
+diff --git a/dyu_accounting/gulp/Account.py b/dyu_accounting/gulp/Account.py
+index 9e81f7e..a2b3c4d 100644
+--- a/dyu_accounting/gulp/Account.py
++++ b/dyu_accounting/gulp/Account.py
+@@ -1,7 +1,7 @@
+ from beancount_reds_importers.libreader import csvreader
+ from beancount_reds_importers.libtransactionbuilder import banking
+ 
+ class Importer(csvreader.Importer, banking.Importer):
+-    IMPORTER_NAME = "Google Form Data"
++    IMPORTER_NAME = "Google Form Expense Data"
+ 
+     def custom_init(self):
+         self.currency = 'INR'
+@@ -15,7 +15,6 @@ class Importer(csvreader.Importer, banking.Importer):
+         self.skip_transaction_types = ['Journal']
+ 
+     def prepare_table(self, rdr):
+         rdr = rdr.addfield('payee', '')
+-        print(rdr)
+         return rdr
+ 
+diff --git a/dyu_accounting/gulp/ICICIBank.py b/dyu_accounting/gulp/ICICIBank.py
+index 0408cbf..7d2e1a3 100644
+--- a/dyu_accounting/gulp/ICICIBank.py
++++ b/dyu_accounting/gulp/ICICIBank.py
+@@ -1,5 +1,6 @@
+ from beancount_reds_importers.libreader import xlsreader
+ from beancount_reds_importers.libtransactionbuilder import banking
++from decimal import Decimal
+ 
+ class Importer(xlsreader.Importer, banking.Importer):
+     IMPORTER_NAME = "ICICI Bank Importer"
+@@ -20,13 +21,16 @@ class Importer(xlsreader.Importer, banking.Importer):
+         self.skip_transaction_types = ['Journal']
+ 
+     def prepare_table(self, rdr):
+-        print(rdr)
+         rdr = rdr.addfield('amount',
+-            lambda x: "-" + str(x['Withdrawal Amount (INR )']) if x['Withdrawal Amount (INR )'] !=0 else str(x['Deposit Amount (INR )']))
++            lambda x: str(-Decimal(str(x['Withdrawal Amount (INR )'] or 0)))
++            if Decimal(str(x['Withdrawal Amount (INR )'] or 0)) != 0
++            else str(Decimal(str(x['Deposit Amount (INR )'] or 0))))
+         return rdr
+ 
+     def skip_transaction(self, row):
+-        print(row)
+         if row.date is None:
+             print(f"skipping {row}")
+-        return row.date is None
++            return True
++        return False
+ 
+diff --git a/dyu_accounting/gulp/ICICICard.py b/dyu_accounting/gulp/ICICICard.py
+index aa0b3e6..8f4e2d1 100644
+--- a/dyu_accounting/gulp/ICICICard.py
++++ b/dyu_accounting/gulp/ICICICard.py
+@@ -1,8 +1,7 @@
+-import locale
+ from beancount_reds_importers.libreader import csvreader
+ from beancount_reds_importers.libtransactionbuilder import banking
++from decimal import Decimal, InvalidOperation
+ 
+ class Importer(csvreader.Importer, banking.Importer):
+     IMPORTER_NAME = "ICICI Bank Credit Card"
+-    print(IMPORTER_NAME)
+ 
+     def custom_init(self):
+         self.currency = "INR"
+         # self.filename_pattern_def = '.*43755.*'
+-        self.filename_pattern_def = '.*'
++        self.filename_pattern_def = 'CreditCard'
+         self.column_labels_line = 'Date,Sr.No.,Transaction Details,Reward Point Header,Intl.Amount,Amount(in Rs),BillingAmountSign'
+         self.header_identifier = '"Accountno:"'
+         self.date_format = '%d-%b-%y'
+@@ -20,18 +19,22 @@ class Importer(csvreader.Importer, banking.Importer):
+         self.skip_transaction_types = ['Journal']
+ 
+     def prepare_table(self, rdr):
+-        locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
+         amt = 'Amount(in Rs)'
+-        #for i,r in rdr.enumerate():
+-        if rdr["Date"] is not None:
+-            rdr = rdr.addfield('amount',
+-                #lambda x:print("X",x))
+-                lambda x:"-" + str(x[amt]) if locale.atof(x[amt]) > 0 else str(0-locale.atof(x[amt])))
++        def parse_amount(row):
++            raw = str(row.get(amt, '')).replace(',', '').strip()
++            if not raw:
++                return '0'
++            try:
++                val = Decimal(raw)
++                return str(-val) if val > 0 else str(-val)
++            except InvalidOperation:
++                return '0'
++        rdr = rdr.addfield('amount', parse_amount)
+         return rdr
+ 
+     def skip_transaction(self, row):
+         if row.date is None:
+             print(f"skipping {row}")
+-        return row.date is None
++            return True
++        return False
+ 
+diff --git a/dyu_accounting/gulp/IDFC.py b/dyu_accounting/gulp/IDFC.py
+index beea921..4f2e8d1 100644
+--- a/dyu_accounting/gulp/IDFC.py
++++ b/dyu_accounting/gulp/IDFC.py
+@@ -1,8 +1,9 @@
+ from beancount_reds_importers.libreader import xlsxreader
+ from beancount_reds_importers.libtransactionbuilder import banking
++from decimal import Decimal
+ 
+ class Importer(xlsxreader.Importer, banking.Importer):
+-    IMPORTER_NAME = "Google Form Data"
++    IMPORTER_NAME = "IDFC Bank Statement"
+ 
+     def custom_init(self):
+         self.filename_pattern_def = 'IDFC.*'
+@@ -20,11 +21,14 @@ class Importer(xlsxreader.Importer, banking.Importer):
+         self.skip_transaction_types = ['Journal']
+ 
+     def prepare_table(self, rdr):
+         rdr = rdr.addfield('amount',
+-            lambda x: "-" + str(x['Debit']) if x['Debit'] != None else str(x['Credit']))
++            lambda x: str(-Decimal(str(x['Debit'] or 0)))
++            if x['Debit'] is not None and Decimal(str(x['Debit'] or 0)) != 0
++            else str(Decimal(str(x['Credit'] or 0))))
+         return rdr
+     def skip_transaction(self,row):
+         if row.date is None:
+             print(f"skipping {row}")
+-        return row.date is None
++            return True
++        return False
+ 
+diff --git a/dyu_accounting/exchange_gain/__init__.py b/dyu_accounting/exchange_gain/__init__.py
+index 4a3e5f0..8b2c9d1 100644
+--- a/dyu_accounting/exchange_gain/__init__.py
++++ b/dyu_accounting/exchange_gain/__init__.py
+@@ -1,40 +1,58 @@
+ from forex_python.converter import CurrencyRates
+ from beancount.core import data
+-from decimal import Decimal, getcontext, ROUND_DOWN
++from decimal import Decimal, ROUND_DOWN
++import datetime
++import logging
+ 
++logger = logging.getLogger('exchange_gain')
+ 
+ class ExchangeGain:
+     def __init__(self, cfg):
+         self.cfg = cfg
++        self.from_currency = cfg.get('exchange_from', 'USD')
++        self.to_currency = cfg.get('exchange_to', 'INR')
+ 
+     def calc_gains(self, entries):
+         gain_entries = []
+         c = CurrencyRates()
+         for entry in entries:
+-            if isinstance(entry, data.Transaction):
+-                if entry.meta.get('invoice_date'):
+-                    dt = entry.meta.get('invoice_date')
+-                    invoice_rate = Decimal(c.get_rate('USD', 'INR', dt))
+-
+-                    for posting in entry.postings:
+-                        if posting.units.currency != "INR":
+-                            expected_amount = posting.units.number*invoice_rate
+-                            actual_amount = posting.units.number*posting.price.number
+-                            gain = actual_amount-expected_amount
+-                            META = data.new_metadata(
+-                                'autogenerated', 12345)
+-                            FLAG = '*'
+-                            txn = data.Transaction(
+-                                META, dt, FLAG, None,
+-                                f"""Exchange Gain on{dt}
+-                                invoice rate {invoice_rate.quantize(Decimal('.001'), rounding=ROUND_DOWN)}
+-                                bank rate {posting.price.number} for {entry.narration}""",
+-                                data.EMPTY_SET, data.EMPTY_SET, [])
+-                            data.create_simple_posting(
+-                                txn, self.cfg['ar'], gain, "INR")
+-                            data.create_simple_posting(
+-                                txn, self.cfg['exchange_gain'], -1 * gain, "INR")
+-                            gain_entries.append(txn)
+-        self.gain_entries = gain_entries
++            if not isinstance(entry, data.Transaction):
++                continue
++            invoice_date = entry.meta.get('invoice_date')
++            if not invoice_date:
++                continue
++            # Beancount metadata dates are often strings; parse if needed
++            if isinstance(invoice_date, str):
++                try:
++                    invoice_date = datetime.datetime.strptime(invoice_date, '%Y-%m-%d').date()
++                except ValueError:
++                    logger.warning(f"Skipping entry {entry.narration}: invalid invoice_date format")
++                    continue
++            if not isinstance(invoice_date, (datetime.date, datetime.datetime)):
++                continue
++
++            try:
++                invoice_rate = Decimal(str(c.get_rate(self.from_currency, self.to_currency, invoice_date)))
++            except Exception as e:
++                logger.warning(f"Skipping exchange rate lookup for {entry.narration}: {e}")
++                continue
++
++            for posting in entry.postings:
++                if posting.units.currency == self.to_currency:
++                    continue
++                if posting.price is None:
++                    continue
++                expected_amount = posting.units.number * invoice_rate
++                actual_amount = posting.units.number * posting.price.number
++                gain = actual_amount - expected_amount
++                META = data.new_metadata('autogenerated', 12345)
++                FLAG = '*'
++                txn = data.Transaction(
++                    META, invoice_date, FLAG, None,
++                    f"Exchange Gain on {invoice_date} invoice rate {invoice_rate.quantize(Decimal('.001'), rounding=ROUND_DOWN)} bank rate {posting.price.number} for {entry.narration}",
++                    data.EMPTY_SET, data.EMPTY_SET, [])
++                data.create_simple_posting(txn, self.cfg['ar'], gain, "INR")
++                data.create_simple_posting(txn, self.cfg['exchange_gain'], -1 * gain, "INR")
++                gain_entries.append(txn)
+         return gain_entries
++
+diff --git a/setup.py b/setup.py
+index f8be81f..9a2c3d4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -15,7 +15,12 @@ setup(
+     author_email='support@dyumnin.com',
+     license='GPL 2',
+     # package_dir={"": "dyu_accounting"},
+-    package_data={'dyu_accounting': ['templates/*.tpl']},
++    package_data={
++        'dyu_accounting': [
++            'templates/**/*.tpl',
++            'gulp/*.py',
++        ]
++    },
+     packages=find_packages(include=['*']),
+     install_requires=['beancount', 'jinja2', 'forex_python'],

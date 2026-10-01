@@ -14,8 +14,10 @@ authors = [
 requires-python = ">=3"
 dependencies = [
     "beancount",
-    "jinja2",
+    "beancount_reds_importers",
     "forex_python",
+    "jinja2",
+    "typer",
 ]
 classifiers = [
     "Development Status :: 1 - Planning",

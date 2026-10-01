@@ -1,0 +1,83 @@
+--- a/setup.py	2026-05-11 01:56:20.067283118 +0000
++++ b/setup.py	2026-05-11 01:52:48.965015195 +0000
+@@ -1,32 +0,0 @@
+-from setuptools import setup, find_packages
+-
+-setup(
+-    name='dyu_accounting',
+-    version='0.1.1',
+-    description='A Package for generating financial reports from beancount files  as per Indian Accounting Standards',
+-    url='https://github.com/dyumnin/dyu_accounting',
+-    download_url='https://github.com/dyumnin/dyu_accounting/archive/refs/tags/v0.1.1.tar.gz',
+-
+-    author='Vijayvithal Jahagirdar',
+-    author_email='support@dyumnin.com',
+-    license='GPL 2',
+-    # package_dir={"": "dyu_accounting"},
+-    package_data={'dyu_accounting': ['templates/*.tpl']},
+-    packages=find_packages(include=['*']),
+-    install_requires=['beancount', 'jinja2', 'forex_python'],
+-
+-    classifiers=[
+-        'Development Status :: 1 - Planning',
+-        'Intended Audience :: Financial and Insurance Industry',
+-        'Topic :: Office/Business :: Financial :: Accounting',
+-        'License :: Free for non-commercial use',
+-        'License :: OSI Approved :: GNU General Public License (GPL)',
+-        'Operating System :: POSIX :: Linux',
+-        'Programming Language :: Python :: 3',
+-    ],
+-    entry_points={
+-        'console_scripts': [
+-            'account=dyu_accounting:accounting',
+-        ],
+-    },
+-)
+--- a/setup.cfg	2026-05-11 01:56:20.068283387 +0000
++++ b/setup.cfg	2026-05-11 01:52:48.965015195 +0000
+@@ -1,2 +0,0 @@
+-[metadata]
+-description-file = README.md
+--- a/pyproject.toml	2026-05-11 01:52:48.965015195 +0000
++++ b/pyproject.toml	2026-05-11 01:54:45.750254272 +0000
+@@ -0,0 +1,40 @@
++[build-system]
++requires = ["setuptools>=61", "wheel"]
++build-backend = "setuptools.backends.legacy:build"
++
++[project]
++name = "dyu_accounting"
++version = "0.1.1"
++description = "A Package for generating financial reports from beancount files as per Indian Accounting Standards"
++readme = "README.md"
++license = { text = "GPL-2.0-only" }
++authors = [
++    { name = "Vijayvithal Jahagirdar", email = "support@dyumnin.com" },
++]
++requires-python = ">=3"
++dependencies = [
++    "beancount",
++    "jinja2",
++    "forex_python",
++]
++classifiers = [
++    "Development Status :: 1 - Planning",
++    "Intended Audience :: Financial and Insurance Industry",
++    "Topic :: Office/Business :: Financial :: Accounting",
++    "License :: OSI Approved :: GNU General Public License (GPL)",
++    "Operating System :: POSIX :: Linux",
++    "Programming Language :: Python :: 3",
++]
++
++[project.urls]
++Homepage = "https://github.com/dyumnin/dyu_accounting"
++Download = "https://github.com/dyumnin/dyu_accounting/archive/refs/tags/v0.1.1.tar.gz"
++
++[project.scripts]
++account = "dyu_accounting:accounting"
++
++[tool.setuptools.packages.find]
++include = ["*"]
++
++[tool.setuptools.package-data]
++dyu_accounting = ["templates/*.tpl"]

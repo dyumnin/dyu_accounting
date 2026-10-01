@@ -1,0 +1,6 @@
+DETAILED STATEMENT
+
+S No.,Value Date,Transaction Date,Cheque Number,Transaction Remarks,Withdrawal Amount (INR ),Deposit Amount (INR ),Balance (INR )
+1,01/01/2026,01/01/2026,,"SALARY TRANSFER",0,50000,50000
+2,05/01/2026,05/01/2026,,"AMAZON PURCHASE",-2500,0,47500
+3,10/01/2026,10/01/2026,"CHQ123","CHECK DEPOSIT",0,5000,52500

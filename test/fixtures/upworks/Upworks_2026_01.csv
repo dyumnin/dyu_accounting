@@ -1,0 +1,3 @@
+Date,Ref ID,Type,Description,Agency,Freelancer,Team,Account Name,PO,Amount,ExchangeRate,Currency,Balance
+Jan 01, 2026,TXN001,INVOICE,Initial Invoice,Acme Corp,John Doe,Dev Team,USD Account,PO123,5000.00,83.25,USD,5000.00
+Jan 05, 2026,TXN002,PAYMENT,Project Payment,Acme Corp,John Doe,Dev Team,USD Account,PO124,2500.00,83.25,USD,7500.00

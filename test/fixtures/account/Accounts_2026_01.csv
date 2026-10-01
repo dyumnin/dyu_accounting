@@ -1,0 +1,4 @@
+Timestamp,Date,Transaction Title,Amount,Paid from Account,Credit to Account,Receipt
+2026-01-01 10:00:00,01/01/2026,Office Supplies,1500,Assets:Checking,Expenses:Office,Receipt.pdf
+2026-01-05 14:30:00,05/01/2026,Freelancer Payment,5000,Assets:Savings,Expenses:Contractors,Invoice.pdf
+2026-01-10 09:15:00,10/01/2026,Rent Payment,25000,Assets:Checking,Expenses:Rent,

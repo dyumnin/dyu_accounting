@@ -1,0 +1,68 @@
+; vim:foldmethod=marker
+include "setup.beancount"
+include "FY2018_19.beancount"
+include "FY2019_20.beancount"
+include "FY2020_21.beancount"
+include "FY2021_22.beancount"
+include "FY2022_23.beancount"
+include "FY2023_24.beancount"
+;---------------------------------------------------
+; Depreciation Table for Assets
+;---------------------------------------------------
+;Rates 
+;100% pollution control equipment
+;60%,63.16 computer,books
+;30% Machinery used in semiconductor Industry. including circuits, components
+; Motor Control Equipment
+;15% rest
+;10%,25.89 furniture and fitting 
+;25.89 lab equipment 
+
+; 2019-03-31 * "Depreciation" "Full Rate"
+; 	Expenses:INR:Depreciation 645.9 INR
+; 	Assets:INR:Equipment:Furniture
+; 
+; 
+; ;40%,25.89	Assets:INR:Equipment		 350.00 INR; 220/110 converter
+; ;15%,25.89	Assets:INR:Equipment		  322.00 INR; Charger
+; ;40%	Assets:INR:Equipment	 1,144.00 INR; Laptop Charger,WiFiDongel
+; 	
+; 2019-03-31 * "Depreciation" "Half Rate"
+; 	Expenses:INR:Depreciation 4856 INR;
+; 	Assets:INR:Equipment:Phone
+
+;Capatilize
+;5192
+;9047 2621.57
+;3500
+;6299
+;7016
+;5490
+;Phone
+;45.07% 4066.95 +338.14 +289 +188+8148+899+6299+461+244+5945+4289
+;25.89% 472.02+1102
+; Office stuff
+;360
+;40%,45.07	Assets:INR:Equipment	 4066.95 INR ; Kindle e-book
+;15%,45.07	Assets:INR:Equipment	  338.14; Kindle Cover
+;15%,45.07	Assets:INR:Equipment	 289 INR ; Tenor Phone cover
+;15%,45.07	Assets:INR:Equipment	 188.57 INR ; Lenovo Phone cover
+;2018-10-15 * "Communication Equipments"
+;15%,45.07	Assets:INR:Equipment	 8148 INR ; Lenovo Phone
+;40%,45.07	Assets:INR:Equipment	 899 INR ; Wifi Modem
+;15%,45.07	Assets:INR:Equipment	 6299 INR ; New Phone
+;10%	Assets:INR:Equipment 3500 INR;Table:Sri Laxmi Venkateshware steel furniture
+;2019-01-09 * "Equipment" "Conf Call, Filteration"
+;40%,45.07	Assets:INR:Equipment 461 INR; Calling Headset
+;40%,45.07	Assets:INR:Equipment 244 INR; Bluetooth reciever
+;15%,45.07	Assets:INR:Equipment 173.73 INR; TDS Meter
+;2019-03-17 * "Electronic Equipment"
+;40%,45.07	Assets:INR:Equipment  472.02  INR; Screwdriver, BT Rx, Mobile holder From Flipkart
+;2019-03-20 * "Electronic Equipment"
+;40%,63.16	Assets:INR:Equipment  5945.77  INR; HDD,Projector,Ram From Amazon
+;15%	Assets:INR:Equipment  360  INR; Tea Cups
+;2019-03-28 * "Equipments Robu.in"
+;40%	Assets:INR:Equipment  1102.53  INR; Robu.in
+;2019-03-28 * "Equipments Amazon"
+;40%,63.16	Assets:INR:Equipment  4289.06  INR; Amazon Projector
+
