@@ -5,19 +5,82 @@ from beancount_reds_importers.libtransactionbuilder import banking
 class Importer(csvreader.Importer, banking.Importer):
     IMPORTER_NAME = "Google Form Data"
 
+    # Payment column -> source/credit account (where the money came from).
+    # Matched case-insensitively (strip + collapse internal whitespace, then
+    # lowercase) against the Payment column. Covers all four real-data
+    # Payment values (see TICKET-009); PAYMENT_FALLBACK_ACCOUNT below handles
+    # anything else (blank, typos, placeholder test rows, etc).
+    PAYMENT_ACCOUNT_MAP = {
+        "company card": "Assets:INR:Cash:IDFC:Current",
+        "personal card": "Liabilities:INR:CEOBank",
+        "credit card": "Liabilities:INR:CreditCard",
+        "cash": "Assets:INR:Cash:CashInHand",
+    }
+    PAYMENT_FALLBACK_ACCOUNT = "Assets:Uncategorized"
+
+    # Purpose column -> expense/debit account (where the money went).
+    # Matched the same way as Payment above.
+    PURPOSE_ACCOUNT_MAP = {
+        "food": "Expenses:Food",
+        "fuel": "Expenses:Fuel",
+        "office supplies": "Expenses:Office Supplies",
+        "vehicle maintenance": "Expenses:Vehicle Maintenance",
+        "travel": "Expenses:Travel",
+    }
+    PURPOSE_FALLBACK_ACCOUNT = "Expenses:Uncategorized"
+
     def custom_init(self):
         self.currency = 'INR'
         self.filename_pattern_def = 'Accounts.*'
-        self.column_labels_line = 'Timestamp,Date,Transaction Title,Amount,Paid from Account,Credit to Account,Receipt'
-        self.header_identifier = 'Timestamp,Date,Transaction Title,Amount,Paid from Account,Credit to Account,Receipt'
+        self.column_labels_line = 'Timestamp,Date,Amount,Purpose,Payment,Receipt'
+        self.header_identifier = 'Timestamp,Date,Amount,Purpose,Payment,Receipt'
         self.date_format = '%d/%m/%Y'
         self.header_map = {
             'Date': 'date',
-            'Transaction Title': 'memo',
-            'Amount': 'amount'
+            'Purpose': 'memo',
+            'Amount': 'amount',
         }
         self.skip_transaction_types = ['Journal']
+        # Payment and Receipt are intentionally left out of header_map so
+        # they pass through unrenamed (accessible as ot.Payment/ot.Receipt);
+        # Payment drives get_main_account() below, Receipt drives
+        # build_metadata() below.
 
     def prepare_table(self, rdr):
         rdr = rdr.addfield('payee', '')
         return rdr
+
+    @staticmethod
+    def _normalize(value):
+        """Strip outer whitespace, collapse internal whitespace runs, lowercase.
+
+        None is treated the same as the empty string.
+        """
+        if value is None:
+            value = ""
+        return " ".join(value.split()).lower()
+
+    def get_main_account(self, ot):
+        """Payment column -> source/credit account.
+
+        Overrides banking.Importer.get_main_account (normally a static
+        self.config["main_account"]) because the source account varies
+        per-row here, driven by the Payment column, rather than being fixed
+        per imported file.
+        """
+        payment = self._normalize(getattr(ot, "Payment", ""))
+        return self.PAYMENT_ACCOUNT_MAP.get(payment, self.PAYMENT_FALLBACK_ACCOUNT)
+
+    def get_target_account(self, ot):
+        """Purpose column (ot.memo) -> expense/debit account."""
+        purpose = self._normalize(getattr(ot, "memo", ""))
+        return self.PURPOSE_ACCOUNT_MAP.get(purpose, self.PURPOSE_FALLBACK_ACCOUNT)
+
+    def build_metadata(self, file, metatype=None, data={}):
+        meta = super().build_metadata(file, metatype, data)
+        if metatype == "transaction":
+            ot = data.get("transaction")
+            receipt = getattr(ot, "Receipt", None)
+            if receipt:
+                meta["receipt"] = receipt
+        return meta

@@ -474,3 +474,127 @@ class TestUpworksSkipTransaction:
 
     def test_none_date_skipped(self):
         assert make_importer('Upworks').skip_transaction(skip_row(date=None)) is True
+
+
+# ---------------------------------------------------------------------------
+# Account (Google Forms)
+# Headers: Timestamp,Date,Amount,Purpose,Payment,Receipt
+#
+# Payment -> source/credit account (get_main_account), Purpose -> expense/
+# debit account (get_target_account). See TICKET-009 for the locked design.
+# ---------------------------------------------------------------------------
+
+class TestAccountConfig:
+    def test_header_identifier_is_six_column_format(self):
+        imp = make_importer('Account')
+        assert imp.header_identifier == 'Timestamp,Date,Amount,Purpose,Payment,Receipt'
+
+    def test_column_labels_line_is_six_column_format(self):
+        imp = make_importer('Account')
+        assert imp.column_labels_line == 'Timestamp,Date,Amount,Purpose,Payment,Receipt'
+
+    def test_old_seven_column_header_no_longer_recognized(self):
+        """Clean cutover: the old header string must not match the new one."""
+        imp = make_importer('Account')
+        old_header = ('Timestamp,Date,Transaction Title,Amount,'
+                       'Paid from Account,Credit to Account,Receipt')
+        assert imp.header_identifier != old_header
+
+
+class TestAccountGetMainAccount:
+    """Payment column -> source/credit account, case-insensitively."""
+
+    def test_company_card(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='Company Card')) == 'Assets:INR:Cash:IDFC:Current'
+
+    def test_personal_card(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='Personal Card')) == 'Liabilities:INR:CEOBank'
+
+    def test_credit_card(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='Credit Card')) == 'Liabilities:INR:CreditCard'
+
+    def test_cash(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='Cash')) == 'Assets:INR:Cash:CashInHand'
+
+    def test_case_insensitive_upper(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='CASH')) == 'Assets:INR:Cash:CashInHand'
+
+    def test_case_insensitive_with_padding(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment=' cash ')) == 'Assets:INR:Cash:CashInHand'
+
+    def test_unmapped_value_falls_back(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='Bag')) == 'Assets:Uncategorized'
+
+    def test_blank_falls_back(self):
+        imp = make_importer('Account')
+        assert imp.get_main_account(skip_row(Payment='')) == 'Assets:Uncategorized'
+
+
+class TestAccountGetTargetAccount:
+    """Purpose column (ot.memo) -> expense/debit account, case-insensitively."""
+
+    def test_food(self):
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='Food')) == 'Expenses:Food'
+
+    def test_fuel(self):
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='Fuel')) == 'Expenses:Fuel'
+
+    def test_office_supplies(self):
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='Office Supplies')) == 'Expenses:Office Supplies'
+
+    def test_vehicle_maintenance_whitespace_quirk(self):
+        """Real data: 'Vehicle  maintenance ' (double internal space, trailing space)."""
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='Vehicle  maintenance ')) == 'Expenses:Vehicle Maintenance'
+
+    def test_travel(self):
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='Travel')) == 'Expenses:Travel'
+
+    def test_case_insensitive_upper(self):
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='FOOD')) == 'Expenses:Food'
+
+    def test_unmapped_purpose_falls_back(self):
+        """Real sample value from researcher's findings."""
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='1947 food')) == 'Expenses:Uncategorized'
+
+    def test_unmapped_purpose_with_special_characters_falls_back(self):
+        imp = make_importer('Account')
+        assert imp.get_target_account(skip_row(memo='USB cables, boxes, snacks')) == 'Expenses:Uncategorized'
+
+
+class TestAccountBuildMetadata:
+    def _imp(self):
+        imp = make_importer('Account')
+        imp.config = {}  # build_metadata's base class reads self.config
+        return imp
+
+    def test_receipt_included_when_present(self):
+        imp = self._imp()
+        ot = skip_row(Receipt='https://drive.google.com/open?id=abc')
+        meta = imp.build_metadata(None, metatype='transaction', data={'transaction': ot})
+        assert meta['receipt'] == 'https://drive.google.com/open?id=abc'
+
+    def test_receipt_omitted_when_blank(self):
+        imp = self._imp()
+        ot = skip_row(Receipt='')
+        meta = imp.build_metadata(None, metatype='transaction', data={'transaction': ot})
+        assert 'receipt' not in meta
+
+    def test_receipt_omitted_when_missing(self):
+        imp = self._imp()
+        ot = skip_row()
+        meta = imp.build_metadata(None, metatype='transaction', data={'transaction': ot})
+        assert 'receipt' not in meta
