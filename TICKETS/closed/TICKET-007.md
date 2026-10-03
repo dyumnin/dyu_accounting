@@ -1,10 +1,11 @@
 # TICKET-007: Fix importer discovery in guided mode
 
-**Status**: open
+**Status**: closed
 **Type**: bug
 **Priority**: high
 **Stage**: done
 **Created**: 2026-10-01
+**Completed**: 2026-10-03
 **Parent**: none
 
 ## Problem / Motivation
