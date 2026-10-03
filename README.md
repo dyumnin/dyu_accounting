@@ -17,6 +17,7 @@ Note:
 1. These scripts work for me and my Company, Based on the rules applicable to your organisation, you may have to tweak the results.
 2. I am an engineer not a CA. **Always get the output audited by your auditor.** 
 
+New to this project? See [SETUP.md](SETUP.md) for a step-by-step guide from zero to your first report.
 
 # Installation
 
@@ -37,8 +38,10 @@ Once you have installed this package and generated a compliant Accounting file (
 
 ```
 mkdir reports/2019
-account --in ledger.beancount --fy 2019 --out reports/2019/  
+account --infile ledger.beancount --fy 2019 --outdir reports/2019/
 ```
+
+See [SETUP.md](SETUP.md) for a full step-by-step walkthrough.
 
 # Example
 

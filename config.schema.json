@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "dyu_accounting config.json",
+    "type": "object",
+    "properties": {
+        "format": { "type": "string", "enum": ["tex", "md", "adoc", "html"], "default": "html" },
+        "company": {
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "address": { "type": "string" }
+            },
+            "required": ["name", "address"]
+        },
+        "ar": { "type": "string" },
+        "exchange_gain": { "type": "string" },
+        "cash_accounts": { "type": "array", "items": { "type": "string" } },
+        "gst": {
+            "type": "object",
+            "properties": {
+                "qrmp": { "type": "boolean" }
+            },
+            "required": ["qrmp"]
+        }
+    },
+    "required": ["company", "ar", "exchange_gain", "cash_accounts", "gst"],
+    "additionalProperties": false
+}
