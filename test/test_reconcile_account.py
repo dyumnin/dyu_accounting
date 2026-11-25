@@ -183,6 +183,38 @@ class TestReconcileCash:
 
         assert len(_load(intermediate / "cash.beancount")) == 1
 
+    def test_revives_bean_extract_duplicate_commented_entries(self, tmp_path, monkeypatch):
+        """
+        Regression test: beancount.ingest.extract.print_extracted_entries
+        comments out (prefixes every line with '; ') any entry it believes
+        already exists in the target ledger passed via -f/-e. If an
+        intermediate file is re-extracted after the parent ledger already
+        includes its entries, every one of them comes back like this -
+        otherwise invisible to beancount's parser, so a real transaction
+        that already exists elsewhere (possibly already reconciled) could
+        never be matched again on a later --reconcile-account run.
+        """
+        account_content = """
+2025-04-14 * "Food" ""
+  Assets:INR:Cash:IDFC:Current  547.21 INR
+  Expenses:INR:Food
+"""
+        # Exactly bean-extract's own duplicate-comment format.
+        source_content = (
+            "; 2025-04-14 * \"POS-VISA/SOME MERCHANT\" \"1\"\n"
+            ";   Assets:INR:Cash:IDFC:Current  -547.21 INR\n"
+        )
+        intermediate = _setup_fy(
+            tmp_path, monkeypatch, account_content,
+            {"idfc_bank_test.beancount": source_content}
+        )
+
+        reconcile_fy("2025_26")
+
+        source_entries = _load(intermediate / "idfc_bank_test.beancount")
+        assert len(source_entries) == 1
+        assert len(source_entries[0].postings) == 2
+
     def test_no_account_files_is_a_no_op(self, tmp_path, monkeypatch):
         (tmp_path / "FY2025_26" / "intermediate").mkdir(parents=True)
         monkeypatch.chdir(tmp_path)

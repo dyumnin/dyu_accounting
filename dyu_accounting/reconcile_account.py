@@ -176,8 +176,23 @@ def _load_transactions(path: str) -> List[data.Transaction]:
     the parent ledger), so missing `open` directives for its accounts don't
     block reading it back. beancount's loader collects such issues as
     non-fatal errors and still returns the parsed entries.
+
+    Also revives entries bean-extract's own de-duplication has commented out
+    (beancount.ingest.extract.print_extracted_entries prefixes every line of
+    an entry it believes already exists in the target ledger with '; '). If
+    an intermediate file gets re-extracted after the parent ledger already
+    includes its (possibly already-reconciled) entries, every one of them
+    comes back commented out on the next run - otherwise invisible to
+    beancount's parser, and permanently unmatchable here even though they're
+    still real transactions, just already recorded elsewhere too.
     """
-    entries, _errors, _options = loader.load_file(path)
+    with open(path) as f:
+        raw = f.read()
+    revived = '\n'.join(
+        line[len('; '):] if line.startswith('; ') else line
+        for line in raw.splitlines()
+    )
+    entries, _errors, _options = loader.load_string(revived)
     return [e for e in entries if isinstance(e, data.Transaction)]
 
 
