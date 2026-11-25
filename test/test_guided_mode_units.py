@@ -522,11 +522,30 @@ CONFIG = [
 from dyu_accounting.gulp.ICICIBank import Importer as ICICIBankImporter
 
 CONFIG = [
-    ICICIBankImporter(main_account="Assets:INR:Bank"),
+    ICICIBankImporter({"main_account": "Assets:INR:Bank"}),
 ]
 """
         # Should not raise SyntaxError
         compile(code, '<string>', 'exec')
+
+    def test_generate_import_module_code_is_actually_instantiable(self):
+        """
+        Regression test: generate_import_module_code() must produce code that
+        actually runs against the real Importer classes, not just code that
+        compiles. beancount_reds_importers' banking.Importer.__init__(self, config)
+        takes a single positional config dict - it does NOT accept main_account
+        as a keyword argument, so `Importer(main_account="...")` compiles fine
+        but raises TypeError at import time (this previously broke bean-extract
+        for every importer).
+        """
+        from dyu_accounting.Utilities import generate_import_module_code
+
+        code = generate_import_module_code(
+            ['ICICIBank'], {'ICICIBank': 'Assets:INR:Bank'}
+        )
+        namespace = {}
+        exec(compile(code, '<generated>', 'exec'), namespace)
+        assert len(namespace['CONFIG']) == 1
 
     def test_save_guided_config_creates_json(self, temp_fy_dir):
         """save_guided_config() should write valid JSON file."""

@@ -7,6 +7,7 @@ file validation with retry loops, bean-extract invocation, parent ledger generat
 and config persistence.
 """
 
+import glob
 import os
 import json
 import sys
@@ -25,6 +26,8 @@ from dyu_accounting.Utilities import (
     generate_import_module_code,
     save_guided_config,
     load_guided_config,
+    save_selected_importers,
+    load_selected_importers,
     parse_financial_year_input,
     extract_previous_fy
 )
@@ -68,8 +71,12 @@ def async_guided_workflow(fy: Optional[str] = None, cwd: str = ".") -> None:
         print("No importers selected. Exiting.")
         return
 
-    # Step 5: Load or prompt for account configuration
+    # Step 5: Load or prompt for account configuration. Collecting (and
+    # persisting) this now, before the import module is generated, matters:
+    # the module is generated from this dict, so answers collected any later
+    # (as used to happen) never actually reached it.
     accounts = load_previous_accounts(fy, registry)
+    accounts = collect_accounts(fy, selected_importers, accounts, registry)
 
     # Step 6: Validate files per importer (with retry loop)
     print("\nValidating files...")
@@ -97,20 +104,38 @@ def async_guided_workflow(fy: Optional[str] = None, cwd: str = ".") -> None:
     # Step 10: Generate reconciliation report
     reconciliation_path = generate_and_save_reconciliation_report(fy, all_intermediate_paths)
 
-    # Step 11: Save configuration for next year
-    save_guided_config(fy, {
-        importer: accounts.get(importer, '')
-        for importer in selected_importers
-    })
+    # (accounts were already persisted by collect_accounts() in Step 5, as
+    # soon as they were known, rather than only on a fully successful run)
 
     print(f"\nGuided import complete!")
     print(f"  Parent ledger: FY{fy}/FY{fy}.beancount")
     print(f"  Reconciliation: {reconciliation_path}")
 
 
+def find_in_progress_fys() -> List[str]:
+    """
+    Find FYs with a saved .guided-config.json in the current directory,
+    i.e. ones where account collection has already happened at least once.
+
+    Returns:
+        List of FY strings (e.g. ["2025_26"]), most recently modified first.
+    """
+    config_paths = glob.glob("FY*/.guided-config.json")
+    config_paths.sort(key=os.path.getmtime, reverse=True)
+    fys = []
+    for path in config_paths:
+        fy_dir = Path(path).parent.name  # "FY2025_26"
+        if fy_dir.startswith("FY"):
+            fys.append(fy_dir[2:])
+    return fys
+
+
 def ask_financial_year() -> str:
     """
-    Prompt user for financial year in Indian FY format.
+    Prompt user for financial year in Indian FY format, offering to resume
+    an in-progress FY (one with a saved .guided-config.json) instead of
+    always starting fresh - re-running guided mode after a crash shouldn't
+    require re-entering the year from scratch.
 
     Accepts three formats:
     - "2025-26" (hyphen-separated)
@@ -122,6 +147,15 @@ def ask_financial_year() -> str:
     Returns:
         Financial year as string in "YYYY_YY" format (e.g., "2025_26")
     """
+    in_progress = find_in_progress_fys()
+    if in_progress:
+        most_recent = in_progress[0]
+        resume = input(
+            f"\nResume in-progress FY{most_recent}? (Y/n): "
+        ).strip().lower()
+        if resume != 'n':
+            return most_recent
+
     while True:
         try:
             fy_input = input("\nEnter financial year (e.g., 2025-26, 2025_26, or 202526): ").strip()
@@ -150,6 +184,14 @@ def select_importers(fy: str, registry: Dict[str, ImporterMetadata]) -> List[str
     """
     Interactive importer selection with pre-selection from previous year.
 
+    If this exact FY already has a saved selection (e.g. from an earlier run
+    that crashed later in the pipeline, even before any account got
+    answered), that selection is reused directly without asking again - it
+    was already decided this session, not just carried over from a previous
+    year. The selection is tracked separately from .guided-config.json (which
+    only gets a key per importer once its account is answered), so this
+    still works even if the crash happened before any account was collected.
+
     Args:
         fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
         registry: Dictionary of ImporterMetadata
@@ -157,6 +199,14 @@ def select_importers(fy: str, registry: Dict[str, ImporterMetadata]) -> List[str
     Returns:
         List of selected importer names
     """
+    current_selection = load_selected_importers(fy)
+    if current_selection:
+        print(f"\nResuming importer selection already made for FY{fy}:")
+        for importer in current_selection:
+            if importer in registry:
+                print(f"  - {registry[importer].friendly_name}")
+        return current_selection
+
     # Try to load previous year's config
     previous_fy = extract_previous_fy(fy)
     previous_accounts = {}
@@ -173,7 +223,9 @@ def select_importers(fy: str, registry: Dict[str, ImporterMetadata]) -> List[str
 
         use_previous = input(f"\nUse same importers as {previous_fy}? (Y/n): ").strip().lower()
         if use_previous != 'n':
-            return list(previous_accounts.keys())
+            selected = list(previous_accounts.keys())
+            save_selected_importers(fy, selected)
+            return selected
 
     # Manual selection
     print("\nAvailable importers:")
@@ -194,12 +246,19 @@ def select_importers(fy: str, registry: Dict[str, ImporterMetadata]) -> List[str
             print("Invalid input. Please enter comma-separated numbers.")
 
     print(f"\nSelected {len(selected)} importers")
+    save_selected_importers(fy, selected)
     return selected
 
 
 def load_previous_accounts(fy: str, registry: Dict[str, ImporterMetadata]) -> Dict[str, str]:
     """
-    Load account configuration from previous year or prompt user.
+    Load known account configuration for this FY.
+
+    Checks this FY's own saved config first (so re-running guided mode after
+    an earlier run crashed partway through doesn't re-ask questions already
+    answered), then fills in anything still missing from the previous FY's
+    saved config as a default. Still-missing entries are prompted for by
+    collect_accounts().
 
     Args:
         fy: Current financial year string in "YYYY_YY" format (e.g., "2025_26")
@@ -208,17 +267,50 @@ def load_previous_accounts(fy: str, registry: Dict[str, ImporterMetadata]) -> Di
     Returns:
         Dictionary mapping importer name to account (e.g., {'ICICIBank': 'Assets:Bank'})
     """
-    # Try loading from previous year
     previous_fy = extract_previous_fy(fy)
-    previous_accounts = {}
-    if previous_fy:
-        previous_accounts = load_guided_config(previous_fy)
-    if previous_accounts:
-        return previous_accounts
+    previous_accounts = load_guided_config(previous_fy) if previous_fy else {}
+    current_accounts = load_guided_config(fy)
 
-    # Prompt for each importer
-    accounts = {}
-    # This will be filled in during validate_files_for_importer if needed
+    merged = dict(previous_accounts)
+    merged.update(current_accounts)
+    return merged
+
+
+def collect_accounts(
+    fy: str,
+    selected_importers: List[str],
+    accounts: Dict[str, str],
+    registry: Dict[str, ImporterMetadata]
+) -> Dict[str, str]:
+    """
+    Ensure every selected importer has an account, prompting only for the
+    ones not already known (from this FY's or the previous FY's saved
+    config). Each answer is persisted as soon as it's given (not just once
+    after the whole loop finishes), so even an interruption partway through
+    this very prompt loop (Ctrl-C, closed stdin, etc.) doesn't lose answers
+    already given in the same run.
+
+    Args:
+        fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
+        selected_importers: List of selected importer names
+        accounts: Dictionary mapping importer to account, as returned by
+            load_previous_accounts() (may be missing some/all importers)
+        registry: Dictionary of ImporterMetadata
+
+    Returns:
+        Dictionary mapping every selected importer name to an account
+    """
+    for importer_name in selected_importers:
+        if accounts.get(importer_name):
+            print(f"Using saved account for {registry[importer_name].friendly_name}: {accounts[importer_name]}")
+            continue
+
+        print(f"\nEnter account for {registry[importer_name].friendly_name}:")
+        print("  Example: Assets:Bank:INR")
+        account = input("  Account: ").strip()
+        accounts[importer_name] = account or 'Assets:Bank'
+        save_guided_config(fy, accounts)
+
     return accounts
 
 
@@ -334,24 +426,17 @@ def run_extraction_pipeline(
         fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
         import_module_path: Path to .import module
         validated_files: Dictionary mapping importer name to file list
-        accounts: Dictionary mapping importer to account
+        accounts: Dictionary mapping importer to account (already fully
+            populated by collect_accounts() before the .import module below
+            was generated from it - this function no longer prompts)
         registry: Dictionary of ImporterMetadata
 
     Returns:
         List of paths to generated intermediate ledgers
     """
     all_files = []
-    importer_to_account = {}
-
-    for importer_name, files in validated_files.items():
+    for files in validated_files.values():
         all_files.extend(files)
-        account = accounts.get(importer_name, '')
-        if not account:
-            # Prompt for account if not provided
-            print(f"\nEnter account for {registry[importer_name].friendly_name}:")
-            print(f"  Example: Assets:Bank:INR")
-            account = input("  Account: ").strip()
-        importer_to_account[importer_name] = account
 
     if not all_files:
         return []

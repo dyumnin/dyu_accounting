@@ -216,25 +216,26 @@ Notes:
 ## 5. Manual / Fallback Path (bean-extract CLI)
 
 If you don't want to go through guided mode, you can write a `.import`
-module by hand and run `bean-extract` directly. The current convention is
-keyword-argument construction, matching what
-`Utilities/__init__.py::generate_import_module_code()` generates for guided
-mode:
+module by hand and run `bean-extract` directly. Every importer here
+subclasses `beancount_reds_importers`' `banking.Importer`, whose
+`__init__(self, config)` takes a single positional config **dict** — it does
+not accept `main_account` as a keyword argument. The convention, matching
+what `Utilities/__init__.py::generate_import_module_code()` generates for
+guided mode, is:
 
 ```python
 from dyu_accounting.gulp import Account
 
 CONFIG = [
-    Account.Importer(main_account="Assets:INR:Bank"),
+    Account.Importer({"main_account": "Assets:INR:Bank"}),
 ]
 ```
 
-**Caveat**: `example/gulp/my.import` predates this convention and uses an
-older dict-wrapper constructor style
-(`Account.Importer({'main_account': 'Assets:INR:Bank'})`). Do not copy it
-as-is — treat `Utilities/__init__.py::generate_import_module_code()` as the
-source of truth for the current generated-code shape, and use the
-keyword-arg style above for anything you write by hand.
+**Caveat**: do not write `Account.Importer(main_account="Assets:INR:Bank")`
+(keyword-argument style) — it compiles fine but raises
+`TypeError: Importer.__init__() got an unexpected keyword argument
+'main_account'` at run time, since none of these importer classes override
+`__init__` to accept keyword arguments.
 
 Run it with:
 

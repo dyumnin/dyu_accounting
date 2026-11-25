@@ -262,7 +262,7 @@ def generate_import_module_code(
     The module contains:
         from dyu_accounting.gulp.{Importer} import Importer as {Importer}Import
         CONFIG = [
-            {Importer}Import(main_account="{account}"),
+            {Importer}Import({{"main_account": "{account}"}}),
             ...
         ]
 
@@ -290,7 +290,9 @@ def generate_import_module_code(
 
     for importer_name in selected_importers:
         account = accounts.get(importer_name, 'Assets:Bank')
-        lines.append(f"    {importer_name}Import(main_account=\"{account}\"),")
+        # beancount_reds_importers' banking.Importer.__init__(self, config) takes a
+        # single positional config dict, not keyword arguments.
+        lines.append(f'    {importer_name}Import({{"main_account": "{account}"}}),')
 
     lines.append("]")
 
@@ -336,3 +338,48 @@ def load_guided_config(fy: str) -> Dict[str, str]:
             return json.load(f)
     except (json.JSONDecodeError, IOError):
         return {}
+
+
+def save_selected_importers(fy: str, selected_importers: List[str]) -> None:
+    """
+    Save the chosen importer list to FY{year}/.guided-selection.json.
+
+    Kept separate from .guided-config.json (which only gets a key per
+    importer once its account has actually been answered) so that resuming
+    a run interrupted mid-account-collection still knows the full original
+    selection, not just whichever importers already got an answer.
+
+    Args:
+        fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
+        selected_importers: List of importer names selected for this FY
+    """
+    fy_dir = f"FY{fy}"
+    selection_path = os.path.join(fy_dir, ".guided-selection.json")
+
+    os.makedirs(fy_dir, exist_ok=True)
+
+    with open(selection_path, 'w') as f:
+        json.dump(selected_importers, f, indent=2)
+
+
+def load_selected_importers(fy: str) -> List[str]:
+    """
+    Load the chosen importer list from FY{year}/.guided-selection.json.
+
+    Args:
+        fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
+
+    Returns:
+        List of importer names, or empty list if file doesn't exist
+    """
+    fy_dir = f"FY{fy}"
+    selection_path = os.path.join(fy_dir, ".guided-selection.json")
+
+    if not os.path.exists(selection_path):
+        return []
+
+    try:
+        with open(selection_path, 'r') as f:
+            return json.load(f)
+    except (json.JSONDecodeError, IOError):
+        return []
