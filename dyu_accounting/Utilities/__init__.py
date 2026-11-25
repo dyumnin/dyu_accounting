@@ -87,7 +87,8 @@ def render_template(data):
     templateEnv = jinja2.Environment(
         loader=jinja2.PackageLoader('dyu_accounting', tpl_path),
         trim_blocks=True,
-        lstrip_blocks=True)
+        lstrip_blocks=True,
+        keep_trailing_newline=True)
     fname = data['template_name']
     template = templateEnv.get_template(fname)
     outputText = template.render(data)
