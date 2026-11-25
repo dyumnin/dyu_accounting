@@ -187,6 +187,16 @@ class Importer(csvreader.Importer, banking.Importer):
                 data.Posting(account, Amount(amount, "USD"), None, price, None, None)
             )
 
+    def build_metadata(self, file, metatype=None, data={}):
+        meta = super().build_metadata(file, metatype, data)
+        if metatype == "transaction":
+            ot = data.get("transaction")
+            if getattr(ot, "is_withdrawal", False):
+                # Lets reconcile_upwork.py reliably find these rather than
+                # guessing from account names/posting count.
+                meta["upwork_withdrawal"] = True
+        return meta
+
     def skip_transaction(self, row):
         if row.date is None:
             logging.debug("skipping row with no date: %s", row)

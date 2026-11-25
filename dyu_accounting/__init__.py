@@ -30,12 +30,16 @@ __credits__ = 'Dyumnin Semiconductors OPC Pvt Ltd'
 TOP_LEVEL_USAGE = """\
 usage: account --guided
        account --reconcile-account --fy <year>
+       account --reconcile-upwork --fy <year> --withdrawal-date <YYYY-MM-DD> --idfc-date <YYYY-MM-DD>
        account --infile <ledger.beancount> --fy <year> [--outdir <dir>]
 
 Modes:
   --guided                     Interactive guided import workflow (start here)
   --reconcile-account --fy FY  Merge Account (Google Form) entries into the
                                 matching bank/credit-card intermediate ledgers
+  --reconcile-upwork --fy FY   Complete an Upwork withdrawal using its matched
+    --withdrawal-date D         IDFC deposit, posting the USD/INR exchange
+    --idfc-date D                gain/loss
   --infile FILE --fy FY        Legacy: generate reports directly from an
     [--outdir DIR]              existing ledger (requires config.json)
 
@@ -97,6 +101,36 @@ def accounting():
         from dyu_accounting.Utilities import parse_financial_year_input
         from dyu_accounting.reconcile_account import reconcile_fy
         reconcile_fy(parse_financial_year_input(fy_arg))
+        return
+
+    # Check if --reconcile-upwork flag is present
+    if '--reconcile-upwork' in sys.argv:
+        sys.argv.remove('--reconcile-upwork')
+
+        def _pop_arg(flag):
+            if flag in sys.argv:
+                idx = sys.argv.index(flag)
+                if idx + 1 < len(sys.argv):
+                    value = sys.argv[idx + 1]
+                    del sys.argv[idx:idx + 2]
+                    return value
+            return None
+
+        fy_arg = _pop_arg('--fy')
+        withdrawal_date_arg = _pop_arg('--withdrawal-date')
+        idfc_date_arg = _pop_arg('--idfc-date')
+        if not (fy_arg and withdrawal_date_arg and idfc_date_arg):
+            print("Error: --reconcile-upwork requires --fy <year> --withdrawal-date "
+                  "<YYYY-MM-DD> --idfc-date <YYYY-MM-DD>")
+            sys.exit(1)
+        import datetime as _datetime
+        from dyu_accounting.Utilities import parse_financial_year_input
+        from dyu_accounting.reconcile_upwork import reconcile_withdrawal
+        reconcile_withdrawal(
+            parse_financial_year_input(fy_arg),
+            _datetime.date.fromisoformat(withdrawal_date_arg),
+            _datetime.date.fromisoformat(idfc_date_arg),
+        )
         return
 
     # Legacy mode (backward compatible)
