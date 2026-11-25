@@ -156,13 +156,53 @@ The generated `FY2025_26.beancount` includes all intermediate ledgers in alphabe
 ;; FY 2025_26 Parent Ledger
 ;; Automatically generated - do not edit
 
-include "FY2025_26/intermediate/account_Accounts_2025_26_01.beancount"
-include "FY2025_26/intermediate/icici_bank_OpTrans_2025_26_01.beancount"
-include "FY2025_26/intermediate/icici_bank_OpTrans_2025_26_02.beancount"
-include "FY2025_26/intermediate/icici_card_CreditCard_2025_26_01.beancount"
-include "FY2025_26/intermediate/idfc_bank_IDFC_2025_26_01.beancount"
-include "FY2025_26/intermediate/sbi_bank_Bnk_2025_26_01.beancount"
+include "intermediate/account_Accounts_2025_26_01.beancount"
+include "intermediate/icici_bank_OpTrans_2025_26_01.beancount"
+include "intermediate/icici_bank_OpTrans_2025_26_02.beancount"
+include "intermediate/icici_card_CreditCard_2025_26_01.beancount"
+include "intermediate/idfc_bank_IDFC_2025_26_01.beancount"
+include "intermediate/sbi_bank_Bnk_2025_26_01.beancount"
 ```
+
+(Include paths are relative to `FY2025_26.beancount`'s own directory, i.e.
+`FY2025_26/` - not repeated from the working directory, since that's how
+beancount resolves a relative `include`.)
+
+## Account Reconciliation
+
+The Account (Google Form) importer's entries double-book every real
+transaction that also has a bank/credit-card statement counterpart: once as
+the manually-logged entry (`Payment` -> source account, `Purpose` -> expense
+account), and once again when that same transaction is independently
+imported from the bank's own statement (as a single, uncategorized posting
+with no expense leg). Running `--reconcile-account` after guided mode
+resolves this by matching the two and merging them, rather than keeping
+both:
+
+```sh
+account --reconcile-account --fy 2025_26
+```
+
+For every entry in `FY{fy}/intermediate/account_*.beancount`:
+
+- **Payment = Cash**: there's no bank statement to match against (cash
+  spending never appears in any export), so these are left exactly as
+  extracted - a complete, already-balanced transaction - and moved to
+  `FY{fy}/intermediate/cash.beancount`.
+- **Everything else** (Company Card, Personal Card, Credit Card): matched
+  against the bank/credit-card intermediate ledger for that same account, by
+  date (±2 days) and amount (within 0.01). On a unique match, the bank-side
+  transaction - which has no expense leg on its own - gets the `Purpose`
+  column's mapped expense account added to balance it, plus the `Receipt`
+  URL attached as metadata. The duplicate Account-side entry is then
+  dropped, so the transaction is booked once, not twice.
+- **No match found**: left behind in `account_*.beancount` for manual
+  review, rather than silently dropped - `--reconcile-account` prints a
+  count of how many.
+
+Re-running `--reconcile-account` regenerates `cash.beancount` and the
+touched source ledgers from scratch each time, so it's safe to run again
+after re-importing more files.
 
 ## Configuration
 

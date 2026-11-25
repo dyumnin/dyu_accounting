@@ -32,9 +32,10 @@ def accounting():
     """
     Main entry point for accounting CLI.
 
-    Supports both:
+    Supports:
     1. Legacy mode: account --in ledger.beancount --fy 2026 --out reports/
     2. Guided mode: account --guided
+    3. Account reconciliation: account --reconcile-account --fy 2025_26
 
     This maintains backward compatibility while adding the new guided workflow.
     """
@@ -53,6 +54,23 @@ def accounting():
         # Remove --guided from argv so argparse doesn't see it
         sys.argv.remove('--guided')
         async_guided_workflow()
+        return
+
+    # Check if --reconcile-account flag is present
+    if '--reconcile-account' in sys.argv:
+        sys.argv.remove('--reconcile-account')
+        fy_arg = None
+        if '--fy' in sys.argv:
+            fy_idx = sys.argv.index('--fy')
+            if fy_idx + 1 < len(sys.argv):
+                fy_arg = sys.argv[fy_idx + 1]
+                del sys.argv[fy_idx:fy_idx + 2]
+        if not fy_arg:
+            print("Error: --reconcile-account requires --fy <year> (e.g. --fy 2025_26)")
+            sys.exit(1)
+        from dyu_accounting.Utilities import parse_financial_year_input
+        from dyu_accounting.reconcile_account import reconcile_fy
+        reconcile_fy(parse_financial_year_input(fy_arg))
         return
 
     # Legacy mode (backward compatible)
