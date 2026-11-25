@@ -183,14 +183,14 @@ class BalanceSheet:
 
     def report_balance_sheet(self):
         fname = f"balance_sheet_FY_{self.cfg['fy']}_{self.cfg['fy']+1}.html"
-        render_template(data={
+        written = render_template(data={
             'template_name': 'balancesheet.tpl',
             'cfg': self.cfg,
             'account': self.balancesheet[self.cfg['fy']].account,
             'prev_account': self.balancesheet[self.cfg['fy']-1].account,
             'outfile': fname
         })
-        return [fname]
+        return [written]
 
     '''
     Steps

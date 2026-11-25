@@ -47,12 +47,12 @@ class Journal:
         reports = []
         for account in self.accounts:
             filename = f"journal_{account}.html"
-            render_template(data={
+            written = render_template(data={
                 'template_name': "journal.tpl",
                 'cfg': self.cfg,
                 'account': self.accounts[account],
                 'account_name': account,
                 'outfile': filename
             })
-            reports.append(filename)
+            reports.append(written)
         return reports

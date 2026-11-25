@@ -326,7 +326,7 @@ class Depreciation:
                 })
 
         filename = "depreciation.html"
-        render_template(data={
+        written = render_template(data={
             'template_name': "depreciation.tpl",
             'cfg': self.cfg,
             'depr': self.depr,
@@ -334,7 +334,7 @@ class Depreciation:
             'max_fy': self.max_fy,
             'outfile': filename
         })
-        return [filename]
+        return [written]
 
 
 

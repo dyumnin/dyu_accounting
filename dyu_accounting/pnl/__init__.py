@@ -60,10 +60,10 @@ class PnL:
         self.pnl_data['profit'] = self.pnl_data['expenses_total'] + \
             self.pnl_data['revenue']
         fname="PnL.html"
-        render_template(data={
+        written = render_template(data={
             'template_name': 'PnL.tpl',
             'cfg': self.cfg,
             'pnl': self.pnl_data,
             'outfile': fname
         })
-        return [fname]
+        return [written]

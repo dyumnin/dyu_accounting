@@ -64,6 +64,15 @@ def hoh(base, *keys):
 
 
 def render_template(data):
+    """
+    Returns:
+        str: The filename actually written under data['cfg']['outdir'] (its
+            extension may differ from data['outfile'] - e.g. 'adoc' format
+            swaps a '.html' outfile to '.adoc'). Callers that build an index/
+            navigation page linking to this report must use this return
+            value, not data['outfile'], or the link target won't match what
+            was actually written to disk.
+    """
     fmt = data['cfg'].get('format', 'html')
     if fmt == 'tex':
         tpl_path = os.path.join('templates', 'tex')
@@ -89,6 +98,7 @@ def render_template(data):
         filename = os.path.splitext(filename)[0] + '.adoc'
     with open(os.path.join(data['cfg']['outdir'], filename), "w") as fy_file:
         fy_file.write(outputText)
+    return filename
 
 
 # ============================================================================

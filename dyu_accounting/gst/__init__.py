@@ -51,11 +51,11 @@ class GST:
 
     def report_gst(self):
         fname = "GST.html"
-        render_template(data={
+        written = render_template(data={
             'template_name': "GST.tpl",
             'cfg': self.cfg,
             'gst': self.gst,
             'accounts': list(set(self.accounts)),
             'outfile': fname
         })
-        return [fname]
+        return [written]
