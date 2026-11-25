@@ -483,13 +483,15 @@ def generate_and_save_parent_ledger(fy: str, intermediate_paths: List[str]) -> O
     parent_content = generate_parent_ledger(fy, intermediate_paths)
     parent_path = f"FY{fy}/FY{fy}.beancount"
 
-    # If target ledger already exists from bean-extract, append includes
-    if os.path.exists(parent_path):
-        with open(parent_path, 'a') as f:
-            f.write('\n\n' + parent_content)
-    else:
-        with open(parent_path, 'w') as f:
-            f.write(parent_content)
+    # Always overwrite: this file is fully auto-generated from
+    # intermediate_paths (see generate_parent_ledger()'s "Do not edit
+    # manually" banner), so re-running guided mode must regenerate it from
+    # scratch, not append another copy of the same include block on top of
+    # what a previous run already wrote here. bean-extract itself never
+    # writes to this path (see gulp_runner.py), so there's no other content
+    # to preserve by appending.
+    with open(parent_path, 'w') as f:
+        f.write(parent_content)
 
     print(f"Generated parent ledger: {parent_path}")
     return parent_path
