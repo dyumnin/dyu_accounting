@@ -1,13 +1,13 @@
 """
 Subprocess wrapper for bean-extract CLI.
 
-Handles invocation of bean-extract and parsing of intermediate ledger paths.
+Handles invocation of bean-extract and writing its output to per-file
+intermediate ledgers.
 """
 
 import subprocess
 import os
-import re
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 
 def run_bean_extract(
@@ -17,16 +17,24 @@ def run_bean_extract(
     file_paths: List[str]
 ) -> Dict[str, str]:
     """
-    Run bean-extract on a list of files.
+    Run bean-extract on each file and save its output to an intermediate ledger.
 
-    Invokes: bean-extract {import_module} -f {target_ledger} {files...}
-    Captures stdout to map input files to generated intermediate ledger paths.
+    bean-extract writes extracted entries to stdout only - it has no concept
+    of writing per-file output itself, and -f/-e only points it at an
+    existing ledger for de-duplication, not an output path. So this runs
+    bean-extract once per file and captures+writes each file's stdout to its
+    own FY{fy}/intermediate/{importer_folder}_{filename}.beancount, which is
+    what generate_parent_ledger()/generate_reconciliation_report() expect to
+    be able to `include` and load.
 
     Args:
         fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
         import_module_path: Path to the .import module (e.g., FY2025_26.import)
-        target_ledger_path: Path to output ledger (e.g., FY2025_26/FY2025_26.beancount)
-        file_paths: List of input files to extract
+        target_ledger_path: Existing ledger to pass to bean-extract for
+            de-duplication (e.g., FY2025_26/FY2025_26.beancount); may not
+            exist yet, which is fine - bean-extract just skips de-dup then.
+        file_paths: List of input files to extract, each expected to live
+            under FY{fy}/imports/{importer_folder}/...
 
     Returns:
         Dictionary mapping input file path to generated intermediate ledger path
@@ -37,98 +45,66 @@ def run_bean_extract(
         }
 
     Raises:
-        RuntimeError: If bean-extract command fails
+        RuntimeError: If bean-extract command fails for every file, or isn't installed
     """
     if not file_paths:
         return {}
 
-    # Build command: bean-extract FY2026.import -f FY2026/FY2026.beancount file1 file2 ...
-    cmd = [
-        'bean-extract',
-        import_module_path,
-        '-f', target_ledger_path
-    ] + file_paths
+    intermediate_dir = f"FY{fy}/intermediate"
+    os.makedirs(intermediate_dir, exist_ok=True)
 
-    try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=60
-        )
+    intermediate_map = {}
+    errors = []
+
+    for file_path in file_paths:
+        cmd = ['bean-extract', import_module_path, '-f', target_ledger_path, file_path]
+
+        try:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=60
+            )
+        except subprocess.TimeoutExpired:
+            errors.append(f"{file_path}: bean-extract timed out after 60 seconds")
+            continue
+        except FileNotFoundError:
+            raise RuntimeError("bean-extract command not found. Install beancount package.")
 
         if result.returncode != 0:
-            error_msg = result.stderr or result.stdout or 'Unknown error'
-            raise RuntimeError(f"bean-extract failed: {error_msg}")
+            errors.append(f"{file_path}: {result.stderr or result.stdout or 'Unknown error'}")
+            continue
 
-        # Parse output to extract intermediate ledger mappings
-        intermediate_map = {}
-        for file_path in file_paths:
-            intermediate_path = extract_intermediate_path(result.stdout, file_path)
-            if intermediate_path:
-                intermediate_map[file_path] = intermediate_path
+        intermediate_path = intermediate_path_for(fy, file_path)
+        with open(intermediate_path, 'w') as f:
+            f.write(result.stdout)
+        intermediate_map[file_path] = intermediate_path
 
-        return intermediate_map
+    if errors and not intermediate_map:
+        raise RuntimeError("bean-extract failed for all files:\n" + "\n".join(errors))
+    for err in errors:
+        print(f"Warning: {err}")
 
-    except subprocess.TimeoutExpired:
-        raise RuntimeError(f"bean-extract timed out after 60 seconds")
-    except FileNotFoundError:
-        raise RuntimeError("bean-extract command not found. Install beancount package.")
+    return intermediate_map
 
 
-def extract_intermediate_path(
-    bean_extract_stdout: str,
-    file_path: str
-) -> Optional[str]:
+def intermediate_path_for(fy: str, file_path: str) -> str:
     """
-    Parse bean-extract output to find the intermediate ledger path.
+    Derive the intermediate ledger path for one input file.
 
-    bean-extract creates intermediate ledgers with predictable naming.
-    Example output contains paths like:
-        "Exported to FY2026/intermediate/icici_bank_OpTrans_2026_01.beancount"
+    Expects file_path to live under FY{fy}/imports/{importer_folder}/... and
+    derives FY{fy}/intermediate/{importer_folder}_{filename_without_ext}.beancount.
 
     Args:
-        bean_extract_stdout: stdout from bean-extract command
-        file_path: Original input file path
+        fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
+        file_path: Path to the input file being extracted
 
     Returns:
-        Path to generated intermediate ledger, or None if not found
+        Path to the intermediate ledger this file's extraction should be
+        written to
     """
-    if not bean_extract_stdout:
-        return None
-
     filename = os.path.basename(file_path)
     filename_without_ext = os.path.splitext(filename)[0]
-
-    # Look for patterns in stdout that indicate intermediate ledger path
-    # Pattern: "intermediate/{importer}_{filename}_{seq}.beancount"
-    patterns = [
-        # Standard pattern: "Exported to FY2026/intermediate/..."
-        rf'Exported to .*intermediate[/\\].*\.beancount',
-        # Alternative: just the filename
-        rf'{re.escape(filename_without_ext)}[^"]*\.beancount',
-    ]
-
-    for pattern in patterns:
-        match = re.search(pattern, bean_extract_stdout, re.IGNORECASE)
-        if match:
-            path = match.group(0)
-            # Clean up "Exported to " prefix if present
-            if path.startswith('Exported to '):
-                path = path[len('Exported to '):]
-            return path.strip()
-
-    # If no pattern matches, try to infer from standard naming convention
-    # intermediate/{importer}_{original_filename}.beancount
-    if 'intermediate/' in file_path or 'intermediate\\' in file_path:
-        # Extract directory from file_path (match new format: FY2025_26)
-        fy_match = re.search(r'(FY\d+_\d+)', file_path)
-        if fy_match:
-            fy_dir = fy_match.group(1)
-            # Derive importer from folder name
-            importer_match = re.search(rf'{fy_dir}/imports/([^/\\]+)/', file_path)
-            if importer_match:
-                importer = importer_match.group(1)
-                return f"{fy_dir}/intermediate/{importer}_{filename_without_ext}.beancount"
-
-    return None
+    folder_name = os.path.basename(os.path.dirname(file_path))
+    return f"FY{fy}/intermediate/{folder_name}_{filename_without_ext}.beancount"

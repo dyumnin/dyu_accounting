@@ -42,9 +42,17 @@ def generate_parent_ledger(fy: str, intermediate_paths: List[str]) -> str:
         "",
     ]
 
+    # Beancount resolves a relative include path relative to the including
+    # file's own directory, i.e. FY{fy}/ here - so the include must be
+    # relative to FY{fy}/, not repeat it (an include of
+    # "FY2025_26/intermediate/x.beancount" from within FY2025_26/FY2025_26.beancount
+    # resolves to the nonexistent FY2025_26/FY2025_26/intermediate/x.beancount).
+    fy_prefix = f"FY{fy}/"
     for path in sorted_paths:
         # Normalize path to use forward slashes
         normalized_path = path.replace('\\', '/')
+        if normalized_path.startswith(fy_prefix):
+            normalized_path = normalized_path[len(fy_prefix):]
         lines.append(f'include "{normalized_path}"')
 
     return '\n'.join(lines)

@@ -98,8 +98,12 @@ def async_guided_workflow(fy: Optional[str] = None, cwd: str = ".") -> None:
         fy, import_module_path, validated_files, accounts, registry
     )
 
+    if not all_intermediate_paths:
+        print("\nNo intermediate ledgers were generated - nothing to extract. Exiting.")
+        return
+
     # Step 9: Generate parent ledger
-    generate_and_save_parent_ledger(fy, all_intermediate_paths)
+    parent_ledger_path = generate_and_save_parent_ledger(fy, all_intermediate_paths)
 
     # Step 10: Generate reconciliation report
     reconciliation_path = generate_and_save_reconciliation_report(fy, all_intermediate_paths)
@@ -108,7 +112,7 @@ def async_guided_workflow(fy: Optional[str] = None, cwd: str = ".") -> None:
     # soon as they were known, rather than only on a fully successful run)
 
     print(f"\nGuided import complete!")
-    print(f"  Parent ledger: FY{fy}/FY{fy}.beancount")
+    print(f"  Parent ledger: {parent_ledger_path}")
     print(f"  Reconciliation: {reconciliation_path}")
 
 
@@ -461,16 +465,20 @@ def run_extraction_pipeline(
         return []
 
 
-def generate_and_save_parent_ledger(fy: str, intermediate_paths: List[str]) -> None:
+def generate_and_save_parent_ledger(fy: str, intermediate_paths: List[str]) -> Optional[str]:
     """
     Generate and save parent ledger.
 
     Args:
         fy: Financial year string in "YYYY_YY" format (e.g., "2025_26")
         intermediate_paths: List of intermediate ledger paths
+
+    Returns:
+        Path to the generated parent ledger, or None if there was nothing
+        to generate it from
     """
     if not intermediate_paths:
-        return
+        return None
 
     parent_content = generate_parent_ledger(fy, intermediate_paths)
     parent_path = f"FY{fy}/FY{fy}.beancount"
@@ -484,6 +492,7 @@ def generate_and_save_parent_ledger(fy: str, intermediate_paths: List[str]) -> N
             f.write(parent_content)
 
     print(f"Generated parent ledger: {parent_path}")
+    return parent_path
 
 
 def generate_and_save_reconciliation_report(

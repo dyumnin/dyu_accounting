@@ -609,88 +609,98 @@ CONFIG = [
 # ============================================================================
 
 class TestGulpRunner:
-    """Test bean-extract subprocess wrapper and output parsing."""
+    """
+    Test bean-extract subprocess wrapper.
 
-    @patch('subprocess.run')
-    def test_run_bean_extract_calls_subprocess(self, mock_subprocess):
-        """run_bean_extract() should call subprocess.run with correct args."""
-        mock_subprocess.return_value = Mock(
-            returncode=0,
-            stdout='Output',
-            stderr=''
+    bean-extract writes extracted entries to stdout only - it never writes
+    per-file output itself, and -f/-e only points it at an existing ledger
+    for de-duplication, not an output path (confirmed via `bean-extract
+    --help` and by actually running it). The previous version of this
+    module, and these tests, assumed bean-extract printed an "Exported to
+    .../intermediate/X.beancount" message it could parse to find a file it
+    had written - no such message exists, so that path/branch was always
+    dead code; run_bean_extract() always returned an empty dict, and no
+    guided-mode run ever actually produced an intermediate ledger.
+    run_bean_extract() now runs bean-extract once per file and writes its
+    captured stdout to the intermediate ledger itself.
+    """
+
+    def test_intermediate_path_for_derives_from_file_path(self):
+        from dyu_accounting.gulp_runner import intermediate_path_for
+        path = intermediate_path_for(
+            '2025_26', 'FY2025_26/imports/icici_bank/OpTrans_2025_26_01.xls'
+        )
+        assert path == 'FY2025_26/intermediate/icici_bank_OpTrans_2025_26_01.beancount'
+
+    def test_run_bean_extract_writes_real_intermediate_ledger(self, tmp_path, monkeypatch):
+        """
+        Regression test: run_bean_extract() must actually write the
+        intermediate ledger file to disk with bean-extract's real output,
+        not just return a path that was never created.
+        """
+        import shutil
+        if shutil.which('bean-extract') is None:
+            pytest.skip("bean-extract not on PATH")
+        from dyu_accounting.gulp_runner import run_bean_extract
+
+        fy_dir = tmp_path / "FY2025_26"
+        import_dir = fy_dir / "imports" / "account"
+        import_dir.mkdir(parents=True)
+        fixture = Path(__file__).parent / "fixtures" / "account" / "Accounts_2026_01.csv"
+        shutil.copy(fixture, import_dir / "Accounts_2026_01.csv")
+
+        import_module = tmp_path / "FY2025_26.import"
+        import_module.write_text(
+            "from dyu_accounting.gulp.Account import Importer\n"
+            "CONFIG = [Importer({'main_account': 'Assets:Bank'})]\n"
         )
 
-        fy = 2026
-        import_module = 'FY2025_26.import'
-        target_ledger = 'FY2025_26/FY2025_26.beancount'
-        files = ['FY2025_26/imports/icici_bank/stmt1.csv']
-
-        # Simulate call
-        cmd = ['bean-extract', import_module, '-f', target_ledger] + files
-        result = mock_subprocess(cmd)
-
-        assert result.returncode == 0
-
-    @patch('subprocess.run')
-    def test_run_bean_extract_returns_path_dict(self, mock_subprocess):
-        """run_bean_extract() should return {file_path: intermediate_path}."""
-        mock_subprocess.return_value = Mock(
-            returncode=0,
-            stdout='Extracted to FY2025_26/intermediate/file1.beancount',
-            stderr=''
+        monkeypatch.chdir(tmp_path)
+        file_path = "FY2025_26/imports/account/Accounts_2026_01.csv"
+        result = run_bean_extract(
+            "2025_26", "FY2025_26.import", "FY2025_26/FY2025_26.beancount", [file_path]
         )
 
-        # Simulate return value
-        result_dict = {
-            'FY2025_26/imports/stmt1.csv': 'FY2025_26/intermediate/icici_bank_stmt1_01.beancount'
-        }
-
-        assert isinstance(result_dict, dict)
-        assert len(result_dict) > 0
-
-    def test_extract_intermediate_path_from_output(self):
-        """extract_intermediate_path() should parse bean-extract stdout."""
-        stdout = 'Extracted to FY2025_26/intermediate/icici_bank_stmt1_01.beancount'
-        filepath = 'FY2025_26/imports/icici_bank/stmt1.csv'
-
-        # Parse: look for "FY.../intermediate/*.beancount"
-        import re
-        match = re.search(r'(FY\d+_\d+/intermediate/\S+\.beancount)', stdout)
-        assert match is not None
-        path = match.group(1)
-        assert 'intermediate' in path
-        assert path.endswith('.beancount')
+        assert file_path in result
+        intermediate_path = Path(result[file_path])
+        assert intermediate_path == Path("FY2025_26/intermediate/account_Accounts_2026_01.beancount")
+        assert intermediate_path.exists()
+        content = intermediate_path.read_text()
+        assert "Food" in content
+        assert "-1500" in content or "1500" in content
 
     @patch('subprocess.run')
-    def test_run_bean_extract_error_handling(self, mock_subprocess):
-        """run_bean_extract() should capture stderr on error."""
-        mock_subprocess.return_value = Mock(
-            returncode=1,
-            stdout='',
-            stderr='Error: Invalid statement format'
-        )
+    def test_run_bean_extract_continues_past_one_failing_file(self, mock_subprocess, tmp_path, monkeypatch):
+        """A single file's bean-extract failure shouldn't drop the others."""
+        from dyu_accounting.gulp_runner import run_bean_extract
 
-        result = mock_subprocess.return_value
-        assert result.returncode != 0
-        assert 'Error' in result.stderr
-
-    @patch('subprocess.run')
-    def test_run_bean_extract_subprocess_mock_various_outputs(self, mock_subprocess):
-        """run_bean_extract() should handle various output formats."""
-        outputs = [
-            ('Extracted to FY2025_26/intermediate/file1.beancount', 0),
-            ('File processed successfully\nOutput: FY2025_26/intermediate/file2.beancount', 0),
-            ('Error: File not found', 1),
+        monkeypatch.chdir(tmp_path)
+        mock_subprocess.side_effect = [
+            Mock(returncode=1, stdout='', stderr='bad file'),
+            Mock(returncode=0, stdout=';; ok\n', stderr=''),
         ]
 
-        for stdout, returncode in outputs:
-            mock_subprocess.return_value = Mock(
-                returncode=returncode,
-                stdout=stdout,
-                stderr='' if returncode == 0 else 'Error occurred'
+        result = run_bean_extract(
+            "2025_26", "FY2025_26.import", "FY2025_26/FY2025_26.beancount",
+            ["FY2025_26/imports/account/bad.csv", "FY2025_26/imports/account/good.csv"],
+        )
+
+        assert "FY2025_26/imports/account/bad.csv" not in result
+        assert "FY2025_26/imports/account/good.csv" in result
+        assert Path(result["FY2025_26/imports/account/good.csv"]).read_text() == ';; ok\n'
+
+    @patch('subprocess.run')
+    def test_run_bean_extract_raises_if_every_file_fails(self, mock_subprocess, tmp_path, monkeypatch):
+        from dyu_accounting.gulp_runner import run_bean_extract
+
+        monkeypatch.chdir(tmp_path)
+        mock_subprocess.return_value = Mock(returncode=1, stdout='', stderr='nope')
+
+        with pytest.raises(RuntimeError):
+            run_bean_extract(
+                "2025_26", "FY2025_26.import", "FY2025_26/FY2025_26.beancount",
+                ["FY2025_26/imports/account/bad.csv"],
             )
-            result = mock_subprocess.return_value
-            assert result.returncode == returncode
 
 
 # ============================================================================
