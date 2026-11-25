@@ -1,3 +1,5 @@
+import logging
+
 from beancount_reds_importers.libreader import csvreader
 from beancount_reds_importers.libtransactionbuilder import banking
 
@@ -34,7 +36,13 @@ class Importer(csvreader.Importer, banking.Importer):
         self.filename_pattern_def = 'Accounts.*'
         self.column_labels_line = 'Timestamp,Date,Amount,Purpose,Payment,Receipt'
         self.header_identifier = 'Timestamp,Date,Amount,Purpose,Payment,Receipt'
-        self.date_format = '%d/%m/%Y'
+        # The real Google Form export's Date column is US-style M/D/YYYY
+        # (e.g. '5/25/2024'), not D/M/YYYY - confirmed by day values (16, 17,
+        # 21, 25, 28...) landing in the month position, which silently
+        # produced date=None for every such row (petl.convert() swallows the
+        # strptime ValueError rather than raising), and those None dates then
+        # crashed extraction downstream with AttributeError on ot.date.date().
+        self.date_format = '%m/%d/%Y'
         self.header_map = {
             'Date': 'date',
             'Purpose': 'memo',
@@ -75,6 +83,17 @@ class Importer(csvreader.Importer, banking.Importer):
         """Purpose column (ot.memo) -> expense/debit account."""
         purpose = self._normalize(getattr(ot, "memo", ""))
         return self.PURPOSE_ACCOUNT_MAP.get(purpose, self.PURPOSE_FALLBACK_ACCOUNT)
+
+    def skip_transaction(self, row):
+        # Guards against a bad/unparseable date silently reaching
+        # banking.Importer.extract(), which otherwise crashes with
+        # AttributeError on ot.date.date() - every other importer in this
+        # package has this same guard; this one was missing it, which is why
+        # that crash went unnoticed (it's swallowed by find_imports()'s
+        # logging.exception() rather than being visible).
+        if row.date is None:
+            logging.debug("skipping row with no date: %s", row)
+        return row.date is None
 
     def build_metadata(self, file, metatype=None, data={}):
         meta = super().build_metadata(file, metatype, data)

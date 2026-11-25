@@ -4,13 +4,16 @@ Unit tests for the bank statement ingesters in dyu_accounting/gulp/.
 Test rows are built from the exact column headers and real-world sample
 data from each bank's exported file format.
 """
+import datetime
 import importlib
 import io
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
 
 petl = pytest.importorskip('petl', reason='petl is required by beancount_reds_importers')
+beancount_cache = pytest.importorskip('beancount.ingest.cache', reason='beancount is required')
 
 
 # ---------------------------------------------------------------------------
@@ -34,6 +37,23 @@ def prepare_rows(imp, rows):
 
 def skip_row(**kwargs):
     return SimpleNamespace(**kwargs)
+
+
+def extract_real_file(module_name, config, filepath):
+    """
+    Run a real importer end-to-end against a real file on disk, the same way
+    bean-extract itself does (identify() then extract()), rather than
+    exercising prepare_table()/helper methods in isolation. Several real bugs
+    in this package (a duplicate-field 'amount' crashing namedtuple()
+    construction, an invalid-identifier column name, a bad date format
+    silently producing None dates that then crashed extract()) only surface
+    at this full-pipeline level, not in isolated prepare_table() calls.
+    """
+    mod = importlib.import_module(f'dyu_accounting.gulp.{module_name}')
+    imp = mod.Importer(config)
+    file = beancount_cache.get_file(str(filepath))
+    assert imp.identify(file), f"{module_name} did not identify {filepath}"
+    return imp.extract(file, [])
 
 
 # ---------------------------------------------------------------------------
@@ -131,6 +151,25 @@ class TestICICICardSkipTransaction:
 
     def test_none_date_skipped(self):
         assert make_importer('ICICICard').skip_transaction(skip_row(date=None)) is True
+
+
+class TestICICICardEndToEnd:
+    """
+    Regression test: header_map previously renamed 'Amount(in Rs)' to
+    'amount' while prepare_table() also added its own computed 'amount'
+    field, producing two fields both named 'amount' - which doesn't fail in
+    prepare_table() alone, only once get_transactions() tries to build a
+    namedtuple from the full column set.
+    """
+
+    def test_real_fixture_extracts_without_crashing(self):
+        fixture = Path(__file__).parent / "fixtures" / "icici_card" / "CreditCard_2026_01.csv"
+        entries = extract_real_file(
+            'ICICICard', {'main_account': 'Liabilities:INR:CreditCard'}, fixture
+        )
+        assert len(entries) == 3
+        amounts = sorted(float(p.units.number) for e in entries for p in e.postings)
+        assert amounts == sorted([-521.17, -1250.0, -5000.0])
 
 
 # ---------------------------------------------------------------------------
@@ -609,3 +648,61 @@ class TestAccountBuildMetadata:
         ot = skip_row()
         meta = imp.build_metadata(None, metatype='transaction', data={'transaction': ot})
         assert 'receipt' not in meta
+
+
+class TestAccountDateFormat:
+    """
+    Real sample: the Google Form export's 'Date' column uses US-style
+    M/D/YYYY (e.g. '5/25/2024' for May 25), not D/M/YYYY. The old D/M/YYYY
+    assumption made datetime.strptime raise for any day > 12 (the day value
+    landing in the month position is invalid); petl.convert() silently
+    swallows that into date=None, which then crashed extract() downstream
+    with AttributeError on ot.date.date() - a crash only visible when running
+    the full pipeline, not from isolated date-format assertions.
+    """
+
+    def test_date_format_is_month_day_year(self):
+        imp = make_importer('Account')
+        assert imp.date_format == '%m/%d/%Y'
+        parsed = datetime.datetime.strptime('5/25/2024', imp.date_format)
+        assert parsed == datetime.datetime(2024, 5, 25)
+
+    def test_old_day_month_format_would_have_failed(self):
+        """Documents why the old '%d/%m/%Y' assumption was wrong."""
+        with pytest.raises(ValueError):
+            datetime.datetime.strptime('5/25/2024', '%d/%m/%Y')
+
+
+class TestAccountSkipTransaction:
+    """Account.py was missing this guard entirely (every other importer in
+    this package has it), which is why a bad date crashed extract() instead
+    of being skipped."""
+
+    def test_valid_date_not_skipped(self):
+        assert make_importer('Account').skip_transaction(skip_row(date='01/01/2026')) is False
+
+    def test_none_date_skipped(self):
+        assert make_importer('Account').skip_transaction(skip_row(date=None)) is True
+
+
+class TestAccountEndToEnd:
+    def test_real_world_date_with_day_over_12_extracts_without_crashing(self, tmp_path):
+        """
+        Regression test built from a real Google Form export row
+        ('5/25/2024 23:33:30,5/25/2024,6743,Food,Company Card,<url>,') that
+        previously produced date=None and crashed extraction with
+        AttributeError: 'NoneType' object has no attribute 'date'.
+        """
+        csv_content = (
+            "Timestamp,Date,Amount,Purpose,Payment,Receipt,Column 7\n"
+            "5/25/2024 23:33:30,5/25/2024,6743,Food,Company Card,"
+            "https://example.com/r,\n"
+        )
+        fixture = tmp_path / "Accounts_test.csv"
+        fixture.write_text(csv_content)
+
+        entries = extract_real_file(
+            'Account', {'main_account': 'Liabilities:INR:Misc'}, fixture
+        )
+        assert len(entries) == 1
+        assert entries[0].date == datetime.date(2024, 5, 25)

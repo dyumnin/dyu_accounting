@@ -76,6 +76,16 @@ def run_bean_extract(
             errors.append(f"{file_path}: {result.stderr or result.stdout or 'Unknown error'}")
             continue
 
+        # bean-extract exits 0 and prints only its ";; -*- mode: beancount -*-"
+        # banner (no "**** <file>" marker, no entries) when NO importer in the
+        # config recognized the file at all - this is silent otherwise, so
+        # flag it rather than writing a near-empty intermediate file unremarked.
+        if '****' not in result.stdout:
+            print(f"Warning: {file_path}: no importer recognized this file (empty extraction)")
+        elif not _has_entries_after_marker(result.stdout):
+            print(f"Warning: {file_path}: recognized but produced 0 transactions "
+                  f"(possibly already in {target_ledger_path} from an earlier run)")
+
         intermediate_path = intermediate_path_for(fy, file_path)
         with open(intermediate_path, 'w') as f:
             f.write(result.stdout)
@@ -87,6 +97,15 @@ def run_bean_extract(
         print(f"Warning: {err}")
 
     return intermediate_map
+
+
+def _has_entries_after_marker(stdout: str) -> bool:
+    """Whether any non-blank, non-comment content follows the '****' file marker."""
+    after_marker = stdout.split('****', 1)[1] if '****' in stdout else stdout
+    return any(
+        line.strip() and not line.strip().startswith(';;')
+        for line in after_marker.splitlines()[1:]  # skip the marker's own line (the filename)
+    )
 
 
 def intermediate_path_for(fy: str, file_path: str) -> str:

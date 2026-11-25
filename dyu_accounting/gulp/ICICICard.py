@@ -18,7 +18,15 @@ class Importer(csvreader.Importer, banking.Importer):
             'Reward Point Header': 'Reward Point',
             'Date': 'date',
             'Transaction Details': 'memo',
-            'Amount(in Rs)': 'amount',
+            # Renamed (not to 'amount' - prepare_table() below already adds a
+            # computed 'amount' field from this same raw column, and mapping
+            # this one to 'amount' too would produce two fields both named
+            # 'amount', crashing namedtuple() construction downstream).
+            # Also can't be left unmapped: fix_column_names()'s regex only
+            # replaces '-', '/' and ' ', not parentheses, so the raw name
+            # 'Amount(in Rs)' would become the invalid identifier
+            # 'Amount(in_Rs)' and crash namedtuple() the same way.
+            'Amount(in Rs)': 'amount_raw',
         }
         self.skip_transaction_types = ['Journal']
 
