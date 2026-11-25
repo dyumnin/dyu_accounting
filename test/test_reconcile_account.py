@@ -215,6 +215,25 @@ class TestReconcileCash:
         assert len(source_entries) == 1
         assert len(source_entries[0].postings) == 2
 
+    def test_parent_ledger_includes_cash_beancount(self, tmp_path, monkeypatch):
+        """
+        Regression test: cash.beancount didn't exist when --guided last
+        generated FY{fy}.beancount's include list, so a cash entry would be
+        silently missing from the final ledger unless reconcile_fy()
+        regenerates that include list afterwards.
+        """
+        account_content = """
+2025-04-14 * "Food" ""
+  Assets:INR:Cash:CashInHand  200.00 INR
+  Expenses:INR:Food
+"""
+        intermediate = _setup_fy(tmp_path, monkeypatch, account_content, {})
+        reconcile_fy("2025_26")
+
+        parent = (tmp_path / "FY2025_26" / "FY2025_26.beancount").read_text()
+        assert 'include "intermediate/cash.beancount"' in parent
+        assert 'include "intermediate/account_test.beancount"' in parent
+
     def test_no_account_files_is_a_no_op(self, tmp_path, monkeypatch):
         (tmp_path / "FY2025_26" / "intermediate").mkdir(parents=True)
         monkeypatch.chdir(tmp_path)

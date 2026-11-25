@@ -141,6 +141,14 @@ def reconcile_fy(fy: str) -> None:
         print(f"Warning: {len(leftover_entries)} Account entries could not be matched "
               f"to a source transaction - left in {account_paths[0]} for manual review.")
 
+    # cash.beancount didn't exist when --guided last generated FY{fy}.beancount's
+    # include list, so it (and any newly-written intermediate files) wouldn't be
+    # in it yet - regenerate from everything actually on disk now, rather than
+    # leaving the parent ledger silently missing these transactions.
+    from dyu_accounting.guided_mode import generate_and_save_parent_ledger
+    all_intermediate_paths = sorted(glob.glob(os.path.join(intermediate_dir, "*.beancount")))
+    generate_and_save_parent_ledger(fy, all_intermediate_paths)
+
 
 def _find_match(
     account_entry: data.Transaction,
