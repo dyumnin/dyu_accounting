@@ -27,6 +27,21 @@ __version__ = "0.1.0"
 __author__ = 'Vijayvithal Jahagirdar'
 __credits__ = 'Dyumnin Semiconductors OPC Pvt Ltd'
 
+TOP_LEVEL_USAGE = """\
+usage: account --guided
+       account --reconcile-account --fy <year>
+       account --infile <ledger.beancount> --fy <year> [--outdir <dir>]
+
+Modes:
+  --guided                     Interactive guided import workflow (start here)
+  --reconcile-account --fy FY  Merge Account (Google Form) entries into the
+                                matching bank/credit-card intermediate ledgers
+  --infile FILE --fy FY        Legacy: generate reports directly from an
+    [--outdir DIR]              existing ledger (requires config.json)
+
+See GUIDED_MODE.md and CSV_IMPORT.md for details.
+"""
+
 
 def accounting():
     """
@@ -39,6 +54,17 @@ def accounting():
 
     This maintains backward compatibility while adding the new guided workflow.
     """
+    # Modes are dispatched by hand (not argparse subparsers) so each one's
+    # own flags (e.g. legacy's required --infile/--fy) don't collide with
+    # the others'. That means argparse (used only by legacy mode, below)
+    # never sees --guided or --reconcile-account, so its own --help/usage
+    # text can't mention them - show a mode banner up front instead,
+    # whenever no mode is recognized or help is requested, so these modes
+    # are actually discoverable rather than only documented in markdown.
+    if '-h' in sys.argv or '--help' in sys.argv or len(sys.argv) == 1:
+        print(TOP_LEVEL_USAGE)
+        return
+
     # Import guided_mode here to avoid circular imports
     try:
         from dyu_accounting.guided_mode import async_guided_workflow
