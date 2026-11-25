@@ -526,6 +526,51 @@ class TestUpworksSkipTransaction:
         assert make_importer('Upworks').skip_transaction(skip_row(date=None)) is True
 
 
+class TestUpworksGetTargetAccount:
+    """
+    Transaction type column -> second leg, turning these from single-leg
+    unbalanced transactions into complete double-entry ones.
+    """
+
+    def test_wht(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='WHT')) == 'Expenses:USD:Upwork:WHT'
+
+    def test_service_fee(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='Service Fee')) == 'Expenses:USD:Upwork:ServiceFee'
+
+    def test_withdrawal_fee(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='Withdrawal Fee')) == 'Expenses:USD:Upwork:WithdrawalFee'
+
+    def test_withdrawal_principal_goes_to_idfc_not_receivable(self):
+        """
+        'Withdrawal' (the principal amount) is a separate row from
+        'Withdrawal Fee' sharing the same Transaction ID - money actually
+        leaving the Upwork USD wallet for the bank, so it's a transfer to
+        IDFC, not income into the receivable account.
+        """
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='Withdrawal')) == 'Assets:INR:Cash:IDFC:Current'
+
+    def test_hourly_earnings_fall_back_to_receivable(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='Hourly')) == 'Assets:INR:Cash:AccountReceivable:Upwork'
+
+    def test_fixed_price_earnings_fall_back_to_receivable(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='Fixed-price')) == 'Assets:INR:Cash:AccountReceivable:Upwork'
+
+    def test_case_insensitive(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type='wht')) == 'Expenses:USD:Upwork:WHT'
+
+    def test_none_falls_back_to_receivable(self):
+        imp = make_importer('Upworks')
+        assert imp.get_target_account(skip_row(txn_type=None)) == 'Assets:INR:Cash:AccountReceivable:Upwork'
+
+
 # ---------------------------------------------------------------------------
 # Account (Google Forms)
 # Headers: Timestamp,Date,Amount,Purpose,Payment,Receipt

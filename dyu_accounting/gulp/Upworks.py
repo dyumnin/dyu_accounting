@@ -11,6 +11,25 @@ from beancount_reds_importers.libtransactionbuilder import banking
 class Importer(csvreader.Importer, banking.Importer):
     IMPORTER_NAME = "Upworks Transaction Report"
 
+    # Transaction type column -> second leg. Matched case-insensitively
+    # against the 'Transaction type' column.
+    #   - WHT/Service Fee/Withdrawal Fee: the cost of using Upwork.
+    #   - Withdrawal (the principal amount - a separate row per withdrawal
+    #     from 'Withdrawal Fee', same Transaction ID): money actually leaving
+    #     the Upwork USD wallet for the bank, so it's a transfer straight to
+    #     IDFC, not income.
+    #   - Everything else (Hourly, Fixed-price earnings, ...) falls back to
+    #     TARGET_FALLBACK_ACCOUNT - these are income, recognized into the INR
+    #     receivable account (money earned but not yet withdrawn), which a
+    #     withdrawal then draws down.
+    TARGET_ACCOUNT_MAP = {
+        "wht": "Expenses:USD:Upwork:WHT",
+        "service fee": "Expenses:USD:Upwork:ServiceFee",
+        "withdrawal fee": "Expenses:USD:Upwork:WithdrawalFee",
+        "withdrawal": "Assets:INR:Cash:IDFC:Current",
+    }
+    TARGET_FALLBACK_ACCOUNT = "Assets:INR:Cash:AccountReceivable:Upwork"
+
     def custom_init(self):
         # Upwork's own export is actually named '<date>_transaction_report.csv',
         # not prefixed with 'Upworks' as originally assumed.
@@ -28,6 +47,7 @@ class Importer(csvreader.Importer, banking.Importer):
         self.date_format = '%b %d, %Y'
         self.header_map = {
             'Date': 'date',
+            'Transaction type': 'txn_type',
             'Description 1': 'memo',
             'Amount $': 'amount',
             'Current balance $': 'balance',
@@ -64,6 +84,17 @@ class Importer(csvreader.Importer, banking.Importer):
         rdr = rdr.addfield('foreign_amount', rate_for_row)
         rdr = rdr.addfield('foreign_currency', lambda row: 'INR' if row['foreign_amount'] else None)
         return rdr
+
+    def get_target_account(self, ot):
+        """Transaction type column -> expense/receivable account.
+
+        Overrides banking.Importer.get_target_account (normally
+        self.config.get("target_account"), a single fixed account) so each
+        row gets the right second leg, turning these from single-leg
+        unbalanced transactions into complete double-entry ones.
+        """
+        txn_type = (getattr(ot, "txn_type", None) or "").strip().lower()
+        return self.TARGET_ACCOUNT_MAP.get(txn_type, self.TARGET_FALLBACK_ACCOUNT)
 
     def skip_transaction(self, row):
         if row.date is None:
