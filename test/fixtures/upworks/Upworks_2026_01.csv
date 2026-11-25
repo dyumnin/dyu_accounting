@@ -1,3 +1,6 @@
-Date,Ref ID,Type,Description,Agency,Freelancer,Team,Account Name,PO,Amount,ExchangeRate,Currency,Balance
-Jan 01, 2026,TXN001,INVOICE,Initial Invoice,Acme Corp,John Doe,Dev Team,USD Account,PO123,5000.00,83.25,USD,5000.00
-Jan 05, 2026,TXN002,PAYMENT,Project Payment,Acme Corp,John Doe,Dev Team,USD Account,PO124,2500.00,83.25,USD,7500.00
+Date,Transaction ID,Transaction type,Transaction summary,Transaction summary details,Description 1,Description 2,Description 3,Agency team,Freelancer,Client team,Account name,PO,Ref ID,Amount $,Amount in local currency,Currency,Current balance $,Payment method
+"Jul 25, 2025",828766367,Service Fee,RTL Engineer,"Earnings for Jul 14-Jul 20, 2025",Service fee,$120.00 x 10.0% = $12.00,,,Vijayvithal Jahagirdar,Nuand LLC,Dyumnin Technologies,,828766400,-12.00,,,1020.36,
+"Jul 25, 2025",828766367,WHT,RTL Engineer,"Earnings for Jul 14-Jul 20, 2025",Withholding tax,$120.00 x 0.1% = $0.12,,,Vijayvithal Jahagirdar,Nuand LLC,Dyumnin Technologies,,828766383,-0.12,,,1032.36,
+"Jul 25, 2025",828766367,Hourly,RTL Engineer,"Earnings for Jul 14-Jul 20, 2025","Earnings for Jul 14-Jul 20, 2025",2.00 hours x $60.00 = $120.00,,,Vijayvithal Jahagirdar,Nuand LLC,Dyumnin Technologies,,828766367,120.00,,,1032.48,
+"Sep 29, 2025",850027525,Withdrawal Fee,Wire Transfer (USD) 9032,,Withdrawal fee,$50.00,,,,,Dyumnin Technologies,,850027526,-50.00,,,0.00,
+"Sep 29, 2025",850027525,Withdrawal,Wire Transfer (USD) 9032,,Wire Transfer (USD) 9032,,,,,,Dyumnin Technologies,Porpose code P0801,850027525,-970.36,,,50.00,

@@ -7,6 +7,7 @@ data from each bank's exported file format.
 import datetime
 import importlib
 import io
+from decimal import Decimal
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -494,28 +495,85 @@ class TestUpworksConfig:
         assert make_importer('Upworks').currency == 'USD'
 
 
-class TestUpworksPrepareTable:
-    def _row(self, amount, balance='100.00'):
-        return {
-            'Date': 'Jan 01, 2023', 'Transaction type': 'Credit',
-            'Description 1': 'Payment received', 'Account name': 'Freelancer',
-            'Amount $': amount, 'Current balance $': balance,
+class TestUpworksMergeGroup:
+    """
+    Upwork's export has multiple rows per real-world event sharing one
+    'Transaction ID' (an earning plus its Service Fee/WHT rows, or a
+    Withdrawal plus its Withdrawal Fee row) - _merge_group() combines them
+    into the single dict prepare_table() turns into one beancount
+    transaction. See the Importer class docstring for the full rationale.
+    """
+
+    NUAND_GROUP = [
+        {'Date': 'Jul 25, 2025', 'Transaction type': 'Service Fee',
+         'Description 1': 'Service fee', 'Account name': 'Dyumnin Technologies',
+         'Amount $': '-12.00', 'Current balance $': '1020.36'},
+        {'Date': 'Jul 25, 2025', 'Transaction type': 'WHT',
+         'Description 1': 'Withholding tax', 'Account name': 'Dyumnin Technologies',
+         'Amount $': '-0.12', 'Current balance $': '1032.36'},
+        {'Date': 'Jul 25, 2025', 'Transaction type': 'Hourly',
+         'Description 1': 'Earnings for Jul 14-Jul 20, 2025', 'Account name': 'Dyumnin Technologies',
+         'Amount $': '120.00', 'Current balance $': '1032.48'},
+    ]
+
+    WITHDRAWAL_GROUP = [
+        {'Date': 'Sep 29, 2025', 'Transaction type': 'Withdrawal Fee',
+         'Description 1': 'Withdrawal fee', 'Account name': 'Dyumnin Technologies',
+         'Amount $': '-50.00', 'Current balance $': '0.00'},
+        {'Date': 'Sep 29, 2025', 'Transaction type': 'Withdrawal',
+         'Description 1': 'Wire Transfer (USD) 9032', 'Account name': 'Dyumnin Technologies',
+         'Amount $': '-970.36', 'Current balance $': '50.00'},
+    ]
+
+    def test_earning_group_nets_gross_minus_fees(self):
+        """Real sample: 120 (Hourly) - 12.00 (Service Fee) - 0.12 (WHT) = 107.88."""
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.NUAND_GROUP)
+        assert merged['Amount $'] == '107.88'
+        assert merged['gross_amount'] == '120.00'
+        assert merged['is_withdrawal'] is False
+
+    def test_earning_group_fee_postings(self):
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.NUAND_GROUP)
+        assert set(merged['extra_postings']) == {
+            ('Expenses:USD:Upwork:ServiceFee', Decimal('12.00')),
+            ('Expenses:USD:Upwork:WHT', Decimal('0.12')),
         }
 
-    def test_positive_amount_passes_through(self):
-        rows = prepare_rows(make_importer('Upworks'), [self._row('50.00')])
-        assert rows[0]['Amount $'] == '50.00'
+    def test_earning_group_attaches_rate_for_earning_date(self):
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.NUAND_GROUP)
+        assert merged['foreign_currency'] == 'INR'
+        assert merged['foreign_amount'] > 0
 
-    def test_negative_amount_passes_through(self):
-        """Upworks already uses signed amounts; no negation applied."""
-        rows = prepare_rows(make_importer('Upworks'), [self._row('-25.00')])
-        assert rows[0]['Amount $'] == '-25.00'
+    def test_earning_group_memo_comes_from_main_row(self):
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.NUAND_GROUP)
+        assert merged['Description 1'] == 'Earnings for Jul 14-Jul 20, 2025'
 
-    def test_adds_foreign_amount_rate_for_date(self):
-        """prepare_table() attaches a USD/INR rate as foreign_amount/foreign_currency."""
-        rows = prepare_rows(make_importer('Upworks'), [self._row('50.00')])
-        assert rows[0]['foreign_currency'] == 'INR'
-        assert rows[0]['foreign_amount'] > 0
+    def test_withdrawal_group_main_amount_is_principal_only(self):
+        """Real sample: -970.36 (Withdrawal), not merged with the -50.00 fee."""
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.WITHDRAWAL_GROUP)
+        assert merged['Amount $'] == '-970.36'
+        assert merged['is_withdrawal'] is True
+
+    def test_withdrawal_group_fee_is_separate_posting(self):
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.WITHDRAWAL_GROUP)
+        assert merged['extra_postings'] == [('Expenses:USD:Upwork:WithdrawalFee', Decimal('50.00'))]
+
+    def test_withdrawal_group_has_no_rate(self):
+        """
+        Withdrawal rows get no auto-fetched rate - the real USD/INR rate
+        isn't known until the IDFC bank statement is matched, which is
+        reconcile_upwork.py's job, not this importer's.
+        """
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.WITHDRAWAL_GROUP)
+        assert merged['foreign_amount'] is None
+        assert merged['foreign_currency'] is None
 
 
 class TestUpworksSkipTransaction:
@@ -527,48 +585,51 @@ class TestUpworksSkipTransaction:
 
 
 class TestUpworksGetTargetAccount:
-    """
-    Transaction type column -> second leg, turning these from single-leg
-    unbalanced transactions into complete double-entry ones.
-    """
-
-    def test_wht(self):
-        imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='WHT')) == 'Expenses:USD:Upwork:WHT'
-
-    def test_service_fee(self):
-        imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='Service Fee')) == 'Expenses:USD:Upwork:ServiceFee'
-
-    def test_withdrawal_fee(self):
-        imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='Withdrawal Fee')) == 'Expenses:USD:Upwork:WithdrawalFee'
-
-    def test_withdrawal_principal_goes_to_idfc_not_receivable(self):
+    def test_withdrawal_gets_no_target(self):
         """
-        'Withdrawal' (the principal amount) is a separate row from
-        'Withdrawal Fee' sharing the same Transaction ID - money actually
-        leaving the Upwork USD wallet for the bank, so it's a transfer to
-        IDFC, not income into the receivable account.
+        Left single-leg (principal + its own fee posting) for
+        reconcile_upwork.py to complete once the real bank-side amount is
+        known.
         """
         imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='Withdrawal')) == 'Assets:INR:Cash:IDFC:Current'
+        assert imp.get_target_account(skip_row(is_withdrawal=True)) is None
 
-    def test_hourly_earnings_fall_back_to_receivable(self):
+    def test_earning_targets_income_account(self):
         imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='Hourly')) == 'Assets:INR:Cash:AccountReceivable:Upwork'
+        assert imp.get_target_account(skip_row(is_withdrawal=False)) == 'Income:USD:UPWORKS:Client'
 
-    def test_fixed_price_earnings_fall_back_to_receivable(self):
-        imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='Fixed-price')) == 'Assets:INR:Cash:AccountReceivable:Upwork'
 
-    def test_case_insensitive(self):
-        imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type='wht')) == 'Expenses:USD:Upwork:WHT'
+class TestUpworksEndToEnd:
+    """
+    Regression test: runs the real importer end-to-end (identify() +
+    extract()) against a real fixture file, the same way bean-extract
+    itself does, to catch issues that only surface in the full pipeline
+    (e.g. a posting ending up in the wrong currency, which only bean-extract
+    in isolation wouldn't catch without real `open` directives loaded).
+    """
 
-    def test_none_falls_back_to_receivable(self):
-        imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(txn_type=None)) == 'Assets:INR:Cash:AccountReceivable:Upwork'
+    def test_real_fixture_produces_balanced_merged_transactions(self):
+        fixture = Path(__file__).parent / "fixtures" / "upworks" / "Upworks_2026_01.csv"
+        entries = extract_real_file(
+            'Upworks', {'main_account': 'Assets:USD:Upwork'}, fixture
+        )
+        assert len(entries) == 2  # one merged entry per Transaction ID
+
+        earning = next(e for e in entries if e.date == datetime.date(2025, 7, 25))
+        accounts = {p.account: p for p in earning.postings}
+        assert float(accounts['Assets:USD:Upwork'].units.number) == pytest.approx(107.88)
+        assert float(accounts['Income:USD:UPWORKS:Client'].units.number) == pytest.approx(-120.0)
+        assert float(accounts['Expenses:USD:Upwork:ServiceFee'].units.number) == pytest.approx(12.0)
+        assert float(accounts['Expenses:USD:Upwork:WHT'].units.number) == pytest.approx(0.12)
+        # All four legs share the same price (same earning-date rate).
+        prices = {p.price.number for p in earning.postings}
+        assert len(prices) == 1
+
+        withdrawal = next(e for e in entries if e.date == datetime.date(2025, 9, 29))
+        accounts = {p.account: p for p in withdrawal.postings}
+        assert float(accounts['Assets:USD:Upwork'].units.number) == pytest.approx(-970.36)
+        assert float(accounts['Expenses:USD:Upwork:WithdrawalFee'].units.number) == pytest.approx(50.0)
+        assert all(p.price is None for p in withdrawal.postings)
 
 
 # ---------------------------------------------------------------------------
