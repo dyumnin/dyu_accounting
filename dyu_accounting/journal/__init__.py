@@ -46,7 +46,16 @@ class Journal:
     def report_journal(self, outdir):
         reports = []
         for account in self.accounts:
-            filename = f"journal_{account}.html"
+            # Account names use ':' as a hierarchy separator (e.g.
+            # 'Liabilities:INR:CreditCard'), but a ':' in the first segment
+            # of a relative link target is ambiguous with a URI scheme per
+            # RFC 3986 - browsers/link resolvers can treat it as an attempt
+            # at an absolute URI (scheme 'journal_Liabilities', here) rather
+            # than a relative file path, breaking the link. Only the
+            # filename needs sanitizing; account_name below (used for
+            # display inside the report) keeps the real account name.
+            safe_account = account.replace(':', '_')
+            filename = f"journal_{safe_account}.html"
             written = render_template(data={
                 'template_name': "journal.tpl",
                 'cfg': self.cfg,
