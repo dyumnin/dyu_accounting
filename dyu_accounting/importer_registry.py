@@ -24,6 +24,15 @@ class ImporterMetadata:
     folder_name: str  # e.g., 'icici_bank'
 
 
+# camel_to_snake() can't split all-caps module names (e.g. 'IDFC', 'SBI') into
+# multiple words, so it produces folder names that don't match the fixed bank
+# folders create_fy_folder_structure() actually creates. Override those here.
+FOLDER_NAME_OVERRIDES = {
+    'IDFC': 'idfc_bank',
+    'SBI': 'sbi_bank',
+}
+
+
 def camel_to_snake(name: str) -> str:
     """Convert CamelCase to snake_case."""
     # Insert underscore before uppercase letters preceded by lowercase
@@ -97,7 +106,7 @@ def introspect_importer(module_name: str, module) -> Optional[ImporterMetadata]:
     header_identifier = getattr(instance, 'header_identifier', '')
     column_labels = getattr(instance, 'column_labels_line', '')
     currency = getattr(instance, 'currency', 'INR')
-    folder_name = camel_to_snake(module_name)
+    folder_name = FOLDER_NAME_OVERRIDES.get(module_name, camel_to_snake(module_name))
 
     return ImporterMetadata(
         name=module_name,

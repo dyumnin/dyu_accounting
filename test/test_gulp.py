@@ -341,19 +341,20 @@ class TestSBISkipTransaction:
 
 # ---------------------------------------------------------------------------
 # ICICIBank
-# Headers: S No.,Value Date,Transaction Date,Cheque Number,Transaction Remarks,
-#          Withdrawal Amount (INR ),Deposit Amount (INR ),Balance (INR )
+# Real header: S No.,Value Date,Transaction Date,Cheque Number,Transaction
+#          Remarks,Withdrawal Amount(INR),Deposit Amount(INR),Balance(INR)
+#          (no spaces around '(INR)', unlike what was originally assumed)
 # ---------------------------------------------------------------------------
 
 class TestICICIBankPrepareTable:
-    COL_WD = 'Withdrawal Amount (INR )'
-    COL_DEP = 'Deposit Amount (INR )'
+    COL_WD = 'Withdrawal Amount(INR)'
+    COL_DEP = 'Deposit Amount(INR)'
 
     def _row(self, wd, dep, balance=50000.0):
         return {
             'S No.': 1, 'Value Date': '01/01/2023', 'Transaction Date': '01/01/2023',
             'Cheque Number': '', 'Transaction Remarks': 'Test',
-            self.COL_WD: wd, self.COL_DEP: dep, 'Balance (INR )': balance,
+            self.COL_WD: wd, self.COL_DEP: dep, 'Balance(INR)': balance,
         }
 
     def test_withdrawal_becomes_negative(self):
@@ -430,8 +431,14 @@ class TestIDFCSkipTransaction:
 
 # ---------------------------------------------------------------------------
 # Upworks
-# Headers: Date,Ref ID,Type,Description,Agency,Freelancer,Team,Account Name,
-#          PO,Amount,ExchangeRate,Currency,Balance
+# Real header (Upwork's own 'transaction_report.csv' export): Date,Transaction ID,
+#          Transaction type,Transaction summary,Transaction summary details,
+#          Description 1,Description 2,Description 3,Agency team,Freelancer,
+#          Client team,Account name,PO,Ref ID,Amount $,Amount in local currency,
+#          Currency,Current balance $,Payment method
+# prepare_table() also fetches a historical USD/INR rate per transaction date
+# (via forex_python) and attaches it as foreign_amount/foreign_currency, which
+# banking.Importer.extract() uses to record an '@ rate INR' price annotation.
 # ---------------------------------------------------------------------------
 
 class TestUpworksConfig:
@@ -451,21 +458,25 @@ class TestUpworksConfig:
 class TestUpworksPrepareTable:
     def _row(self, amount, balance='100.00'):
         return {
-            'Date': 'Jan 01, 2023', 'Ref ID': 'REF001', 'Type': 'Credit',
-            'Description': 'Payment received', 'Agency': '', 'Freelancer': 'Test User',
-            'Team': '', 'Account Name': 'Freelancer', 'PO': '',
-            'Amount': amount, 'ExchangeRate': '82.5',
-            'Currency': 'USD', 'Balance': balance,
+            'Date': 'Jan 01, 2023', 'Transaction type': 'Credit',
+            'Description 1': 'Payment received', 'Account name': 'Freelancer',
+            'Amount $': amount, 'Current balance $': balance,
         }
 
     def test_positive_amount_passes_through(self):
         rows = prepare_rows(make_importer('Upworks'), [self._row('50.00')])
-        assert rows[0]['Amount'] == '50.00'
+        assert rows[0]['Amount $'] == '50.00'
 
     def test_negative_amount_passes_through(self):
         """Upworks already uses signed amounts; no negation applied."""
         rows = prepare_rows(make_importer('Upworks'), [self._row('-25.00')])
-        assert rows[0]['Amount'] == '-25.00'
+        assert rows[0]['Amount $'] == '-25.00'
+
+    def test_adds_foreign_amount_rate_for_date(self):
+        """prepare_table() attaches a USD/INR rate as foreign_amount/foreign_currency."""
+        rows = prepare_rows(make_importer('Upworks'), [self._row('50.00')])
+        assert rows[0]['foreign_currency'] == 'INR'
+        assert rows[0]['foreign_amount'] > 0
 
 
 class TestUpworksSkipTransaction:

@@ -7,9 +7,16 @@ from beancount_reds_importers.libtransactionbuilder import banking
 
 class Importer(csvreader.Importer, banking.Importer):
     IMPORTER_NAME = "SBI YONO TSV File"
+    # The YONO app export is plain tab-separated text saved with a '.xls' extension,
+    # not an actual binary Excel file, so it has to be accepted alongside '.csv'.
+    FILE_EXTS = ["csv", "xls"]
 
     def custom_init(self):
-        self.filename_pattern_def = 'SBI'
+        # SBI exports come in two flavors in the wild: a comma-delimited CSV from
+        # net-banking (e.g. 'SBIBankStatement.csv') and a tab-delimited export from
+        # the YONO app named 'Account_Statement_<ref>.xls' (despite the extension,
+        # it's plain tab-separated text).
+        self.filename_pattern_def = r'(SBI|Account_Statement).*'
         self.column_labels_line = 'Txn Date,Value Date,Description,Ref No./Cheque No.,Branch Code,Debit,Credit,Balance'
         self.currency = "INR"
         self.header_identifier = 'Account Name'
@@ -23,6 +30,24 @@ class Importer(csvreader.Importer, banking.Importer):
             'Ref No./Cheque No.': 'payee',
         }
         self.skip_transaction_types = ['Journal']
+
+    def read_raw(self, file):
+        # Detect comma vs. tab delimiting rather than assuming one, since both
+        # real-world SBI export formats need to be supported.
+        with open(file.name, encoding='utf-8', errors='ignore') as f:
+            sample = f.read(8192)
+        delimiter = '\t' if sample.count('\t') > sample.count(',') else ','
+        return petl.fromcsv(file.name, delimiter=delimiter)
+
+    def prepare_raw_file(self, rdr):
+        # The YONO TSV export pads cells with fixed-width whitespace (e.g. a
+        # header cell of '        Debit'), which breaks the base reader's literal
+        # header-row matching. Strip every cell so header/data line up cleanly
+        # regardless of which export format produced the file.
+        def strip_rows(rows):
+            for row in rows:
+                yield tuple(v.strip() if isinstance(v, str) else v for v in row)
+        return petl.wrap(list(strip_rows(rdr)))
 
     def prepare_table(self, rdr):
         # SBI exports unquoted comma-formatted amounts (e.g. 1,770.00) in a comma-delimited
