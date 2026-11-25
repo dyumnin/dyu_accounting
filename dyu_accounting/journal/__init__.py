@@ -18,14 +18,21 @@ class Journal:
         self.find_cash_transactions()
 
     def find_cash_accounts(self):
+        # Prefer discovering cash accounts straight from each account's own
+        # `open` directive metadata (schedule3: "bs.cash", or the legacy
+        # balance_sheet: "assets.cash") over a hand-maintained list in
+        # config.json's cash_accounts, which silently goes stale (missing
+        # new accounts, or renamed ones) whenever the chart of accounts
+        # changes without a matching config.json edit.
         self.accounts = {}
-        for x in self.cfg['cash_accounts']:
-            self.accounts[x] = []
-        # self.accounts = {}
-        # for entry in self.entries:
-        #     if isinstance(entry, data.Open):
-        #         if(entry.meta.get('balance_sheet')) == "assets.cash":
-        #             self.accounts[entry.account] = []
+        for entry in self.entries:
+            if isinstance(entry, data.Open):
+                schedule3 = entry.meta.get('schedule3')
+                legacy = entry.meta.get('balance_sheet')
+                if schedule3 == 'bs.cash' or legacy == 'assets.cash':
+                    self.accounts[entry.account] = []
+        for x in self.cfg.get('cash_accounts', []):
+            self.accounts.setdefault(x, [])
 
     def find_cash_transactions(self):
         for entry in self.entries:

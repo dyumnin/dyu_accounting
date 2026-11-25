@@ -35,6 +35,31 @@ COMPANY_NAME = "Dyumnin Semiconductors OPC Private LTD"
 COMPANY_ADDRESS = "#1 Bharathi Ramana, Vidhyaranyapura, 1st Block, Nanjappa Layout, Bangalore 13"
 SHARE_CAPITAL = ['Equity:INR:ShareCapital']
 
+# Newer charts of accounts tag each `open` directive with a Schedule III
+# key (e.g. `schedule3: "bs.cash"`) instead of the legacy `balance_sheet:
+# "assets.cash"` key this module originally read. Translate the ones that
+# belong on the balance sheet (bs.*) into the (head, subkey) pairs BSTable
+# already uses; schedule3 values outside this table (e.g. pnl.* ones, used
+# to route accounts like Assets:INR:ExchangeGain to the P&L instead) are
+# intentionally left out of the balance sheet.
+SCHEDULE3_TO_BS = {
+    'bs.fixed_assets': ('assets', 'tangible'),
+    'bs.investments_nc': ('assets', 'investments_non_current'),
+    'bs.gst_itc': ('assets', 'misc_current'),
+    'bs.cash': ('assets', 'cash'),
+    'bs.trade_receivables': ('assets', 'trade_receivables'),
+    'bs.shortterm_loans': ('assets', 'shortterm_loans'),
+    'bs.wip_capital': ('assets', 'wip_capital'),
+    'bs.provisions': ('liabilities', 'shortterm_provisions'),
+    'bs.equity_share_capital': ('liabilities', 'share_capital'),
+    'bs.equity_surplus': ('liabilities', 'surplus'),
+    'bs.borrowings': ('liabilities', 'shortterm_borrowing'),
+    'bs.trade_payables': ('liabilities', 'trade_payable'),
+    'bs.gst_payable': ('liabilities', 'other_current_liabilities'),
+    'bs.other_current_liabilities': ('liabilities', 'other_current_liabilities'),
+    'bs.accrued_liabilities': ('liabilities', 'shortterm_provisions'),
+}
+
 
 class BSTable:
 
@@ -111,9 +136,14 @@ class BalanceSheet:
         self.category = {}
         for entry in self.entries:
             if isinstance(entry, data.Open):
-                if(entry.meta.get('balance_sheet')):
-                    self.category[entry.account] = entry.meta.get(
-                        'balance_sheet')
+                legacy = entry.meta.get('balance_sheet')
+                if legacy:
+                    self.category[entry.account] = legacy
+                    continue
+                schedule3 = entry.meta.get('schedule3')
+                if schedule3 in SCHEDULE3_TO_BS:
+                    head, subkey = SCHEDULE3_TO_BS[schedule3]
+                    self.category[entry.account] = f'{head}.{subkey}'
 
     def mkBalanceSheet(self, year):
         '''
