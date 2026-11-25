@@ -32,13 +32,19 @@ class Importer(csvreader.Importer, banking.Importer):
       (matching their Expenses:USD:*/Income:USD:* open directives) while
       still balancing by weight in INR; see conversation/commit history for
       why a single price on only one leg doesn't balance.
-    - Withdrawal groups: Assets:USD:Upwork gets the principal amount only
-      (unpriced), and the Withdrawal Fee row becomes its own Expenses
-      posting (also unpriced) - deliberately left with a residual, since the
-      real USD/INR rate for a withdrawal isn't the auto-fetched one, it's
-      whatever the IDFC bank statement implies once the actual deposit is
-      known (10+ day settlement lag is normal). reconcile_upwork.py
-      completes this once that real transaction is matched.
+    - Withdrawal groups: fully balanced immediately, with the fee kept
+      separate from the FX conversion since it's a flat USD cost, never
+      itself converted:
+        * the fee portion is a self-balanced, unpriced pair: Assets:USD:Upwork
+          (Dr -fee) / Expenses:USD:Upwork:WithdrawalFee (Cr +fee);
+        * the principal is priced at the withdrawal date's own auto-fetched
+          rate (same mechanism as earnings) and targets
+          Assets:INR:Cash:AccountReceivable:Upwork - a *provisional* INR
+          value, since the real rate isn't known until the IDFC bank
+          statement settles (10+ day lag is normal). reconcile_upwork.py
+          later true's this up to the real amount once that's matched,
+          posting the expected-vs-actual difference to
+          Assets:INR:ExchangeGain.
     """
 
     IMPORTER_NAME = "Upworks Transaction Report"
@@ -50,6 +56,7 @@ class Importer(csvreader.Importer, banking.Importer):
         "withdrawal fee": "Expenses:USD:Upwork:WithdrawalFee",
     }
     INCOME_ACCOUNT = "Income:USD:UPWORKS:Client"
+    RECEIVABLE_ACCOUNT = "Assets:INR:Cash:AccountReceivable:Upwork"
 
     def custom_init(self):
         # Upwork's own export is actually named '<date>_transaction_report.csv',
@@ -110,26 +117,26 @@ class Importer(csvreader.Importer, banking.Importer):
                 extra_postings.append((account, -Decimal(str(amount_str))))
 
         main_amount = Decimal(str(main.get('Amount $') or '0'))
+        date = datetime.datetime.strptime(main['Date'].strip(), self.date_format).date()
+        rate = self._get_rate(date)
 
         merged = dict(main)
         merged['is_withdrawal'] = is_withdrawal
         merged['extra_postings'] = extra_postings
         merged['gross_amount'] = str(main_amount)
+        merged['foreign_amount'] = rate
+        merged['foreign_currency'] = 'INR' if rate else None
         if is_withdrawal:
-            # Principal only - the fee is its own separate, unpriced posting;
-            # both stay unresolved pending reconcile_upwork's real bank rate.
+            # Principal only - the fee is handled as its own self-balanced,
+            # unpriced pair in add_custom_postings (a flat USD cost, never
+            # itself converted), kept separate from this priced leg.
             merged['Amount $'] = str(main_amount)
-            merged['foreign_amount'] = None
-            merged['foreign_currency'] = None
+            merged['fee_total'] = str(sum((amt for _, amt in extra_postings), Decimal(0)))
         else:
             # extra_postings already hold the positive Expense amounts; the
             # wallet's net change subtracts them from the gross earning.
             net_amount = main_amount - sum((amt for _, amt in extra_postings), Decimal(0))
             merged['Amount $'] = str(net_amount)
-            date = datetime.datetime.strptime(main['Date'].strip(), self.date_format).date()
-            rate = self._get_rate(date)
-            merged['foreign_amount'] = rate
-            merged['foreign_currency'] = 'INR' if rate else None
         return merged
 
     def prepare_table(self, rdr):
@@ -148,21 +155,25 @@ class Importer(csvreader.Importer, banking.Importer):
 
     def get_target_account(self, ot):
         """
-        Withdrawal groups get no target account here - they're left
-        single-leg (principal + its own fee posting, both unpriced) for
-        reconcile_upwork.py to complete once the real bank-side amount is
-        known. Everything else (earnings) targets the USD income account;
-        add_custom_postings() below fixes it up to be explicit and
-        same-priced as the main leg (see class docstring for why).
+        Withdrawal groups target the INR receivable (a provisional value at
+        the withdrawal date's own rate - reconcile_upwork.py true's this up
+        once the real bank-side amount is known). Earnings target the USD
+        income account; add_custom_postings() below fixes it up to be
+        explicit and same-priced as the main leg (see class docstring).
         """
         if getattr(ot, "is_withdrawal", False):
-            return None
+            return self.RECEIVABLE_ACCOUNT
         return self.INCOME_ACCOUNT
 
     def add_custom_postings(self, entry, ot):
         extra_postings = getattr(ot, "extra_postings", None) or []
 
         if getattr(ot, "is_withdrawal", False):
+            fee_total = Decimal(str(getattr(ot, "fee_total", "0") or "0"))
+            if fee_total:
+                # Self-balanced pair, deliberately unpriced: a flat USD cost
+                # already fully known, not part of the FX conversion.
+                data.create_simple_posting(entry, self.config["main_account"], -fee_total, "USD")
             for account, amount in extra_postings:
                 data.create_simple_posting(entry, account, amount, "USD")
             return

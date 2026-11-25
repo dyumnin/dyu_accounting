@@ -564,16 +564,21 @@ class TestUpworksMergeGroup:
         merged = imp._merge_group(self.WITHDRAWAL_GROUP)
         assert merged['extra_postings'] == [('Expenses:USD:Upwork:WithdrawalFee', Decimal('50.00'))]
 
-    def test_withdrawal_group_has_no_rate(self):
+    def test_withdrawal_group_gets_provisional_rate(self):
         """
-        Withdrawal rows get no auto-fetched rate - the real USD/INR rate
-        isn't known until the IDFC bank statement is matched, which is
-        reconcile_upwork.py's job, not this importer's.
+        Withdrawal rows get the withdrawal date's own auto-fetched rate for
+        a provisional valuation (reconcile_upwork.py true's this up to the
+        real bank rate once the IDFC deposit is matched - see that module).
         """
         imp = make_importer('Upworks')
         merged = imp._merge_group(self.WITHDRAWAL_GROUP)
-        assert merged['foreign_amount'] is None
-        assert merged['foreign_currency'] is None
+        assert merged['foreign_currency'] == 'INR'
+        assert merged['foreign_amount'] > 0
+
+    def test_withdrawal_group_fee_total(self):
+        imp = make_importer('Upworks')
+        merged = imp._merge_group(self.WITHDRAWAL_GROUP)
+        assert merged['fee_total'] == '50.00'
 
 
 class TestUpworksSkipTransaction:
@@ -585,14 +590,15 @@ class TestUpworksSkipTransaction:
 
 
 class TestUpworksGetTargetAccount:
-    def test_withdrawal_gets_no_target(self):
+    def test_withdrawal_targets_receivable(self):
         """
-        Left single-leg (principal + its own fee posting) for
-        reconcile_upwork.py to complete once the real bank-side amount is
-        known.
+        A provisional value at the withdrawal date's own rate -
+        reconcile_upwork.py true's this up once the real bank-side amount
+        is known.
         """
         imp = make_importer('Upworks')
-        assert imp.get_target_account(skip_row(is_withdrawal=True)) is None
+        assert imp.get_target_account(skip_row(is_withdrawal=True)) == \
+            'Assets:INR:Cash:AccountReceivable:Upwork'
 
     def test_earning_targets_income_account(self):
         imp = make_importer('Upworks')
@@ -626,10 +632,24 @@ class TestUpworksEndToEnd:
         assert len(prices) == 1
 
         withdrawal = next(e for e in entries if e.date == datetime.date(2025, 9, 29))
-        accounts = {p.account: p for p in withdrawal.postings}
-        assert float(accounts['Assets:USD:Upwork'].units.number) == pytest.approx(-970.36)
-        assert float(accounts['Expenses:USD:Upwork:WithdrawalFee'].units.number) == pytest.approx(50.0)
-        assert all(p.price is None for p in withdrawal.postings)
+        assert len(withdrawal.postings) == 4
+        wallet_postings = [p for p in withdrawal.postings if p.account == 'Assets:USD:Upwork']
+        # Principal (priced, provisional) and fee (unpriced) are two
+        # separate Assets:USD:Upwork postings, not netted together.
+        assert {float(p.units.number) for p in wallet_postings} == {-970.36, -50.0}
+        principal = next(p for p in wallet_postings if float(p.units.number) == -970.36)
+        fee_wallet_leg = next(p for p in wallet_postings if float(p.units.number) == -50.0)
+        assert principal.price is not None
+        assert fee_wallet_leg.price is None
+
+        receivable = next(p for p in withdrawal.postings
+                           if p.account == 'Assets:INR:Cash:AccountReceivable:Upwork')
+        assert receivable.units is None  # auto-balancing
+
+        fee_expense = next(p for p in withdrawal.postings
+                            if p.account == 'Expenses:USD:Upwork:WithdrawalFee')
+        assert float(fee_expense.units.number) == pytest.approx(50.0)
+        assert fee_expense.price is None
 
 
 # ---------------------------------------------------------------------------
