@@ -118,16 +118,18 @@ Timestamp=2025-04-01 10:00:00, Date=01/04/2025, Amount=500, Purpose=Food, Paymen
 ```
 
 `Payment=Cash` → `Assets:INR:Cash:CashInHand` (source), `Purpose=Food` →
-`Expenses:Food` (target), via `PAYMENT_ACCOUNT_MAP`/`PURPOSE_ACCOUNT_MAP`
-(unmatched values fall back to `Assets:Uncategorized` /
-`Expenses:Uncategorized` respectively); the `Receipt` column is attached as
+`Expenses:INR:Food` (target), via `PAYMENT_ACCOUNT_MAP`/`PURPOSE_ACCOUNT_MAP`
+(unmatched values fall back to `Assets:INR:Uncategorized` /
+`Expenses:INR:Uncategorized` respectively - these follow this project's own
+chart-of-accounts convention, `<Type>:INR:<Category>` with no spaces; see
+`example/accounts.beancount`); the `Receipt` column is attached as
 transaction metadata by an overridden `build_metadata()`:
 
 ```beancount
 2025-04-01 * "" "Food"
   meta: receipt: "https://..."
   Assets:INR:Cash:CashInHand  -500.00 INR
-  Expenses:Food                500.00 INR
+  Expenses:INR:Food             500.00 INR
 ```
 
 ## 3. How Auto-Discovery Works

@@ -18,18 +18,27 @@ class Importer(csvreader.Importer, banking.Importer):
         "credit card": "Liabilities:INR:CreditCard",
         "cash": "Assets:INR:Cash:CashInHand",
     }
-    PAYMENT_FALLBACK_ACCOUNT = "Assets:Uncategorized"
+    PAYMENT_FALLBACK_ACCOUNT = "Assets:INR:Uncategorized"
 
     # Purpose column -> expense/debit account (where the money went).
     # Matched the same way as Payment above.
+    #
+    # Values follow this project's chart-of-accounts convention
+    # (Expenses:INR:<Category>, PascalCase with no spaces - see
+    # example/accounts.beancount) rather than the originally-locked
+    # TICKET-009 spec values (bare 'Expenses:Food', and 'Expenses:Office
+    # Supplies'/'Expenses:Vehicle Maintenance' with spaces, which aren't even
+    # valid beancount account names - account name components can't contain
+    # spaces - so those two would have failed to parse the first time a real
+    # row hit them).
     PURPOSE_ACCOUNT_MAP = {
-        "food": "Expenses:Food",
-        "fuel": "Expenses:Fuel",
-        "office supplies": "Expenses:Office Supplies",
-        "vehicle maintenance": "Expenses:Vehicle Maintenance",
-        "travel": "Expenses:Travel",
+        "food": "Expenses:INR:Food",
+        "fuel": "Expenses:INR:Fuel",
+        "office supplies": "Expenses:INR:OfficeSupplies",
+        "vehicle maintenance": "Expenses:INR:VehicleMaintenance",
+        "travel": "Expenses:INR:Travel",
     }
-    PURPOSE_FALLBACK_ACCOUNT = "Expenses:Uncategorized"
+    PURPOSE_FALLBACK_ACCOUNT = "Expenses:INR:Uncategorized"
 
     def custom_init(self):
         self.currency = 'INR'

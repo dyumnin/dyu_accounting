@@ -580,49 +580,75 @@ class TestAccountGetMainAccount:
 
     def test_unmapped_value_falls_back(self):
         imp = make_importer('Account')
-        assert imp.get_main_account(skip_row(Payment='Bag')) == 'Assets:Uncategorized'
+        assert imp.get_main_account(skip_row(Payment='Bag')) == 'Assets:INR:Uncategorized'
 
     def test_blank_falls_back(self):
         imp = make_importer('Account')
-        assert imp.get_main_account(skip_row(Payment='')) == 'Assets:Uncategorized'
+        assert imp.get_main_account(skip_row(Payment='')) == 'Assets:INR:Uncategorized'
 
 
 class TestAccountGetTargetAccount:
-    """Purpose column (ot.memo) -> expense/debit account, case-insensitively."""
+    """
+    Purpose column (ot.memo) -> expense/debit account, case-insensitively.
+
+    Values must follow this project's real chart-of-accounts convention
+    (Expenses:INR:<Category>, no spaces - see example/accounts.beancount);
+    the originally-locked TICKET-009 spec values ('Expenses:Food', and
+    'Expenses:Office Supplies'/'Expenses:Vehicle Maintenance' with spaces)
+    didn't match it, and the latter two aren't even valid beancount account
+    names (account name components can't contain spaces).
+    """
 
     def test_food(self):
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='Food')) == 'Expenses:Food'
+        assert imp.get_target_account(skip_row(memo='Food')) == 'Expenses:INR:Food'
 
     def test_fuel(self):
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='Fuel')) == 'Expenses:Fuel'
+        assert imp.get_target_account(skip_row(memo='Fuel')) == 'Expenses:INR:Fuel'
 
     def test_office_supplies(self):
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='Office Supplies')) == 'Expenses:Office Supplies'
+        assert imp.get_target_account(skip_row(memo='Office Supplies')) == 'Expenses:INR:OfficeSupplies'
 
     def test_vehicle_maintenance_whitespace_quirk(self):
         """Real data: 'Vehicle  maintenance ' (double internal space, trailing space)."""
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='Vehicle  maintenance ')) == 'Expenses:Vehicle Maintenance'
+        assert imp.get_target_account(skip_row(memo='Vehicle  maintenance ')) == 'Expenses:INR:VehicleMaintenance'
 
     def test_travel(self):
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='Travel')) == 'Expenses:Travel'
+        assert imp.get_target_account(skip_row(memo='Travel')) == 'Expenses:INR:Travel'
 
     def test_case_insensitive_upper(self):
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='FOOD')) == 'Expenses:Food'
+        assert imp.get_target_account(skip_row(memo='FOOD')) == 'Expenses:INR:Food'
 
     def test_unmapped_purpose_falls_back(self):
         """Real sample value from researcher's findings."""
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='1947 food')) == 'Expenses:Uncategorized'
+        assert imp.get_target_account(skip_row(memo='1947 food')) == 'Expenses:INR:Uncategorized'
 
     def test_unmapped_purpose_with_special_characters_falls_back(self):
         imp = make_importer('Account')
-        assert imp.get_target_account(skip_row(memo='USB cables, boxes, snacks')) == 'Expenses:Uncategorized'
+        assert imp.get_target_account(skip_row(memo='USB cables, boxes, snacks')) == 'Expenses:INR:Uncategorized'
+
+    def test_account_names_are_valid_beancount_identifiers(self):
+        """
+        Regression test: account name components can't contain spaces (or
+        any character outside [A-Za-z0-9\\-]); 'Expenses:Office Supplies'
+        and 'Expenses:Vehicle Maintenance' (the original TICKET-009 spec
+        values) would fail to parse the first time a real row hit them.
+        """
+        import re
+        imp = make_importer('Account')
+        valid_component = re.compile(r'^[A-Z][A-Za-z0-9\-]*$')
+        for account in list(imp.PURPOSE_ACCOUNT_MAP.values()) + [imp.PURPOSE_FALLBACK_ACCOUNT]:
+            for component in account.split(':'):
+                assert valid_component.match(component), (
+                    f"{component!r} in {account!r} is not a valid beancount "
+                    "account name component"
+                )
 
 
 class TestAccountBuildMetadata:
