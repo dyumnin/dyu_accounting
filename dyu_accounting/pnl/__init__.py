@@ -3,6 +3,7 @@ import datetime
 from decimal import Decimal
 import re
 import os
+import sys
 from beancount.core import data
 from dyu_accounting.Utilities import render_template
 
@@ -37,6 +38,24 @@ class PnL:
                 ):
                     for posting in entry.postings:
                         if income_re.match(posting.account):
+                            # Income accounts are credit-normal: a revenue
+                            # posting should be negative. A positive one
+                            # (e.g. from a hand-added leg) doesn't just
+                            # look odd - it actively cancels out correctly
+                            # signed revenue in the same running total
+                            # instead of adding to it, silently understating
+                            # revenue. Flag it rather than fail quietly.
+                            if posting.units.number > 0:
+                                print(
+                                    f"WARNING: positive amount on income "
+                                    f"account {posting.account} in "
+                                    f"{entry.date} \"{entry.narration}\" "
+                                    f"({posting.units}) - revenue accounts "
+                                    f"are normally credited (negative); "
+                                    f"this will understate reported revenue "
+                                    f"unless it is a deliberate refund/"
+                                    f"contra entry.",
+                                    file=sys.stderr)
                             self._add('revenue', posting)
                         if salary_re.match(posting.account):
                             self._add('salary', posting)
