@@ -14,7 +14,7 @@ h| Expenses |
 | Depreciation | {{pnl.depreciation|round(2)}}
 | Other Expenses | {{pnl.misc_expenses|round(2)}}
 h| Total Expenses | {{pnl.expenses_total|round(2)}}
-h| Profit/Loss | {{pnl.profit|round(2)}}{% if pnl.profit > 0 %} (Loss){% endif %}
+h| Profit/Loss | {{pnl.profit|round(2)}}{% if pnl.profit < 0 %} (Loss){% endif %}
 
 |===
 

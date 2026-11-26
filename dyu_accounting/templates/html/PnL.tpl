@@ -13,7 +13,7 @@
 <tr> <td>Depreciation</td> <td>{{pnl.depreciation|round(3)}}</td></tr>
 <tr> <td>Other Expenses</td> <td>{{pnl.misc_expenses}}</td></tr>
 <tr> <th>Total Expenses                      </th> <th>{{pnl.expenses_total|round(3)}}</th></tr>
-<tr> <th> Profit/Loss                       </th> <th>{{pnl.profit|round(3)}} {%if pnl.profit >0 %} (Loss) {%endif%}</th></tr>
+<tr> <th> Profit/Loss                       </th> <th>{{pnl.profit|round(3)}} {%if pnl.profit <0 %} (Loss) {%endif%}</th></tr>
 
 </table>
 <p>

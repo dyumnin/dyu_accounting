@@ -10,6 +10,6 @@
 | Depreciation            | {{pnl.depreciation| round(3)}}                                        | 
 | Other Expenses          | {{pnl.misc_expenses}} | 
 | Total Expenses          | {{pnl.expenses_total  | round(3)}}| 
-| Profit/Loss             | {{pnl.profit | round(3)}} {%if pnl.profit >0 %} (Loss) {%endif%} | 
+| Profit/Loss             | {{pnl.profit | round(3)}} {%if pnl.profit <0 %} (Loss) {%endif%} | 
 
 Note: Salary deductions(TDS,PF are counted as liabilities and transfer as Expenses:INR:GOI,GOK)

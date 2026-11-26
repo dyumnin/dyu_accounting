@@ -76,8 +76,18 @@ class PnL:
     def report_pnl(self, outdir):
         self.pnl_data['expenses_total'] = self.pnl_data['depreciation'] + \
             self.pnl_data['misc_expenses'] + self.pnl_data['salary']
-        self.pnl_data['profit'] = self.pnl_data['expenses_total'] + \
-            self.pnl_data['revenue']
+        # Income is credit-normal, so pnl_data['revenue'] has been
+        # accumulating as a negative raw ledger balance (see calc_pnl/_add)
+        # - that's exactly what the positive-posting warning above needs,
+        # so it's kept raw until here. Flip it to the conventional positive
+        # revenue figure for display and compute profit the normal way
+        # (revenue - expenses) now that both sides are display-signed,
+        # rather than just summing the raw-signed postings, which silently
+        # inverted a real profit into what looked like a loss of the same
+        # size.
+        self.pnl_data['revenue'] = -self.pnl_data['revenue']
+        self.pnl_data['profit'] = self.pnl_data['revenue'] - \
+            self.pnl_data['expenses_total']
         fname="PnL.html"
         written = render_template(data={
             'template_name': 'PnL.tpl',

@@ -211,13 +211,34 @@ class BalanceSheet:
         logger.debug(f'transfer Entries {transfer_entries}')
         logger.debug(f'Entries after transfer {self.entries}')
 
+    @staticmethod
+    def _display_account(bs_table):
+        """BSTable.account, with the 'liabilities' head (which also holds
+        the equity lines - share_capital, surplus - per this chart's own
+        balance_sheet/schedule3 convention) sign-flipped for display.
+
+        Liabilities and equity are credit-normal, so their raw ledger
+        balance is negative (e.g. Share Capital sits at -100000 for a
+        credited 100000); Assets are debit-normal, so its raw balance
+        already matches the positive figure a balance sheet conventionally
+        shows. Flipping only 'liabilities' here, at render time, keeps the
+        raw signed values available to anything else (e.g. update_total())
+        that works directly with BSTable.
+        """
+        return {
+            'liabilities': {
+                k: Amount(-v.number, v.currency)
+                for k, v in bs_table.account['liabilities'].items()},
+            'assets': bs_table.account['assets'],
+        }
+
     def report_balance_sheet(self):
         fname = f"balance_sheet_FY_{self.cfg['fy']}_{self.cfg['fy']+1}.html"
         written = render_template(data={
             'template_name': 'balancesheet.tpl',
             'cfg': self.cfg,
-            'account': self.balancesheet[self.cfg['fy']].account,
-            'prev_account': self.balancesheet[self.cfg['fy']-1].account,
+            'account': self._display_account(self.balancesheet[self.cfg['fy']]),
+            'prev_account': self._display_account(self.balancesheet[self.cfg['fy']-1]),
             'outfile': fname
         })
         return [written]
