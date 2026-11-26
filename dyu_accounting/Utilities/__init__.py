@@ -4,7 +4,24 @@ import re
 import datetime
 import os
 import json
+from decimal import Decimal, ROUND_HALF_UP
 from typing import Dict, List, Optional
+
+
+def format_money(value, places=2):
+    """Jinja filter: render a beancount Amount (or anything with .number/
+    .currency, e.g. an Inventory's get_currency_units() result) as "N.NN
+    CUR", rounded to `places` decimals. Anything else (a blank string from
+    a ternary with no match, a plain Decimal/number) passes through
+    unchanged, since .number/.currency doesn't apply to it.
+    """
+    try:
+        number = value.number
+        currency = value.currency
+    except AttributeError:
+        return value
+    quant = Decimal(1).scaleb(-places)
+    return f"{number.quantize(quant, rounding=ROUND_HALF_UP)} {currency}"
 
 
 def get_account_value(entries, account_name, start_date=None, end_date=None):
@@ -89,6 +106,7 @@ def render_template(data):
         trim_blocks=True,
         lstrip_blocks=True,
         keep_trailing_newline=True)
+    templateEnv.filters['money'] = format_money
     fname = data['template_name']
     template = templateEnv.get_template(fname)
     outputText = template.render(data)

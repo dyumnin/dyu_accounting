@@ -224,7 +224,7 @@ class Depreciation:
                     depr = depr/2
 
                 self.depr['it'][account]['table'][fy] = {
-                    'amount': value, 'depr': depr}
+                    'amount': value.get_currency_units('INR'), 'depr': depr}
                 fy_end = datetime.date(fy+1, 3, 31)
                 entries.append(
                     transfer(

@@ -7,14 +7,14 @@
 | Particulars | Amount
 
 h| Income |
-| Revenue from Operations | {{pnl.revenue|round(3)}}
-h| Total Revenue | {{pnl.revenue|round(3)}}
+| Revenue from Operations | {{pnl.revenue|round(2)}}
+h| Total Revenue | {{pnl.revenue|round(2)}}
 h| Expenses |
-| Salary (Net) | {{pnl.salary|round(3)}}
-| Depreciation | {{pnl.depreciation|round(3)}}
-| Other Expenses | {{pnl.misc_expenses}}
-h| Total Expenses | {{pnl.expenses_total|round(3)}}
-h| Profit/Loss | {{pnl.profit|round(3)}}{% if pnl.profit > 0 %} (Loss){% endif %}
+| Salary (Net) | {{pnl.salary|round(2)}}
+| Depreciation | {{pnl.depreciation|round(2)}}
+| Other Expenses | {{pnl.misc_expenses|round(2)}}
+h| Total Expenses | {{pnl.expenses_total|round(2)}}
+h| Profit/Loss | {{pnl.profit|round(2)}}{% if pnl.profit > 0 %} (Loss){% endif %}
 
 |===
 
