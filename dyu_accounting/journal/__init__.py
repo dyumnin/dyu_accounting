@@ -25,15 +25,25 @@ class Journal:
                 self.account_meta[entry.account] = entry.meta
 
     def _tally_name(self, account):
-        """A human-readable name for `account`, for use as a narration
-        fallback: its `tally_ledger` metadata if that's been filled in (not
-        left as a "FIXME: ..." placeholder), else just its leaf component
-        (e.g. "Expenses:INR:Fuel" -> "Fuel").
+        """A human-readable name for `account`: its `tally_ledger` metadata
+        if that's been filled in (not left as a "FIXME: ..." placeholder),
+        else the account path with the leading "<Type>:<Currency>:" (e.g.
+        "Assets:INR:") stripped and the rest space-joined - e.g.
+        "Assets:INR:Cash:IDFC:Current" -> "Cash IDFC Current",
+        "Expenses:INR:Fuel" -> "Fuel". Used both as a narration fallback
+        and as a cashbook title; a bare leaf component isn't enough for the
+        latter since e.g. IDFC's and SBI's cash accounts both end in
+        "Current".
         """
         tally_ledger = self.account_meta.get(account, {}).get('tally_ledger')
         if tally_ledger and not tally_ledger.upper().startswith('FIXME'):
             return tally_ledger
-        return account.split(':')[-1]
+        parts = account.split(':')
+        if len(parts) > 2 and parts[1] in ('INR', 'USD'):
+            parts = parts[2:]
+        else:
+            parts = parts[1:]
+        return ' '.join(parts)
 
     def _narration_for(self, entry, pa):
         """The narration to show for `entry` in `pa`'s cashbook row.
@@ -92,7 +102,11 @@ class Journal:
 
     def report_journal(self, outdir):
         reports = []
-        for account in self.accounts:
+        for account, transactions in self.accounts.items():
+            if not transactions:
+                # No activity in this FY - skip the report entirely rather
+                # than generate an empty cashbook with just a header row.
+                continue
             # Account names use ':' as a hierarchy separator (e.g.
             # 'Liabilities:INR:CreditCard'), but a ':' in the first segment
             # of a relative link target is ambiguous with a URI scheme per
@@ -100,14 +114,15 @@ class Journal:
             # at an absolute URI (scheme 'journal_Liabilities', here) rather
             # than a relative file path, breaking the link. Only the
             # filename needs sanitizing; account_name below (used for
-            # display inside the report) keeps the real account name.
+            # display inside the report) is the human-friendly name instead
+            # of the raw account path.
             safe_account = account.replace(':', '_')
             filename = f"journal_{safe_account}.html"
             written = render_template(data={
                 'template_name': "journal.tpl",
                 'cfg': self.cfg,
-                'account': self.accounts[account],
-                'account_name': account,
+                'account': transactions,
+                'account_name': self._tally_name(account),
                 'outfile': filename
             })
             reports.append(written)
