@@ -178,7 +178,7 @@ class Depreciation:
         return self.dpr_entries, errors
 
     def _calc_total_annual_depr(self):
-        for fy in range(self.min_fy, self.max_fy):
+        for fy in range(self.min_fy, self.max_fy + 1):
             self.depr['total']['mca'][fy] = Decimal()
             self.depr['total']['it'][fy] = Decimal()
             for account in self.depr['it']:
@@ -205,7 +205,7 @@ class Depreciation:
                     'block': b, 'rate': dict_blocks[b], 'table': {}}
                 accounts[account] = {'block': b,
                                      'period': period, 'full': full_account}
-        for fy in range(self.min_fy, self.max_fy):
+        for fy in range(self.min_fy, self.max_fy + 1):
             """ For each year.
             1. Find balance by accounts at EOY.
             2. Calculate depreciation.
