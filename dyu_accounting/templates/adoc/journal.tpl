@@ -5,6 +5,6 @@
 | Date | Payee | Narration | Amount
 
 {% for txn in account -%}
-| {{txn.date}} | {{txn.payee}} | {{txn.narration}} | {{txn.amount.number|round(2)}}
+| {{txn.date}} | {{txn.payee|esc}} | {{txn.narration|esc}} | {{txn.amount.number|round(2)}}
 {% endfor %}
 |===

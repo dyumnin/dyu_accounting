@@ -15,7 +15,7 @@ NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the
 
 {% for txn in depr.mca -%}
 {% if max_fy in txn.table %}
-| {{txn.narration}} | {{txn.category}} | {{txn.rate|round(2)}} | {{txn.cost|money}} | {{txn.purchased_on}} | {{txn.method}} | {{txn.scrap|round(2)}}{% for year in range(start_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]|round(2)}}{% endif %}{% endfor %}
+| {{txn.narration|esc}} | {{txn.category|esc}} | {{txn.rate|round(2)}} | {{txn.cost|money}} | {{txn.purchased_on}} | {{txn.method}} | {{txn.scrap|round(2)}}{% for year in range(start_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]|round(2)}}{% endif %}{% endfor %}
 
 {% endif %}
 {% endfor -%}
@@ -39,7 +39,7 @@ NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the
 
 {% for key,txn in depr.it.items() -%}
 {% if max_fy in txn.table %}
-| {{key}} | {{txn['block']}} | {{txn.rate|round(2)}}{% for year in range(start_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]['amount']|money}}{% endif %} | {% if year in txn.table %}{{txn.table[year]['depr']|round(2)}}{% endif %}{% endfor %}
+| {{key|esc}} | {{txn['block']|esc}} | {{txn.rate|round(2)}}{% for year in range(start_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]['amount']|money}}{% endif %} | {% if year in txn.table %}{{txn.table[year]['depr']|round(2)}}{% endif %}{% endfor %}
 
 {% endif %}
 {% endfor -%}

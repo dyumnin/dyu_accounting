@@ -24,6 +24,21 @@ def format_money(value, places=2):
     return f"{number.quantize(quant, rounding=ROUND_HALF_UP)} {currency}"
 
 
+def escape_table_cell(value):
+    """Jinja filter: escape a literal '|' in free-text that's about to be
+    interpolated into an AsciiDoc table cell. AsciiDoc's table parser reads
+    the whole body as one continuous stream of '|'-delimited cells, so an
+    unescaped '|' inside e.g. a bank transaction narration doesn't just
+    break that one cell - it shifts every cell after it, for the rest of
+    the table, into the wrong column. Anything without a literal '|'
+    passes through unchanged; a non-string value passes through too.
+    """
+    try:
+        return value.replace('|', '\\|')
+    except AttributeError:
+        return value
+
+
 def get_account_value(entries, account_name, start_date=None, end_date=None):
     """
     Returns:
@@ -107,6 +122,7 @@ def render_template(data):
         lstrip_blocks=True,
         keep_trailing_newline=True)
     templateEnv.filters['money'] = format_money
+    templateEnv.filters['esc'] = escape_table_cell
     fname = data['template_name']
     template = templateEnv.get_template(fname)
     outputText = template.render(data)
