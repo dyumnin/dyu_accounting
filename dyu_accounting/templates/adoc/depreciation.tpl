@@ -6,9 +6,9 @@
 
 NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the underlying ledger.
 
-<<<
 [.landscape]
---
+<<<
+
 [cols="5,2,1,1,1,1,1{% for _ in range(year_count) %},1{% endfor %}",options="header"]
 |===
 | Narration | Category | Depreciation Rate | Purchase Price | Purchase Date | Method | Scrap Value{% for year in range(start_fy,max_fy+1) %} | {{year}}{% endfor %}
@@ -24,16 +24,17 @@ NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the
 s| Total s| - s| - s| - s| - s| - s| -{% for year in range(start_fy,max_fy+1) %} s| {% if year in depr.total.mca %}{{depr.total.mca[year]|round(2)}}{% endif %}{% endfor %}
 
 |===
---
+
+[.portrait]
 <<<
 
 == Depreciation Table as per IT Rules
 
 NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the underlying ledger.
 
-<<<
 [.landscape]
---
+<<<
+
 [cols="4,2,1{% for _ in range(year_count) %},2,1{% endfor %}",options="header"]
 |===
 | Block | Type | Rate{% for year in range(start_fy,max_fy+1) %} | Block Value {{year}} | Depreciation {{year}}{% endfor %}
@@ -49,5 +50,6 @@ NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the
 s| Total s| s| {% for year in range(start_fy,max_fy+1) %} s| s| {% if year in depr.total.it %}{{depr.total.it[year]|round(2)}}{% endif %}{% endfor %}
 
 |===
---
+
+[.portrait]
 <<<
