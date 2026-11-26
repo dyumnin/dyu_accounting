@@ -1,34 +1,34 @@
 = Depreciation Report
 
-<<<
-[.landscape]
---
+{% set start_fy = [min_fy, max_fy - 2]|max %}
 == Depreciation Table as per MCA Rules
+
+NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the underlying ledger.
 
 [options="header"]
 |===
-| Narration | Category | Depreciation Rate | Purchase Price | Purchase Date | Method | Scrap Value{% for year in range(min_fy,max_fy+1) %} | {{year}}{% endfor %}
+| Narration | Category | Depreciation Rate | Purchase Price | Purchase Date | Method | Scrap Value{% for year in range(start_fy,max_fy+1) %} | {{year}}{% endfor %}
 
 {% for txn in depr.mca -%}
-| {{txn.narration}} | {{txn.category}} | {{txn.rate|round(3)}} | {{txn.cost}} | {{txn.purchased_on}} | {{txn.method}} | {{txn.scrap|round(2)}}{% for year in range(min_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]|round(3)}}{% endif %}{% endfor %}
+| {{txn.narration}} | {{txn.category}} | {{txn.rate|round(3)}} | {{txn.cost}} | {{txn.purchased_on}} | {{txn.method}} | {{txn.scrap|round(2)}}{% for year in range(start_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]|round(3)}}{% endif %}{% endfor %}
 
 {% endfor -%}
-s| Total s| - s| - s| - s| - s| - s| -{% for year in range(min_fy,max_fy+1) %} s| {% if year in depr.total.mca %}{{depr.total.mca[year]|round(3)}}{% endif %}{% endfor %}
+s| Total s| - s| - s| - s| - s| - s| -{% for year in range(start_fy,max_fy+1) %} s| {% if year in depr.total.mca %}{{depr.total.mca[year]|round(3)}}{% endif %}{% endfor %}
 
 |===
 
 == Depreciation Table as per IT Rules
 
+NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the underlying ledger.
+
 [options="header"]
 |===
-| Block | Type | Rate{% for year in range(min_fy,max_fy+1) %} | Block Value {{year}} | Depreciation {{year}}{% endfor %}
+| Block | Type | Rate{% for year in range(start_fy,max_fy+1) %} | Block Value {{year}} | Depreciation {{year}}{% endfor %}
 
 {% for key,txn in depr.it.items() -%}
-| {{key}} | {{txn['block']}} | {{txn.rate}}{% for year in range(min_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]['amount']}}{% endif %} | {% if year in txn.table %}{{txn.table[year]['depr']}}{% endif %}{% endfor %}
+| {{key}} | {{txn['block']}} | {{txn.rate}}{% for year in range(start_fy,max_fy+1) %} | {% if year in txn.table %}{{txn.table[year]['amount']}}{% endif %} | {% if year in txn.table %}{{txn.table[year]['depr']}}{% endif %}{% endfor %}
 
 {% endfor -%}
-s| Total s| s| {% for year in range(min_fy,max_fy+1) %} s| s| {% if year in depr.total.it %}{{depr.total.it[year]|round(3)}}{% endif %}{% endfor %}
+s| Total s| s| {% for year in range(start_fy,max_fy+1) %} s| s| {% if year in depr.total.it %}{{depr.total.it[year]|round(3)}}{% endif %}{% endfor %}
 
 |===
---
-<<<
