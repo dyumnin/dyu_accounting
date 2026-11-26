@@ -25,15 +25,17 @@ def test_shareCapital():
     entries, error, opts = load_string(account)
     print(error)
     depr.Depreciation(entries, opts, cfg={'fy': 2018})
-    company = {'name': 'Company Name', 'address': 'Company Address'}
-    bals = bsheet.BalanceSheet(
-        entries, opts, company=company, fy=2019)
+    cfg = {
+        'fy': 2019,
+        'company': {'name': 'Company Name', 'address': 'Company Address'},
+    }
+    bals = bsheet.BalanceSheet(entries, opts, cfg)
     bals.mkBalanceSheet(2019)
-    # return bs.balancesheet
-    # bs = calc_bs(entities, opts).balance
-    # d = amount.Amount(Decimal('-100000'), 'INR')
-    # assert repr(bs) in list(bs.keys())
-    bs = bals.balancesheet[2019].account
-    # print(repr(bs))
+    # Compare the display-signed totals (liabilities/equity flipped
+    # positive, matching how the report itself presents them - see
+    # BalanceSheet._display_account), since that's the actual "does the
+    # balance sheet balance" invariant; the raw BSTable has liabilities
+    # as a negative (credit-normal) figure and assets positive
+    # (debit-normal), so they're never literally equal to each other.
+    bs = bsheet.BalanceSheet._display_account(bals.balancesheet[2019])
     assert bs['liabilities']['total'] == bs['assets']['total']
-    # assert bs[2020]['liabilities']['share_capital'] == d
