@@ -39,6 +39,19 @@ def escape_table_cell(value):
         return value
 
 
+def format_fy_label(year):
+    """Jinja filter: render a fiscal-year start year as "YY-YY+1" (e.g.
+    2025 -> "25-26"), matching the YYYY-YY shorthand already used
+    elsewhere for a fiscal year, instead of a bare calendar year that
+    doesn't say which 12 months (Apr-Mar) it actually covers.
+    """
+    try:
+        year = int(year)
+    except (TypeError, ValueError):
+        return year
+    return f"{year % 100:02d}-{(year + 1) % 100:02d}"
+
+
 def get_account_value(entries, account_name, start_date=None, end_date=None):
     """
     Returns:
@@ -123,6 +136,7 @@ def render_template(data):
         keep_trailing_newline=True)
     templateEnv.filters['money'] = format_money
     templateEnv.filters['esc'] = escape_table_cell
+    templateEnv.filters['fy_label'] = format_fy_label
     fname = data['template_name']
     template = templateEnv.get_template(fname)
     outputText = template.render(data)
