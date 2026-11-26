@@ -35,6 +35,12 @@ COMPANY_NAME = "Dyumnin Semiconductors OPC Private LTD"
 COMPANY_ADDRESS = "#1 Bharathi Ramana, Vidhyaranyapura, 1st Block, Nanjappa Layout, Bangalore 13"
 SHARE_CAPITAL = ['Equity:INR:ShareCapital']
 
+# Same account patterns PnL uses to compute a single FY's profit - reused
+# here, over all history up to a snapshot date, to derive retained
+# earnings (see BalanceSheet._cumulative_profit).
+_INCOME_RE = re.compile(r'Income:')
+_EXPENSE_RE = re.compile(r'Expenses:INR')
+
 # Newer charts of accounts tag each `open` directive with a Schedule III
 # key (e.g. `schedule3: "bs.cash"`) instead of the legacy `balance_sheet:
 # "assets.cash"` key this module originally read. Translate the ones that
@@ -164,6 +170,36 @@ class BalanceSheet:
         # self.transfer_opening_balance(year)
         self._calc_balancesheet(year)
 
+    def _cumulative_profit(self, cutoff_date):
+        """Net profit (revenue - expenses), display-signed, from inception
+        through (not including) cutoff_date - the same calculation PnL
+        does for one FY's window, but over all history.
+
+        This system never posts a period-end closing entry zeroing
+        Income/Expense into equity each year, so without this, retained
+        profit shows up in Assets (via the cash it generated) but never
+        on the liabilities/equity side, and the balance sheet can't
+        balance. Injecting it here as a derived Equity:Surplus figure -
+        purely for this report - doesn't touch self.entries or any
+        ledger file, so it can't affect anything else that reads them
+        (journal, GST, bank reconciliation, ...).
+        """
+        revenue = Decimal()
+        expenses = Decimal()
+        for entry in self.entries:
+            if not isinstance(entry, data.Transaction) or entry.date >= cutoff_date:
+                continue
+            for posting in entry.postings:
+                if posting.units is None:
+                    continue
+                value = (posting.units.number if posting.units.currency == 'INR'
+                          else posting.units.number * posting.price.number)
+                if _INCOME_RE.match(posting.account):
+                    revenue -= value
+                elif _EXPENSE_RE.match(posting.account):
+                    expenses += value
+        return revenue - expenses
+
     def _calc_balancesheet(self, yrs):
         logger = logging.getLogger("BalanceSheet:calc_bs")
         logger.info("Calculating Balance Sheet")
@@ -183,6 +219,14 @@ class BalanceSheet:
                 f'e {e} only {bba[e].reduce(convert.get_cost)} bba_e {bba[e]}')
             self.balancesheet[yrs].add(
                 k1, k2, bba[e].reduce(convert.get_cost).get_currency_units('INR'))
+        # Retained earnings plug - see _cumulative_profit. Raw-signed
+        # (negative = a credit, since Equity is credit-normal) so it comes
+        # out positive through _display_account()'s flip like every other
+        # liabilities/equity line, on top of whatever (normally zero) raw
+        # balance the chart's own Equity:Surplus account already has.
+        self.balancesheet[yrs].add(
+            'liabilities', 'surplus',
+            Amount(-self._cumulative_profit(date), 'INR'))
         self.balancesheet[yrs].update_total()
         logger.debug(
             f'balancesheet {date} after update total BSTable={self.balancesheet}')
