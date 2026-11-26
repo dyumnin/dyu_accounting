@@ -15,7 +15,47 @@ class Journal:
         self.close_date = datetime.date(self.fy + 1, 3, 31)
         self.options_map = options_map
         self.find_cash_accounts()
+        self.find_account_meta()
         self.find_cash_transactions()
+
+    def find_account_meta(self):
+        self.account_meta = {}
+        for entry in self.entries:
+            if isinstance(entry, data.Open):
+                self.account_meta[entry.account] = entry.meta
+
+    def _tally_name(self, account):
+        """A human-readable name for `account`, for use as a narration
+        fallback: its `tally_ledger` metadata if that's been filled in (not
+        left as a "FIXME: ..." placeholder), else just its leaf component
+        (e.g. "Expenses:INR:Fuel" -> "Fuel").
+        """
+        tally_ledger = self.account_meta.get(account, {}).get('tally_ledger')
+        if tally_ledger and not tally_ledger.upper().startswith('FIXME'):
+            return tally_ledger
+        return account.split(':')[-1]
+
+    def _narration_for(self, entry, pa):
+        """The narration to show for `entry` in `pa`'s cashbook row.
+
+        Real bank/card statement entries routinely come in with no
+        narration at all (the exporter doesn't carry one, or it was
+        completed by reconcile_account.py merging in an Account/Google-Form
+        entry - see reconcile_account._merge_matched_entry, which copies
+        that entry's category there when a match is found). When a
+        transaction still has no narration at this point (no Account match,
+        or a plain non-cash transaction), fall back to the name of whatever
+        it was posted against - the "destination account" - since that's
+        usually a better clue to what the transaction actually was than a
+        blank cell.
+        """
+        if entry.narration:
+            return entry.narration
+        destination = next(
+            (p.account for p in entry.postings if p.account != pa), None)
+        if destination is None:
+            return entry.narration
+        return self._tally_name(destination)
 
     def find_cash_accounts(self):
         # Prefer discovering cash accounts straight from each account's own
@@ -47,7 +87,7 @@ class Journal:
                             self.accounts[pa].append(
                                 {'date': entry.date.strftime("%d %b %Y"),
                                  'payee': entry.payee,
-                                 'narration': entry.narration,
+                                 'narration': self._narration_for(entry, pa),
                                  'amount': posting.units})
 
     def report_journal(self, outdir):

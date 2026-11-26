@@ -101,6 +101,17 @@ def reconcile_fy(fy: str) -> None:
             receipt = entry.meta.get('receipt')
             if receipt:
                 source_entry.meta['receipt'] = receipt
+            if not source_entry.narration:
+                # beancount_reds_importers' banking.Importer swaps payee and
+                # narration (see its own comment: "payee and narration are
+                # switched"), so Account's Purpose-column category (e.g.
+                # "Food", "Fuel", "Travel") ends up in entry.payee, not
+                # entry.narration. The bank/card statement side usually has
+                # no narration of its own at all, so carry that category
+                # over rather than leaving the merged transaction blank.
+                source_entry = source_entry._replace(narration=entry.payee)
+                entries = source_entries_by_path[path]
+                entries[next(i for i, e in enumerate(entries) if e is match[1])] = source_entry
             modified_paths.add(path)
             matched_count += 1
             candidates.remove(match)
