@@ -2,13 +2,13 @@
 
 {% set start_fy = [min_fy, max_fy - 2]|max %}
 {% set year_count = max_fy - start_fy + 1 %}
-<<<
-[.landscape]
---
 == Depreciation Table as per MCA Rules
 
 NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the underlying ledger.
 
+<<<
+[.landscape]
+--
 [cols="5,2,1,1,1,1,1{% for _ in range(year_count) %},1{% endfor %}",options="header"]
 |===
 | Narration | Category | Depreciation Rate | Purchase Price | Purchase Date | Method | Scrap Value{% for year in range(start_fy,max_fy+1) %} | {{year}}{% endfor %}
@@ -24,11 +24,16 @@ NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the
 s| Total s| - s| - s| - s| - s| - s| -{% for year in range(start_fy,max_fy+1) %} s| {% if year in depr.total.mca %}{{depr.total.mca[year]|round(2)}}{% endif %}{% endfor %}
 
 |===
+--
+<<<
 
 == Depreciation Table as per IT Rules
 
 NOTE: Showing the last 3 years ({{start_fy}}-{{max_fy}}). Full history is in the underlying ledger.
 
+<<<
+[.landscape]
+--
 [cols="4,2,1{% for _ in range(year_count) %},2,1{% endfor %}",options="header"]
 |===
 | Block | Type | Rate{% for year in range(start_fy,max_fy+1) %} | Block Value {{year}} | Depreciation {{year}}{% endfor %}
