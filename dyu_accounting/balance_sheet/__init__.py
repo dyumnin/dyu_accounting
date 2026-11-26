@@ -190,13 +190,26 @@ class BalanceSheet:
             if not isinstance(entry, data.Transaction) or entry.date >= cutoff_date:
                 continue
             for posting in entry.postings:
+                is_income = _INCOME_RE.match(posting.account)
+                is_expense = _EXPENSE_RE.match(posting.account)
+                if not (is_income or is_expense):
+                    continue
                 if posting.units is None:
                     continue
-                value = (posting.units.number if posting.units.currency == 'INR'
-                          else posting.units.number * posting.price.number)
-                if _INCOME_RE.match(posting.account):
+                # Only convert through .price for a non-INR posting that
+                # actually has one; other legs of the same transaction
+                # (e.g. a raw Assets:USD:... amount with no price
+                # annotation) never reach here, but a matched Income/
+                # Expense posting could in principle lack one too.
+                if posting.units.currency == 'INR':
+                    value = posting.units.number
+                elif posting.price is not None:
+                    value = posting.units.number * posting.price.number
+                else:
+                    continue
+                if is_income:
                     revenue -= value
-                elif _EXPENSE_RE.match(posting.account):
+                elif is_expense:
                     expenses += value
         return revenue - expenses
 
